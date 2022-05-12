@@ -1,7 +1,8 @@
-import React from "react";
+import {useState} from "react";
+import './css/login.css';
 
 function Login() {
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     email: "",
     password: "",
   });
@@ -54,12 +55,12 @@ function Login() {
         onChange={handleChange}
       />
       <select className="position">
-        <option value="select">Seleccione una opción</option>
+        <option value="select">Cargo</option>
         <option value="admin">Administrador</option>
         <option value="waiter">Mesero</option>
         <option value="chef">Chef</option>
       </select>
-      <button type="submit" className="btn-login"></button>
+      <button type="submit" className="btn-login">Iniciar Sesión</button>
     </form>
   );
 }

@@ -1,0 +1,36 @@
+*{
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.form-login{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.email, .password {
+    margin: 1.25rem auto;
+    width: 17rem;
+    height: 3rem;
+    border: 0.375rem solid #ffd200;
+    background: #C4C4C4;
+}
+
+.position{
+   margin-top: 15px;
+   width: 12.5rem;
+   height: 2.5rem;
+   background: #C4C4C4;
+}
+
+.btn-login{
+    margin: 20px auto;
+    border-radius: 50px;
+    background: #CB3234;
+    padding: 20px 15px;
+    color: white;
+    margin-top: 80px;
+    font-weight: bolder;
+}

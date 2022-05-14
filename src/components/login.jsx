@@ -1,43 +1,35 @@
 import {useState} from "react";
 import './css/login.scss';
+import { login, saveUser } from "./providers/UserProvider";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-  function handleSubmit(evt) {
-    /*
-      Previene el comportamiento default de los
-      formularios el cual recarga el sitio
-    */
+  function startLogin(evt) {
     evt.preventDefault();
-    // Aquí puedes usar values para enviar la información
+    login(values).then((response) => {
+      saveUser(response.data);
+    }).catch(() => {});
+    navigate('/order')   
   }
   function handleChange(evt) {
-    /*
-      evt.target es el elemento que ejecuto el evento
-      name identifica el input y value describe el valor actual
-    */
+
     const { target } = evt;
     const { name, value } = target;
 
     console.log(value)
-    /*
-      Este snippet:
-      1. Clona el estado actual
-      2. Reemplaza solo el valor del
-         input que ejecutó el evento
-    */
     const newValues = {
       ...values,
       [name]: value,
     };
-    // Sincroniza el estado de nuevo
     setValues(newValues);
   }
   return (
-    <form className="form-login" onSubmit={handleSubmit}>
+    <form className="form-login" onSubmit={startLogin}>
       <input
         type="email"
         name="email"
@@ -60,9 +52,12 @@ function Login() {
         <option value="waiter">Mesero</option>
         <option value="chef">Chef</option>
       </select>
-      <button type="submit" className="btn-login">Iniciar Sesión</button>
+      <button type="submit" className="btn-login">INICIAR SESIÓN</button>
     </form>
   );
 }
 
 export default Login;
+
+// "email":"waiter@foodelicious.com"
+// clave 123456

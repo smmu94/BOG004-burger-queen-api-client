@@ -34,3 +34,22 @@
     margin-top: 80px;
     font-weight: bolder;
 }
+
+@media (min-width: 1280px) {
+    *{
+        font-size: 1.2rem;
+    }
+    .email, .password {
+        width: 17rem;
+        height: 2.5rem;
+    }
+
+    .btn-login{
+        margin-top: 5%;
+        padding: 14px 20px;
+       
+    }
+}
+      
+    
+  

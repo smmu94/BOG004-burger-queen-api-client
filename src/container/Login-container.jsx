@@ -6,7 +6,7 @@ import logoburger from "../images/LogoSample4.png";
 
 function Logincontainer() {
   return (
-    <div className="Logincontainer">
+    <div className="login-container">
       <img className="logo-burger" src={ logoburger } alt="logo-burger" />
       <div className="login">
           <Login/>

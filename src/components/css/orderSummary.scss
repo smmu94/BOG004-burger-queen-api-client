@@ -1,0 +1,32 @@
+.form-client {
+    border: 1px solid #000000;
+    background: #fa625146;
+    display: flex;
+    justify-content: space-evenly;
+    width: 50vw;
+}
+.nameClient{
+    width: 100px;
+    border: #fa625100;
+    padding: 20px;
+    font-weight: bolder;
+}
+.client{
+border: none;
+background: transparent;
+border-bottom: 2px solid #000000;
+width: 180px;
+height: min-content;
+padding: 10px;
+margin-right: 20px;
+}
+.btn-client{
+    margin: 20px auto;
+    border-radius: 50px;
+    background: #CB3234;
+    padding: 20px 15px;
+    color: white;
+    margin-top: 80px;
+    font-weight: bolder;
+    height: 25px;
+}

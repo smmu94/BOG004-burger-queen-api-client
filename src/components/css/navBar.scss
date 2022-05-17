@@ -1,0 +1,25 @@
+.NavbarItems{
+    height: 12vh;
+    background: #CB3234;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-icon{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50vw;
+}
+
+.logout{
+   width: 3em;
+    height: 3em;
+}
+
+.logo-navBar{
+    margin-left: 30px;
+    height: 90%;
+    align-self: center;
+}
+

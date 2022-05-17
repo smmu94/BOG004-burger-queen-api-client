@@ -9,6 +9,24 @@ const products = () => {
     }} );
  } 
 
- export default products;
+ const createProduct = (product) => {
+    return axios.post(BASE_URL+'products', product, {
+        headers: {
+            authorization: 'Bearer ' + getToken()
+        }
+
+    });
+}
+
+const deleteProduct = (id) => {
+    return axios.delete(BASE_URL+'products/'+id, {
+        headers: {
+            authorization: 'Bearer ' + getToken()
+        }
+    });
+}
+
+
+ export {products, createProduct, deleteProduct} ;
    
  

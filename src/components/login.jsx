@@ -9,19 +9,22 @@ function Login() {
     email: "",
     password: "",
   });
-  function startLogin(evt) {
-    evt.preventDefault();
-    login(values).then((response) => {
-      saveUser(response.data);
-    }).catch(() => {});
-    navigate('/order')   
+  const startLogin = async (e) => {
+    e.preventDefault();
+  try
+  {
+    const response = await login(values);
+    saveUser(response.data);
+    navigate("/");
+  } catch {
+    console.log("error");
+  }   navigate('/order'); 
   }
-  function handleChange(evt) {
-
-    const { target } = evt;
+  const handleChange = (e) => {
+    
+    const { target } = e;
     const { name, value } = target;
-
-    console.log(value)
+    console.log(value);
     const newValues = {
       ...values,
       [name]: value,
@@ -36,6 +39,7 @@ function Login() {
         placeholder="Usuario"
         className="email"
         value={values.email}
+        required
         onChange={handleChange}
       />
       <input
@@ -44,6 +48,7 @@ function Login() {
         placeholder="Contraseña"
         className="password"
         value={values.password}
+        required
         onChange={handleChange}
       />
       <select className="position">

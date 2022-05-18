@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Productsummary from './productSummary';
 import "./css/orderSummary.scss";
 
-const Ordersummary = (props) => {
+const Ordersummary = ({productList}) => {
   const [values, setValues] = useState({
     client: "",
   });
@@ -17,8 +18,10 @@ const Ordersummary = (props) => {
     setValues(newValues);
   }
     return (
+      <section className='contain-form-client'>
   <form className="form-client">
-   <p className="nameClient">CLIENTE</p>
+  <div>
+    <p className="nameClient">CLIENTE</p>
     <input
       type="text"
       name="client"
@@ -27,8 +30,14 @@ const Ordersummary = (props) => {
       required
       onChange={handleChange}
     />
+    </div>
+    <Productsummary productList={ productList } />
+    <div>TOTAL
     <button type="submit" className="btn-client">ENVIAR</button> 
-  </form>);
+    </div>
+  </form>
+  </section>);
+  
 };
 
 export default Ordersummary;

@@ -11,15 +11,10 @@ const login = (payload) => {
     return axios.post(BASE_URL+'login', payload);
 }
 
-const getUsers = () => {
-    return axios.get(BASE_URL+'users');
-}
 
 const saveUser = (user) => {
     sessionStorage.setItem('user', JSON.stringify(user));
 }
-
-
 
  const getUserData = () => {
      return JSON.parse(sessionStorage.getItem('user'));
@@ -28,6 +23,8 @@ const saveUser = (user) => {
  const getToken = () => {
      return getUserData().accessToken;
  }
+
+
  
 
 
@@ -36,9 +33,21 @@ const saveUser = (user) => {
 
 export {
     login,
-    getUsers,
     saveUser,
     createUser,
     getUserData,
-    getToken
+    getToken,
 }
+
+// const getUsers = () => {
+//     return axios.get(BASE_URL+'users',{
+//         headers: {
+//             authorization: 'Bearer ' + getToken()
+//         }
+    
+// });
+// }
+
+// const getId = () => {
+//         return getUserData().id;
+//     }

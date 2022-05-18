@@ -10,7 +10,6 @@ function Routercomponent() {
               <Routes>
                 <Route path="/" element={<Logincontainer />} />
                 <Route path="/order" element={<Ordercontainer />} /> 
-                {/* <Route path="/ordersReady" element={<OrdersReadycontainer />} />  */}
               </Routes>
             </Router>
     

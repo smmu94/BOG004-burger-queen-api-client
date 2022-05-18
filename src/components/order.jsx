@@ -19,7 +19,7 @@ export default function Order({handleAddProduct}) { //handleAddProduct es una fu
         setProductos(response.data); // guardamos los datos en el estado
       })
       .catch(() => {});
-  }, []);
+  },[]);
 
   return (
     <div className='order'>

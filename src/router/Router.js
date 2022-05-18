@@ -3,7 +3,7 @@ import Logincontainer from "../container/Logincontainer";
 import Ordercontainer from '../container/Ordercontainer';
 
 
-function Routercomponent() {
+const Routercomponent = () => {
     return (
       
             <Router>

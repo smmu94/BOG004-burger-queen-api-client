@@ -4,7 +4,7 @@ import logoburger from "../images/LogoSample4.png";
 
 
 
-function Logincontainer() {
+const Logincontainer = () =>{
   return (
     <div className="login-container">
       <img className="logo-burger" src={ logoburger } alt="logo-burger" />

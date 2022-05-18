@@ -1,0 +1,20 @@
+.product-summary {
+  display: flex;
+  justify-content: space-around;
+  width: 95%;
+p{
+    width: 50%;
+}
+
+section{
+    width: 35%;
+}
+div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: solid 2px #cb3234;
+    background: #cb3234;
+  }
+}
+

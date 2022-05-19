@@ -6,14 +6,21 @@
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     border: 1px solid #000000;
     background: #fa625146;
     div {
         display: flex;
-
     }
+    .final-summary {
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px;
+        align-items: center;
+        margin-top: 20px;
+    }
+
 }
 .nameClient{
     width: 100px;

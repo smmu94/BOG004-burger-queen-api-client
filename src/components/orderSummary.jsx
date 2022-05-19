@@ -1,10 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Productsummary from './productSummary';
 import "./css/orderSummary.scss";
 
 const Ordersummary = ({productList, handleRemoveProduct}) => {
-  const totalPrice = useMemo(() => 
-  productList.reduce((total, product) => total + (product.price * product.quantity), 0), [productList]);
+  const totalPrice =  productList.reduce((total, product) => total + (product.price * product.quantity), 0);
   const [values, setValues] = useState({
     client: "",
   });

@@ -26,7 +26,23 @@ const deleteProduct = (id) => {
     });
 }
 
+const createOrder = (order) => {
+    return axios.post(BASE_URL+'orders', order, {
+        headers: {
+            authorization: 'Bearer ' + getToken()
+        }
+    });
+}
 
- export {products, createProduct, deleteProduct} ;
+const getOrder = () => {
+    return axios.get(BASE_URL+'orders', {
+        headers: {
+            authorization: 'Bearer ' + getToken()
+        }
+    });
+}
+
+
+ export {products, createProduct, deleteProduct, createOrder, getOrder} ;
    
  

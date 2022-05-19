@@ -24,6 +24,9 @@ const saveUser = (user) => {
      return getUserData().accessToken;
  }
 
+ const getId = () => {
+    return getUserData().user.id;
+}
 
  
 
@@ -37,6 +40,7 @@ export {
     createUser,
     getUserData,
     getToken,
+    getId
 }
 
 // const getUsers = () => {

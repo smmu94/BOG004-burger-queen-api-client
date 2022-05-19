@@ -4,7 +4,7 @@ import Ordersummary from "../components/orderSummary";
 import Navbar from "../components/navBar.jsx";
 import { useState } from "react";
 
-const  Ordercontainer = () =>{
+const  Ordercontainer = (props) =>{
   const [summaryProducts, setSummaryProducts] = useState([]); //array de objetos
 
   const addProduct = (product) => { // add product to summary
@@ -26,6 +26,8 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya est√
       }
     setSummaryProducts(removeSummaryProducts); // actualiza el estado
   }
+
+
   return (
     <div className="order-container">
       <Navbar item1="√ìRDENES" item2="PEDIDOS LISTOS" />

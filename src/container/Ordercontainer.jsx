@@ -16,22 +16,22 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya estÃ
 }
     setSummaryProducts(newSummaryProducts); // actualiza el estado
     console.log(newSummaryProducts)
+              
   }
-
-    // newSummaryProducts.push(product); //agrega el producto al array
-
-    // setSummaryProducts(newSummaryProducts) //actualiza el estado
-
-
- 
-  
-      
+  const removeProduct = (id) => { // remove product to summary
+    const removeSummaryProducts = [...summaryProducts]; //copia el array
+      removeSummaryProducts.find(p => p.id === id).quantity -= 1; // disminuye la cantidad
+      if (removeSummaryProducts.find(p => p.id === id).quantity === 0) { // si la cantidad es 0, lo elimina
+        removeSummaryProducts.splice(removeSummaryProducts.findIndex(p => p.id === id), 1);
+      }
+    setSummaryProducts(removeSummaryProducts); // actualiza el estado
+  }
   return (
     <div className="order-container">
       <Navbar item1="Ã“RDENES" item2="PEDIDOS LISTOS" />
       <div className="order-summary">
         <Order handleAddProduct={addProduct}/>
-        <Ordersummary  productList={summaryProducts}/>
+        <Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct}/>
       </div>
     </div>
   );

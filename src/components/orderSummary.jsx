@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Productsummary from './productSummary';
 import "./css/orderSummary.scss";
 
-const Ordersummary = ({productList}) => {
+const Ordersummary = ({productList, handleRemoveProduct}) => {
+  const totalPrice = useMemo(() => 
+  productList.reduce((total, product) => total + (product.price * product.quantity), 0), [productList]);
   const [values, setValues] = useState({
     client: "",
   });
@@ -31,8 +33,9 @@ const Ordersummary = ({productList}) => {
       onChange={handleChange}
     />
     </div>
-    <Productsummary productList={ productList } />
-    <div>TOTAL
+    <Productsummary productList={ productList } handleRemoveProduct={handleRemoveProduct}/>
+    <div className='final-summary'>
+      <div>TOTAL: {totalPrice}</div>
     <button type="submit" className="btn-client">ENVIAR</button> 
     </div>
   </form>

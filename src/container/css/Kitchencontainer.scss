@@ -1,0 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+.order-container {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+}

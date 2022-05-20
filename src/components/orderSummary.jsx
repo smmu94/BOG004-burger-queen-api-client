@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Productsummary from "./productSummary";
 import "./css/orderSummary.scss";
 import { useNavigate,  } from "react-router-dom";

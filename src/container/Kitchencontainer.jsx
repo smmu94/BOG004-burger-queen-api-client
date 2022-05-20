@@ -18,11 +18,11 @@ const Kitchencontainer = () => {
   },[]);
 
   return (
-    <div className="order-container">
+    <div >
       <Navbar item1="" item2="" />
-      <div>{order.map(ord =>{
+      <div className="order-container">{order.map(ord =>{
         return(
-          <Kitchen key={"ordi" + ord.id} id={ord.id} client={ord.client} product={ord.products}  />
+          <Kitchen key={'order-' + ord.id} id={ord.id} client={ord.client} product={ord.products}  />
         )
       })}</div>
     </div>

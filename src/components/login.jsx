@@ -12,11 +12,11 @@ const Login = () => {
     formState: { errors },
   } = useForm(); // librería validacion form
 
-  const [hasError, setHasError] = useState(false);
+  const [hasError, setHasError] = useState('');
 
   const navigate = useNavigate(); // propiedad react para redireccionar
   const [values, setValues] = useState({
-    // estado para guardar los datos del formulario
+    // estado para guardar los datos del formgitulario
     email: "",
     password: "",
   });
@@ -28,14 +28,15 @@ const Login = () => {
       navigate("/order");
       setHasError(false);
     } catch {
-      setHasError(true);
+      setHasError('Usuario y/o contraseña no encontrado');
+      // alert('Usuario y/o contraseña no encontrado');
     }
   };
   const handleChange = (e) => {
     // funcion para guardar los datos del formulario
     const { target } = e;
     const { name, value } = target;
-    console.log(value);
+    // console.log(value);
     const newValues = {
       // nuevo estado con los datos del formulario
       ...values, // estado anterior
@@ -48,10 +49,12 @@ const Login = () => {
   };
   return (
     /* formulario de login */
-    <form noValidate className="form-login" onSubmit={handleSubmit(startLogin)}>
-      {hasError && <Alert >Soyyy un alertaaa</Alert>}
-    
-      <input // input para el email
+    <form  noValidate className="form-login" onSubmit={handleSubmit(startLogin)}>
+      <div>
+      <label  htmlFor="email">email</label>
+      
+      <input 
+      id="email"
         type="email"
         name="email"
         placeholder="Usuario"
@@ -70,9 +73,15 @@ const Login = () => {
           },
         })}
         onChange={handleChange} // cuando se cambia el valor del input
+        data-testid='login-email'
       />
       {errors.email && <span style={style}>{errors.email.message}</span>}
-      <input // input para el password
+      </div>
+      <div>
+      <label  htmlFor="password">password</label>
+     
+      <input 
+      id="password" // input para el password
         type="password"
         name="password"
         placeholder="Contraseña"
@@ -96,8 +105,11 @@ const Login = () => {
           },
         })}
         onChange={handleChange} // cuando se cambia el valor del input
+        data-testid='login-password'
       />
       {errors.password && <span style={style}>{errors.password.message}</span>}
+      </div>
+      {hasError && <p data-testid="login-error-message">{hasError}</p>} 
       <button type="submit" className="btn-login">
         INICIAR SESIÓN
       </button>

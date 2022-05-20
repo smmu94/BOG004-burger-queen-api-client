@@ -1,0 +1,46 @@
+import '@testing-library/jest-dom';
+import * as React from 'react';
+import {rest} from 'msw';
+import {setupServer} from 'msw/node';
+import {render, fireEvent, waitFor, screen} from '@testing-library/react';
+import Login from '../components/login';
+import { BrowserRouter as Router } from "react-router-dom";
+
+
+const fakeUserResponse = {token: '123456'}
+const server = setupServer(
+  rest.post('http://localhost:8080/login', (req, res, ctx) => {
+    console.log(res(ctx.json(fakeUserResponse)));
+    return res(ctx.json(fakeUserResponse))
+  }),
+)
+
+console.log('soy servidor', server);
+
+beforeAll(() => server.listen())
+afterEach(() => {
+  server.resetHandlers()
+  sessionStorage.removeItem('token')
+})
+afterAll(() => server.close())
+
+test('allows the user to login successfully', async () => {
+    render(
+    <Router>
+    <Login />
+    </Router>
+    )
+  
+    fireEvent.change(screen.getByLabelText('email'), {
+      target: {value: 'waiter@foodelicious.com'},
+    })
+    fireEvent.change(screen.getByLabelText('password'), {
+      target: {value: '123456'},
+    })
+  
+    fireEvent.click(screen.getByText('INICIAR SESIÓN'))
+ 
+    expect(sessionStorage.getItem('token')).toEqual(fakeUserResponse.token)
+  })
+  
+

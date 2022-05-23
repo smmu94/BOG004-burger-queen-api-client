@@ -29,12 +29,14 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya est√
 
 
   return (
-    <div className="order-container">
+    <div>
       <Navbar item1="√ìRDENES" item2="PEDIDOS LISTOS" />
+    <div className="order-container">
       <div className="order-summary">
         <Order handleAddProduct={addProduct}/>
         <Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct}/>
       </div>
+    </div>
     </div>
   );
 }

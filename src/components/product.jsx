@@ -3,7 +3,7 @@ import './css/product.scss';
 
 const Product = (props) => {
   const onClick = () => {
-    props.handleAddProduct({name: props.name, price: props.price, id: props.id});
+    props.handleAddProduct({name: props.name, price: props.price, id: props.id, type: props.type});
   }
 
   return (
@@ -11,6 +11,7 @@ const Product = (props) => {
       <img src={props.image} alt={props.name} />
       <p>{props.name}</p>
       <p>${props.price}</p>
+      <p>{props.type}</p>
     </div>
   );
 };

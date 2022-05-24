@@ -28,6 +28,13 @@ const saveUser = (user) => {
     return getUserData().user.id;
 }
 
+const getUser = () => {
+    return axios({method: "GET", url:BASE_URL+'users', headers: {
+        authorization: "Bearer " + getToken()
+    }} );
+}
+
+
  
 
 
@@ -40,7 +47,8 @@ export {
     createUser,
     getUserData,
     getToken,
-    getId
+    getId,
+    getUser
 }
 
 // const getUsers = () => {

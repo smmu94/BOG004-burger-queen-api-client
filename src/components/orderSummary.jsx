@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Productsummary from "./productSummary";
 import "./css/orderSummary.scss";
-import { useNavigate,  } from "react-router-dom";
+// import { useNavigate,  } from "react-router-dom";
 import {createOrder}from "./providers/OrderProducts.js";
 import {getId}from "./providers/UserProvider.js";
 
@@ -15,11 +15,11 @@ const Ordersummary = ({ productList, handleRemoveProduct }) => {
   const [values, setValues] = useState({
     client: "",
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/kitchen");
+    // navigate("/kitchen");
    const oder = {
      "userId": getId(),
      "client": values.client,

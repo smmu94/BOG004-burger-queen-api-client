@@ -3,7 +3,7 @@ import "./css/navBar.scss";
 import { Nav } from "react-bootstrap";
 import { BiLogOut } from "react-icons/bi";
 import logo_navBar from "../images/Logo-Navbar.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 
 const Navbar = (props) => {
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ const Navbar = (props) => {
       <Nav className="NavbarItems">
         <img className="logo-navBar" src={logo_navBar} alt="logo-navBar" />
         <div className="menu-icon">
-          <Link to="">{props.item1}</Link>
-          <Link to="">{props.item2}</Link>
+          <NavLink to={props.link1}>{props.item1}</NavLink>
+          <NavLink to={props.link2}>{props.item2}</NavLink>
           <BiLogOut className="logout" onClick={logout} />
         </div>
       </Nav>

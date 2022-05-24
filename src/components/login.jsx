@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./css/login.scss";
-import { login, saveUser } from "./providers/UserProvider";
+import { login, saveUser, getUser } from "./providers/UserProvider";
 import { useNavigate } from "react-router-dom"; // librería para redireccionar
 import { useForm } from "react-hook-form"; // librería para validacion de formulario
 import { Alert } from "reactstrap";
@@ -27,7 +27,15 @@ const Login = () => {
     try {
       const response = await login(values); // llamada a la funcion login de la api
       saveUser(response.data);
-      navigate("/order");
+      const users = await getUser();
+      const user =users.data.find((user) => user.email === values.email);
+      if(user.roles.hasOwnProperty("waiter")){
+        navigate("/order");
+      } else if(user.roles.hasOwnProperty("admin")){
+        navigate("/admin");
+      } else {
+        navigate("/kitchen");
+      }
     } catch {
       setHasError("Usuario y/o contraseña no encontrado");
     }
@@ -127,3 +135,4 @@ export default Login;
 
 // "email":"waiter@foodelicious.com"
 // clave 123456
+//anita.borg@systers.xyz

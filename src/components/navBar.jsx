@@ -3,7 +3,7 @@ import "./css/navBar.scss";
 import { Nav } from "react-bootstrap";
 import { BiLogOut } from "react-icons/bi";
 import logo_navBar from "../images/Logo-Navbar.png";
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Navbar = (props) => {
   const navigate = useNavigate();

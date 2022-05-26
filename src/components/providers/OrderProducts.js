@@ -42,7 +42,15 @@ const getOrder = () => {
     });
 }
 
+const updateOrder = (id, update) => { 
+ return axios.patch(BASE_URL+'orders/'+id, update, {
+        headers: {
+            authorization: 'Bearer ' + getToken()  
+    
+        }
+    });
+}
 
- export {products, createProduct, deleteProduct, createOrder, getOrder} ;
+ export {products, createProduct, deleteProduct, createOrder, getOrder, updateOrder} ;
    
  

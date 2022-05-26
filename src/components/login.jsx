@@ -28,7 +28,7 @@ const Login = () => {
       const response = await login(values); // llamada a la funcion login de la api
       saveUser(response.data);
       const users = await getUser();
-      const user =users.data.find((user) => user.email === values.email);
+      const user =users.data.find((user) => user.email === values.email); 
       if(user.roles.hasOwnProperty("waiter")){
         navigate("/order");
       } else if(user.roles.hasOwnProperty("admin")){

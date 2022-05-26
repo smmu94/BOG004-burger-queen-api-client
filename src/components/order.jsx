@@ -16,17 +16,15 @@ export default function Order({ handleAddProduct }) {
     products() // llamamos a la función products() que está en el provider
       .then((response) => {
         setProductos(response.data); // actualizamos el estado
-        setFilteredProducts(response.data)
+        // setFilteredProducts(response.data)
       })
       .catch(() => {});
   }, []);
 
   useEffect(() => {
-    if (foodType === ""){
-      setFilteredProducts(productos);
-    } else{
+    
       setFilteredProducts(productos.filter((p) => p.type === foodType))
-    }
+    
   },[foodType, productos]);
 
 

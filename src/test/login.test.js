@@ -30,11 +30,6 @@ test("it does not allows the user to login successfully", async () => {
 });
 
 test("allows the user to login successfully", async() => {
-  const mockedUsedNavigate = jest.fn();
-  jest.mock("react-router-dom", () => ({
-    ...jest.requireActual("react-router-dom"),
-    useNavigate: () => mockedUsedNavigate,
-  }));
 
   const history = createMemoryHistory();
   render(

@@ -2,10 +2,23 @@
 import { useState } from "react";
 import DisplayTime from "./DisplayTime";
 
-const Timekeeper = () => {
-  const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
+const Timekeeper = ({id}) => {
+  // const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
+
+  const timeId =  id;
+  console.log(timeId)
+
+  const InitialTime = ()=>{
+    if(localStorage.getItem(timeId) !== null){
+      return JSON.parse(localStorage.getItem(timeId));
+    } else{
+      return  { ms: 0, s: 0, m: 0, h: 0 };
+    }
+  }
+  const [time, setTime] = useState(InitialTime());
+  
 
   const start = () => {
     run();
@@ -17,6 +30,8 @@ const Timekeeper = () => {
     updateS = time.s,
     updateM = time.m,
     updateH = time.h;
+
+
 
   const run = () => {
     if (updateM === 60) {
@@ -37,12 +52,14 @@ const Timekeeper = () => {
 
   // const stop = () => {
   //   clearInterval(interv);
-  //   setStatus(2);
+  //   setStatus(0);
   // };
 
   const stop = () => {
+    localStorage.setItem(timeId, JSON.stringify(time));
+
     clearInterval(interv);
-    setStatus(0);
+    setStatus(1);
     // setTime({ ms:0, s:0, m:0, h:0 });
   };
 

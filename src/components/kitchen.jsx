@@ -2,7 +2,7 @@ import "./css/kitchen.scss";
 // import { AiOutlineMinusCircle } from "react-icons/ai";
 // import Timekeeper from "./Timekeeper.jsx";
 import { updateOrder } from "./providers/OrderProducts.js";
-import { getId } from "./providers/UserProvider.js";
+// import { getId } from "./providers/UserProvider.js";
 
 
 
@@ -11,9 +11,8 @@ const Kitchen = (props) => {
  const handleClick = () => {
   let dateNow = new Date();
   const upOrder = {
-    userId: getId(),
     status: "delivered",
-    dateProcessed: dateNow.getFullYear() + "-" + dateNow.getMonth() + "-" + dateNow.getDate() + " " + dateNow.getHours() + ":" + dateNow.getMinutes() + ":" + dateNow.getSeconds(),
+    dateProcessed: dateNow.getFullYear() + "-" + dateNow.getMonth() + "-" + dateNow.getDate() + " " + dateNow.getHours() + ":" + dateNow.getMinutes(),
   }
    updateOrder(props.id, upOrder)
    .then(res => console.log(res.data))
@@ -36,6 +35,7 @@ const Kitchen = (props) => {
                 className="amount-product"
                 key={"order-product-" + product.id}
               >
+
                 <div className="amount">{product.quantity}</div>
                 <div className="product-name">{product.name}</div>
                

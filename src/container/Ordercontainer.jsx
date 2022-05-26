@@ -28,13 +28,19 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya estÃ
   }
 
 
+
+  const resetProduct = () => {
+      setSummaryProducts([]);
+  }
+
+
   return (
     <div>
     <Navbar item1="Ã“RDENES" item2="PEDIDOS LISTOS" link1="/order" link2="/readyorder" />
     <div className="order-container">
       <div className="order-summary">
         <Order handleAddProduct={addProduct}/>
-        <Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct}/>
+        <Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct} reset={resetProduct}/>
       </div>
     </div>
     </div>

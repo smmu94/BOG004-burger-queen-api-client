@@ -45,8 +45,8 @@ const getOrder = () => {
 const updateOrder = (id, update) => { 
  return axios.patch(BASE_URL+'orders/'+id, update, {
         headers: {
-            authorization: 'Bearer ' + getToken()  
-    
+            "content-type": "application/json",
+            authorization: 'Bearer ' + getToken()
         }
     });
 }

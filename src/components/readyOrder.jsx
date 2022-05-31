@@ -1,14 +1,10 @@
-import './css/kitchen.scss';
+import './css/readyOrder.scss';
 // import { AiOutlineMinusCircle } from "react-icons/ai";
 // import Timekeeper from "./Timekeeper.jsx";
 import { updateOrder } from './providers/OrderProducts.js';
 import { getId } from './providers/UserProvider.js';
-import { useState } from 'react';
-import { Alert } from 'reactstrap';
 
-const Kitchen = (props) => {
-  const [messageTime, setMessageTime] = useState('');
-
+const ReadyOrder = (props) => {
   const handleClick = () => {
     let dateNow = new Date();
     const upOrder = {
@@ -25,12 +21,7 @@ const Kitchen = (props) => {
         ':' +
         dateNow.getMinutes(),
     };
-    
     updateOrder(props.id, upOrder).then((res) => {
-      console.log('fechas', res.data.dataEntry, res.data.dateProcessed);
-
-      // let timeOrderMs = new Date().getHours().getTime()
-      // console.log(timeOrderMs);
       let timeMs = Math.abs(
         new Date(res.data.dateProcessed).getTime() -
           new Date(res.data.dataEntry).getTime()
@@ -49,25 +40,13 @@ const Kitchen = (props) => {
 
         return hours + ':' + minutes + ':' + seconds;
       };
-
-
-      setTimeout(() => {
-        setMessageTime(null);
-      }, 3000);
-
-      if (timeOrder(timeMs) < '01:00:00') {
-        return setMessageTime(
-          `La preparación del pedido tomó ${timeOrder(timeMs)} minutos`
-        );
-      } else {
-        return setMessageTime(
-          `La preparación del pedido tomó ${timeOrder(timeMs)} horas`
-        );
-      }
+      console.log(timeOrder(timeMs));
     });
+    props.addDeliveredOrder()
 
-    // props.dataEntry
+    
   };
+
   return (
     <div className='container-Kitchen'>
       <section className='container-order'>
@@ -85,14 +64,13 @@ const Kitchen = (props) => {
             );
           })}
         </div>
-        <div className='dataEntry'>{props.dataEntry}</div>
+        <div className='dataEntry'>{props.dateProcessed}</div>
         <button type='button' className='btn-order' onClick={handleClick}>
-          ENVIAR
+          ENTREGAR ORDEN
         </button>
-        {messageTime && <Alert color='success'>{messageTime}</Alert>}
       </section>
     </div>
   );
 };
 
-export default Kitchen;
+export default ReadyOrder;

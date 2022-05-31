@@ -17,7 +17,7 @@ const Productsummary = ({ productList, handleRemoveProduct}) => {
         </div>
         <AiOutlineMinusCircle className='subtract' onClick={() => handleRemoveProduct(product.id)}/>
         </section>
-    
+       
       
     </section>
   ));

@@ -1,16 +1,13 @@
-import './css/deliveredOrder.scss';
+import "./css/deliveredOrder.scss";
 
 
-const DeliveredOrder = ({ client, deliveredTime }) => {
+const DeliveredOrder = ({ client, timeOrd }) => {
+  return (
+    <div className="deliveredOrder">
+      <p>{client}</p>
+      <p>{timeOrd}</p>
+    </div>
+  );
+};
 
-
-    
-    return (
-        <div className="deliveredOrder">
-            
-        
-        </div>
-    );
-    }
-
-    export default DeliveredOrder;
+export default DeliveredOrder;

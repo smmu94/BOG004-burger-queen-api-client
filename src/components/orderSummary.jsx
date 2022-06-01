@@ -36,7 +36,7 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
         ':' +
         dateNow.getMinutes(),
     };
-    console.log(oder);
+   localStorage.setItem('order', JSON.stringify(oder));
 
     createOrder(oder)
       .then((response) => {

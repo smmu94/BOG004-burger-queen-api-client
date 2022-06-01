@@ -1,4 +1,27 @@
 .containerReady {
     display: flex;
-    flex-wrap: wrap;
+    
+}
+
+.deliveredOrders{
+    margin: 6px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    background-color: #fa625146;
+    position: absolute;
+    right: 0;
+}
+
+// .deliveredOrder{
+//     display: flex;
+//     justify-content: space-evenly;
+//     padding: 5px;
+// }
+.subtitles-delivered{
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bold;
+    font-size: 20px;
+    padding:5px;
 }

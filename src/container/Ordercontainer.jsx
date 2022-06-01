@@ -22,7 +22,7 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya estÃ
     const removeSummaryProducts = [...summaryProducts]; //copia el array
       removeSummaryProducts.find(p => p.id === id).quantity -= 1; // disminuye la cantidad
       if (removeSummaryProducts.find(p => p.id === id).quantity === 0) { // si la cantidad es 0, lo elimina
-        removeSummaryProducts.splice(removeSummaryProducts.findIndex(p => p.id === id), 1);
+        removeSummaryProducts.splice(removeSummaryProducts.findIndex(p => p.id === id), 1); 
       }
     setSummaryProducts(removeSummaryProducts); // actualiza el estado
   }

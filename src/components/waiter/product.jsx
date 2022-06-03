@@ -1,4 +1,4 @@
-import './css/product.scss';
+import '../css/product.scss';
 // import burger from 'http://localhost:3000/image-data/burger.png';
 
 const Product = (props) => {
@@ -7,7 +7,7 @@ const Product = (props) => {
   }
 
   return (
-    <div className='product' onClick={onClick}>
+    <div className='product' data-testid='product' onClick={onClick}>
       <img src={props.image} alt={props.name} />
       <p>{props.name}</p>
       <p>${props.price}</p>

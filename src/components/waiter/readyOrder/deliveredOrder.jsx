@@ -1,4 +1,4 @@
-import "./css/deliveredOrder.scss";
+import "../../css/deliveredOrder.scss";
 
 
 const DeliveredOrder = ({ client, timeOrd }) => {

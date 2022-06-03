@@ -1,5 +1,5 @@
 import "./css/Logincontainer.scss";
-import Login from "../components/login.jsx";
+import Login from "../components/login/login.jsx";
 import logoburger from "../images/LogoSample4.png";
 
 

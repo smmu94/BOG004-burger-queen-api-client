@@ -1,6 +1,6 @@
 import "./css/Ordercontainer.scss";
-import Order from "../components/order.jsx";
-import Ordersummary from "../components/orderSummary";
+import Order from "../components/waiter/order.jsx";
+import Ordersummary from "../components/waiter/orderSummary";
 import Navbar from "../components/navBar.jsx";
 import { useState } from "react";
 

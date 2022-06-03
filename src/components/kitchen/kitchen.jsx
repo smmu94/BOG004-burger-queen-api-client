@@ -1,8 +1,6 @@
-import "./css/kitchen.scss";
-// import { AiOutlineMinusCircle } from "react-icons/ai";
-// import Timekeeper from "./Timekeeper.jsx";
-import { updateOrder } from "./providers/OrderProducts.js";
-import { getId } from "./providers/UserProvider.js";
+import "../css/kitchen.scss";
+import { updateOrder } from "../../providers/OrderProducts.js";
+import { getId } from "../../providers/UserProvider.js";
 import { useState } from "react";
 import { Alert } from "reactstrap";
 

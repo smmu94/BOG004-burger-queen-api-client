@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Logincontainer from "../container/Logincontainer";
-import Ordercontainer from '../container/Ordercontainer';
-import Kitchencontainer from '../container/Kitchencontainer';
-import Readyorders from "../container/Readyorders";
-import Admincontainer from "../container/Admincontainer";
+import Logincontainer from "../views/Login";
+import Ordercontainer from '../views/Order';
+import Kitchencontainer from '../views/Kitchen';
+import Readyorders from "../views/ReadyOrders";
+import Admincontainer from "../views/Admin";
 
 
 const Routercomponent = () => {

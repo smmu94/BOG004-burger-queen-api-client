@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import Productsummary from './productSummary';
-import './css/orderSummary.scss';
-// import { useNavigate,  } from "react-router-dom";
-import { createOrder } from './providers/OrderProducts.js';
+import '../css/orderSummary.scss';
+import { createOrder } from '../../providers/OrderProducts.js';
 import { Alert } from 'reactstrap';
-import {getId} from './providers/UserProvider.js';
+import {getId} from '../../providers/UserProvider.js';
 
 const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
   const totalPrice = productList.reduce(

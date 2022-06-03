@@ -1,7 +1,5 @@
-import "./css/readyOrder.scss";
-// import { AiOutlineMinusCircle } from "react-icons/ai";
-// import Timekeeper from "./Timekeeper.jsx";
-import { getId } from "./providers/UserProvider.js";
+import "../../css/readyOrder.scss";
+
 
 const ReadyOrder = (props) => {
   const handleClick = () => {

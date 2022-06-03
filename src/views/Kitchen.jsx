@@ -1,8 +1,8 @@
 import "./css/Kitchencontainer.scss";
 import Navbar from "../components/navBar.jsx";
-import { getOrder } from "../components/providers/OrderProducts.js";
+import { getOrder } from "../providers/OrderProducts.js";
 import { useEffect, useState } from "react";
-import Kitchen from "../components/kitchen";
+import Kitchen from "../components/kitchen/kitchen";
 
 const Kitchencontainer = () => {
   const [order, setOrder] = useState([]); //array de objetos

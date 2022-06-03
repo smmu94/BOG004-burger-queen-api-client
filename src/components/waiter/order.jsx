@@ -1,6 +1,6 @@
-import "./css/order.scss";
+import "../css/order.scss";
 import { useEffect, useState } from "react";
-import { products } from "./providers/OrderProducts";
+import { products } from "../../providers/OrderProducts";
 import { Nav } from "react-bootstrap";
 // import { Link } from "react-router-dom";
 import Product from "./product";
@@ -29,13 +29,13 @@ export default function Order({ handleAddProduct }) {
 
 
   return (
-    <div className="order">
+    <div className="order" >
       <h2>MENÚ</h2>
-      <Nav className="type-order">
+      <Nav className="type-order" >
         <button data-id="breakfast" onClick={()=> setFoodType("Desayuno")}>DESAYUNOS</button>
         <button data-id="lunch" onClick={()=> setFoodType("Almuerzo")}>ALMUERZOS</button>
       </Nav>
-
+      <div data-testid="products">
       {filteredProducts.map((producto) => {
         return (
             <Product
@@ -46,10 +46,12 @@ export default function Order({ handleAddProduct }) {
               price={producto.price}
               image={producto.image}
               type={producto.type}
+              data-testid="products-product"
             />
           );
         }
       )}
+      </div>
     </div>
   );
 }

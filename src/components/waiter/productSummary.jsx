@@ -1,4 +1,4 @@
-import "./css/productSummary.scss";
+import "../css/productSummary.scss";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 
 const Productsummary = ({ productList, handleRemoveProduct}) => {

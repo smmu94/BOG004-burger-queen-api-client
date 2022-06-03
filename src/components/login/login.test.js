@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import Login from "../components/login";
+import Login from "./login";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 
@@ -28,6 +28,7 @@ test("it does not allows the user to login successfully", async () => {
     expect(errMessage.textContent).toBe("Usuario y/o contraseña no encontrado");
   });
 });
+
 
 test("allows the user to login successfully", async() => {
 

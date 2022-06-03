@@ -1,10 +1,11 @@
 import { useState } from "react";
-import "./css/login.scss";
-import { login, saveUser, getUser } from "./providers/UserProvider";
+import "../css/login.scss";
+import {login, saveUser, getUser } from "../../providers/UserProvider"
 import { useNavigate } from "react-router-dom"; // librería para redireccionar
 import { useForm } from "react-hook-form"; // librería para validacion de formulario
 import { Alert } from "reactstrap";
 import { Form } from "react-bootstrap";
+
 
 const Login = () => {
   const {
@@ -27,7 +28,7 @@ const Login = () => {
     try {
       const response = await login(values); // llamada a la funcion login de la api
       saveUser(response.data);
-      navigate("/order")
+      // navigate("/order")
       const users = await getUser();
       const user =users.data.find((user) => user.email === values.email); 
       if(user.roles.hasOwnProperty("waiter")){
@@ -45,7 +46,7 @@ const Login = () => {
     // funcion para guardar los datos del formulario
     const { target } = e;
     const { name, value } = target;
-    // console.log(value);
+
     const newValues = {
       // nuevo estado con los datos del formulario
       ...values, // estado anterior

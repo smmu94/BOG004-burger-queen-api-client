@@ -13,4 +13,11 @@ describe('Product', () => {
     render(<Product />);
     expect(screen.getByTestId('product')).toBeInTheDocument();
   });
+
+  test('it renders the product name', () => {
+    render(<Product />);
+    const button = screen.getByTestId('product');
+  fireEvent.click(button);
+    expect(screen.getByTestId('onClick')).toBeInTheDocument();
+  });
 });

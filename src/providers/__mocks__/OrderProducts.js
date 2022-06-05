@@ -2,7 +2,7 @@
 
 const products = () => {
  return new Promise((resolve) => {
-    resolve([
+    resolve({data:[
         {
           "id": 1,
           "name": "Sandwich de jamón y queso",
@@ -27,7 +27,7 @@ const products = () => {
           "type": "Almuerzo",
           "dateEntry": "2022-03-05 15:14:10"
         }
-      ])
+      ]})
  })}
     
  export {products} ;

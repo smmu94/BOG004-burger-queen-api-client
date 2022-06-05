@@ -1,23 +1,23 @@
-import '@testing-library/jest-dom';
-import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
-  getAllByRole,
-} from '@testing-library/react';
-import Product from './product';
+import "@testing-library/jest-dom";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
+import Product from "./product";
 
-describe('Product', () => {
-  test('it renders the product', () => {
+describe("Product", () => {
+  test("it renders the product", () => {
     render(<Product />);
-    expect(screen.getByTestId('product')).toBeInTheDocument();
+    expect(screen.getByTestId("card-product")).toBeInTheDocument();
   });
 
-  test('it renders the product name', () => {
+  test("img should be in the document", () => {
     render(<Product />);
-    const button = screen.getByTestId('product');
-  fireEvent.click(button);
-    expect(screen.getByTestId('onClick')).toBeInTheDocument();
+    expect(screen.getByRole("img")).toBeInTheDocument();
+  });
+
+  test("Testing product component", () => {
+    const onClick = jest.fn();
+    render(<Product handleAddProduct={onClick} />);
+    const containerProduct = screen.getByTestId("card-product");
+    fireEvent.click(containerProduct);
+    expect(onClick).toHaveBeenCalled();
   });
 });

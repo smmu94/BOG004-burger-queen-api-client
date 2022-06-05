@@ -16,13 +16,13 @@
 //     sessionStorage.setItem('user', JSON.stringify(user));
 // }
 
-//  const getUserData = () => {
-//      return JSON.parse(sessionStorage.getItem('user'));
-//  }
+ const getUserData = () => {
+     return {"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhaXRlckBmb29kZWxpY2lvdXMuY29tIiwiaWF0IjoxNjU0Mjg4MjA0LCJleHAiOjE2NTQyOTE4MDQsInN1YiI6IjMifQ.9j4oHuY3ZA1hmrljD3390K4jjrOYMb0tAO9BAUMZnWo","user":{"email":"waiter@foodelicious.com","roles":{"waiter":true},"id":3}};
+ }
 
-//  const getToken = () => {
-//      return getUserData().accessToken;
-//  }
+ const getToken = () => {
+     return "tokenx";
+ }
 
 //  const getId = () => {
 //     return getUserData().user.id;
@@ -41,15 +41,10 @@
 
 
 
-// export {
-//     login,
-//     saveUser,
-//     createUser,
-//     getUserData,
-//     getToken,
-//     getId,
-//     getUser
-// }
+export {
+    getUserData,
+    getToken
+}
 
 // const getUsers = () => {
 //     return axios.get(BASE_URL+'users',{

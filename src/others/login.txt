@@ -44,3 +44,34 @@ test('allows the user to login successfully', async () => {
   })
   
 
+
+
+
+
+  {/* // test('buttons should be in the document', async () => { */}
+    //   render(<Order />);
+    //   render(<Product />);
+    //   await waitFor(() => {
+    //     expect(screen.getByTestId('product')).toBeInTheDocument();
+
+    //   });
+    //   const button = screen.getByText('DESAYUNOS');
+    //   fireEvent.click(button);
+    //   expect(button).toBeInTheDocument();
+    // })
+        
+
+    // test("Products are being rendering dinamically", async ()=>{
+    //   render(<Order />);
+
+    //   const resolvedProduct = await screen.findAllByTestId("product");
+    
+    //   expect(resolvedProduct.length).toBe(3);
+      // await waitFor(()=>{
+      //   const products = screen.getAllByTestId("product");
+      // });
+    
+    // })
+  
+
+// falta saber como hacer que el test reconozca al array de productos para expect que cuantos 

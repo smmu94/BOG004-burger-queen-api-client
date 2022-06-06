@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, waitFor, screen } from "@testing-library/react";
-import Order from "./order";
+import Order from "../waiter/order";
 
 // import axios from 'axios';
 

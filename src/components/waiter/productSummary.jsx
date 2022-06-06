@@ -6,8 +6,9 @@ const Productsummary = ({ productList, handleRemoveProduct}) => {
   
 
   return productList?.map((product) => (
-    <section className="product-summary" key={"sum" + product.id}>
-      <div className='quantity'>
+    <div data-testid='quantity-product' key={"sum" + product.id}>
+    <section className="product-summary" >
+      <div className='quantity' >
         {product.quantity}
         </div>
       <div className='name'>{product.name}</div>
@@ -15,11 +16,10 @@ const Productsummary = ({ productList, handleRemoveProduct}) => {
         <div className='price'>
         ${product.price}
         </div>
-        <AiOutlineMinusCircle className='subtract' onClick={() => handleRemoveProduct(product.id)}/>
+        <AiOutlineMinusCircle data-testid='subtract' className='subtract' onClick={() => handleRemoveProduct(product.id)}/>
         </section>
-       
-      
     </section>
+    </div>
   ));
 };
 

@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import Login from "./login";
+import Login from "../login/login";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 

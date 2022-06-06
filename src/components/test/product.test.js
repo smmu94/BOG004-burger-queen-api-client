@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
-import { render, fireEvent, screen, waitFor } from "@testing-library/react";
-import Product from "./product";
+import { render, fireEvent, screen } from "@testing-library/react";
+import Product from "../waiter/product";
 
 describe("Product", () => {
   test("it renders the product", () => {

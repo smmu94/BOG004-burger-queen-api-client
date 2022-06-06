@@ -24,9 +24,9 @@
      return "tokenx";
  }
 
-//  const getId = () => {
-//     return getUserData().user.id;
-// }
+// //  const getId = () => {
+// //     return 3;
+// // }
 
 // const getUser = () => {
 //     return axios({method: "GET", url:BASE_URL+'users', headers: {
@@ -43,7 +43,8 @@
 
 export {
     getUserData,
-    getToken
+    getToken,
+
 }
 
 // const getUsers = () => {

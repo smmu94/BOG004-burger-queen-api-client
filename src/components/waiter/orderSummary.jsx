@@ -3,13 +3,11 @@ import Productsummary from './productSummary';
 import '../css/orderSummary.scss';
 import { createOrder } from '../../providers/OrderProducts.js';
 import { Alert } from 'reactstrap';
-import {getId} from '../../providers/UserProvider.js';
+
 
 const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
-  const totalPrice = productList.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
+ 
+  // console.log(productList)
 
   const [values, setValues] = useState({
     client: '',
@@ -20,7 +18,7 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
     e.preventDefault();
     let dateNow = new Date();
     const oder = {
-      userId: getId(),
+      // userId: getId(),
       client: values.client,
       products: productList,
       status: 'pending',
@@ -35,11 +33,12 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
         ':' +
         dateNow.getMinutes(),
     };
-   localStorage.setItem('order', JSON.stringify(oder));
+  //  localStorage.setItem('order', JSON.stringify(oder));
 
     createOrder(oder)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
+        setMessage('Orden creada con éxito');
       })
       .catch(() => {});
 
@@ -48,8 +47,8 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
     });
 
     reset();
-    setMessage('Pedido enviado');
 
+  
     setTimeout(() => {
       setMessage(null);
     }, 1500);
@@ -59,7 +58,7 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
     const { target } = e;
     const { name, value } = target;
 
-    console.log(value);
+    // console.log(value);
     const newValues = {
       ...values,
       [name]: value,
@@ -67,6 +66,11 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
     setValues(newValues);
   };
 
+  const totalPrice = productList.reduce(
+    
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
   return (
     <section className='contain-form-client'>
       <form id='form' className='form-client' onSubmit={handleSubmit}>
@@ -79,6 +83,7 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
             value={values.client}
             required
             onChange={handleChange}
+            data-testid='input-client'
           />
         </div>
         <Productsummary
@@ -87,13 +92,13 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
         />
         <div className='final-summary'>
           <div>TOTAL: {totalPrice}</div>
-
-          <button type='submit' className='btn-client'>
+          {message && <Alert color='success' data-testid='created-order'>{message}</Alert>}
+          <button type='submit' data-testid='btn-client' className='btn-client'>
             ENVIAR
           </button>
         </div>
       </form>
-      {message && <Alert color='success'>{message}</Alert>}
+   
     </section>
   );
 };

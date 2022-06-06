@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,22 +92,22 @@
 <a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -118,13 +118,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../css/productSummary.scss";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 &nbsp;
-const Productsummary = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> productList, handleRemoveProduct}) =&gt; {</span>
+const Productsummary = ({ productList, handleRemoveProduct}) =&gt; {
  
   
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return productList?.map(<span class="fstat-no" title="function not covered" >(p</span>roduct) =&gt; (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;section className="product-summary" key={"sum" + product.id}&gt;</span>
-      &lt;div className='quantity'&gt;
+  return productList?.map((product) =&gt; (
+    &lt;div data-testid='quantity-product' key={"sum" + product.id}&gt;
+    &lt;section className="product-summary" &gt;
+      &lt;div className='quantity' &gt;
         {product.quantity}
         &lt;/div&gt;
       &lt;div className='name'&gt;{product.name}&lt;/div&gt;
@@ -132,11 +133,10 @@ const Productsummary = <span class="cstat-no" title="statement not covered" ><sp
         &lt;div className='price'&gt;
         ${product.price}
         &lt;/div&gt;
-        &lt;AiOutlineMinusCircle className='subtract' onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >handleRemoveProduct(product.id)}</span>/&gt;
+        &lt;AiOutlineMinusCircle data-testid='subtract' className='subtract' onClick={() =&gt; handleRemoveProduct(product.id)}/&gt;
         &lt;/section&gt;
-       
-      
     &lt;/section&gt;
+    &lt;/div&gt;
   ));
 };
 &nbsp;
@@ -148,7 +148,7 @@ export default Productsummary;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jun 03 2022 16:17:48 GMT-0500 (hora de verano central)
+                at Mon Jun 06 2022 16:45:17 GMT-0500 (Colombia Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

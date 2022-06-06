@@ -2,11 +2,10 @@ import "../../css/readyOrder.scss";
 
 
 const ReadyOrder = (props) => {
+  console.log('readyOrder', props.product);
   const handleClick = () => {
     props.addDeliveredOrder({ client: props.client, timeOrd: props.timeOrd, id: props.id });
     props.resetReadyOrder(props.id);
-
-    
   };
 
   return (
@@ -27,7 +26,7 @@ const ReadyOrder = (props) => {
           })}
         </div>
         <div className="dataEntry">{props.dateProcessed}</div>
-        <button type="button" className="btn-order" onClick={handleClick}>
+        <button type="button" className="btn-order" data-testid="btn-order" onClick={handleClick}>
           ENTREGAR ORDEN
         </button>
       </section>

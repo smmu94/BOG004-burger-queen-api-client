@@ -1,5 +1,4 @@
 import '../css/product.scss';
-// import burger from 'http://localhost:3000/image-data/burger.png';
 
 const Product = (props) => {
   const onClick = () => {

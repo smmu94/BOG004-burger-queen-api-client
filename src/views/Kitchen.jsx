@@ -1,14 +1,16 @@
 import "./css/Kitchencontainer.scss";
 import Navbar from "../components/navBar.jsx";
 import { getOrder } from "../providers/OrderProducts.js";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Kitchen from "../components/kitchen/kitchen";
 
+
 const Kitchencontainer = () => {
+  const channel = useMemo(()=> new BroadcastChannel('orders'), []);
   const [order, setOrder] = useState([]); //array de objetos
 
+
   const resetKitchen = (id) => {
-    // localStorage.removeItem(id);
     console.log(id);
     const resetKitchenOrder = [...order]; //copia el array}
     console.log(resetKitchenOrder);
@@ -21,9 +23,7 @@ const Kitchencontainer = () => {
 
     setOrder(resetKitchenOrder); // actualiza el estado
   };
-
-  useEffect(() => {
-    // useEffect es una función que se ejecuta cuando el componente se monta
+  const fetchOrder =() => {
     getOrder() // llamamos a la función products() que está en el provider
       .then((response) => {
         // cuando la función products() se ejecuta, se ejecuta la función then()
@@ -31,7 +31,22 @@ const Kitchencontainer = () => {
         setOrder(response.data); // guardamos los datos en el estado
       })
       .catch(() => {});
+  }
+
+  useEffect(() => {
+    fetchOrder();
   }, []);
+
+  useEffect(()=>{
+    console.log("Channel:", channel.name);
+    channel.addEventListener("message",(event) => {
+      if (event.data === "createOrder"){
+        fetchOrder();
+      }
+    });
+    return ()=> channel.close();
+  }, [channel])
+
 
   return (
     <div>

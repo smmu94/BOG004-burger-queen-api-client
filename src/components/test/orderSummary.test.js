@@ -5,6 +5,12 @@ import Ordersummary from '../waiter/orderSummary';
 jest.mock('../../providers/OrderProducts.js');
 jest.mock('../../providers/UserProvider.js');
 
+window.BroadcastChannel = function (){ 
+  this.name= ""; 
+  this.close= jest.fn(); 
+  this.postMessage= jest.fn()
+}
+
 const summaryProducts = [
   {
     id: 2,

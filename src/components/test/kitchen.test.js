@@ -4,13 +4,13 @@ import Kitchen from '../kitchen/kitchen';
 
 
 jest.mock('../../providers/OrderProducts.js');
+window.BroadcastChannel = function (){ 
+  this.close= jest.fn(); 
+  this.postMessage= jest.fn()
+}
 
 const dataEntry = '2022-6-6 11:1'
-// const dataEntry ={
-//     dataEntry: '2022-6-6 11:1'
-// }
 
-// const dateProcessed = '2022-6-6 15:28'
 const product = [
     {
       id: 2,

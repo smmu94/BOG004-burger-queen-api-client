@@ -1,15 +1,14 @@
 import "./css/Readyorders.scss";
 import Navbar from "../components/navBar.jsx";
-import { useEffect, useState } from "react";
-import {
-  getOrder,
-  updateOrder,
-} from "../providers/OrderProducts.js";
+import { useEffect, useState, useMemo } from "react";
+import { getOrder, updateOrder } from "../providers/OrderProducts.js";
 import ReadyOrder from "../components/waiter/readyOrder/readyOrder";
 import DeliveredOrder from "../components/waiter/readyOrder/deliveredOrder";
 // import Table from 'react-bootstrap/Table'
 
-const Readyorders = () => {
+const Readyorders = async () => {
+  const channel = useMemo(() => new BroadcastChannel("orders"), []);
+
   const [rdOrder, setRdOrder] = useState([]); //array de objetos
   const [deliveredOrder, setDeliveredOrder] = useState([]); //array de objetos
 
@@ -34,6 +33,16 @@ const Readyorders = () => {
     // useEffect es una función que se ejecuta cuando el componente se monta
     fetchOrders();
   }, []);
+
+  useEffect(() => {
+    console.log("Channel:", channel.name);
+    channel.addEventListener("message", (event) => {
+      if (event.data === "updateOrder") {
+        fetchOrders();
+      }
+    });
+    return () => channel.close();
+  }, [channel]);
 
   const resetReadyOrder = (id) => {
     const resetDeliveredOrder = [...rdOrder]; //copia el array}
@@ -81,20 +90,18 @@ const Readyorders = () => {
           <div className="subtitles-delivered">
             <p>Cliente</p>
             <p>Tiempo de entrega</p>
-            </div>
-            {rdOrder
-              .filter((o) => o.status === "served")
-              .map((dlOrd) => {
-                return (
-                  <DeliveredOrder
-                    key={"dlOrder" + dlOrd.id}
-
-                    client={dlOrd.client}
-
-                    timeOrd={dlOrd.timeOrd}
-                  />
-                );
-              })}
+          </div>
+          {rdOrder
+            .filter((o) => o.status === "served")
+            .map((dlOrd) => {
+              return (
+                <DeliveredOrder
+                  key={"dlOrder" + dlOrd.id}
+                  client={dlOrd.client}
+                  timeOrd={dlOrd.timeOrd}
+                />
+              );
+            })}
         </section>
       </section>
     </section>

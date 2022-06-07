@@ -2,12 +2,11 @@ import "../css/order.scss";
 import { useEffect, useState } from "react";
 import { products } from "../../providers/OrderProducts";
 import { Nav } from "react-bootstrap";
-// import { Link } from "react-router-dom";
 import Product from "./product";
 
 export default function Order({ handleAddProduct }) {
   //handleAddProduct es una funcion que se le pasa como prop desde el container
-  const [productos, setProductos] = useState([]); //array de objetos
+  const [productos, setProductos] = useState([]); //a rray de objetos
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [foodType, setFoodType] = useState('Desayuno');
   
@@ -16,7 +15,6 @@ export default function Order({ handleAddProduct }) {
     products() // llamamos a la función products() que está en el provider
       .then((response) => {
         setProductos(response.data); // actualizamos el estado
-        // setFilteredProducts(response.data)
       })
       .catch(() => {});
   }, []);

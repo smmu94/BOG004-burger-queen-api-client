@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88% </span>
+                <span class="strong">90.32% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/25</span>
+                <span class='fraction'>28/31</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>8/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88% </span>
+                <span class="strong">89.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>22/25</span>
+                <span class='fraction'>26/29</span>
             </div>
         
             
@@ -167,11 +167,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -187,14 +185,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,9 +203,6 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,6 +222,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -261,39 +257,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import '../css/kitchen.scss';
-import { updateOrder } from '../../providers/OrderProducts.js';
-// import { getId } from "../../providers/UserProvider.js";
-import { useState } from 'react';
-import { Alert } from 'reactstrap';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../css/kitchen.scss";
+import { updateOrder } from "../../providers/OrderProducts.js";
+import { useState, useMemo, useEffect } from "react";
+import { Alert } from "reactstrap";
 &nbsp;
 const Kitchen = (props) =&gt; {
-  const [messageTime, setMessageTime] = useState('');
-  // const [timeOrd, setTimeOrd] = useState("");
-  // console.log(props);
+  const [messageTime, setMessageTime] = useState("");
+  const channel = useMemo(() =&gt; new BroadcastChannel("orders"), []);
 &nbsp;
   let dateNow = new Date();
   const upOrder = {
-    // userId: getId(),
-    status: 'delivered',
+    status: "delivered",
     dateProcessed:
       dateNow.getFullYear() +
-      '-' +
+      "-" +
       (dateNow.getMonth() + 1) +
-      '-' +
+      "-" +
       dateNow.getDate() +
-      ' ' +
+      " " +
       dateNow.getHours() +
-      ':' +
+      ":" +
       dateNow.getMinutes(),
   };
-  console.log('fecha de procesada', upOrder.dateProcessed);
+  console.log("fecha de procesada", upOrder.dateProcessed);
   const handleClick = () =&gt; {
-    // console.log('dataentry', props.dataEntry, 'process', upOrder.dateProcessed)
     updateOrder(props.id, upOrder).then((res) =&gt; {
-      // console.log('resData', res.data);
-      // console.log('fechas', res.data.dataEntry, res.data.dateProcessed);
-&nbsp;
       let timeMs = Math.abs(
         new Date(res.data.dateProcessed).getTime() -
           new Date(res.data.dataEntry).getTime()
@@ -304,15 +297,12 @@ const Kitchen = (props) =&gt; {
           minutes = Math.floor((timeMs / (1000 * 60)) % 60),
           hours = Math.floor((timeMs / (1000 * 60 * 60)) % 24);
 &nbsp;
-        hours = hours &lt; 10 ? '0' + hours : <span class="branch-1 cbranch-no" title="branch not covered" >hours;</span>
-        minutes = minutes &lt; 10 ? <span class="branch-0 cbranch-no" title="branch not covered" >'0' + minutes </span>: minutes;
-        seconds = seconds &lt; 10 ? '0' + seconds : <span class="branch-1 cbranch-no" title="branch not covered" >seconds;</span>
+        hours = hours &lt; 10 ? "0" + hours : <span class="branch-1 cbranch-no" title="branch not covered" >hours;</span>
+        minutes = minutes &lt; 10 ? <span class="branch-0 cbranch-no" title="branch not covered" >"0" + minutes </span>: minutes;
+        seconds = seconds &lt; 10 ? "0" + seconds : <span class="branch-1 cbranch-no" title="branch not covered" >seconds;</span>
 &nbsp;
-        return hours + ':' + minutes + ':' + seconds;
+        return hours + ":" + minutes + ":" + seconds;
       };
-      // console.log(timeOrder(timeMs));
-&nbsp;
-      // setTimeOrd(timeOrder(timeMs));
       updateOrder(props.id, { timeOrd: timeOrder(timeMs) });
 &nbsp;
       setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -320,7 +310,7 @@ const Kitchen = (props) =&gt; {
 <span class="cstat-no" title="statement not covered" >        setMessageTime(null);</span>
       }, 3000);
 &nbsp;
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (timeOrder(timeMs) &lt; '01:00:00') {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (timeOrder(timeMs) &lt; "01:00:00") {
 <span class="cstat-no" title="statement not covered" >        return setMessageTime(</span>
           `La preparación del pedido tomó ${timeOrder(timeMs)} minutos`
         );
@@ -330,30 +320,40 @@ const Kitchen = (props) =&gt; {
         );
       }
     });
+&nbsp;
+    channel.postMessage("updateOrders");
   };
 &nbsp;
+  useEffect(() =&gt; {
+    return () =&gt; channel.close();
+  }, [channel]);
+&nbsp;
   return (
-    &lt;div className='container-Kitchen'&gt;
-      &lt;section className='container-order'&gt;
-        &lt;p className='clientName'&gt;Cliente: {props.client}&lt;/p&gt;
+    &lt;div className="container-Kitchen"&gt;
+      &lt;section className="container-order"&gt;
+        &lt;p className="clientName"&gt;Cliente: {props.client}&lt;/p&gt;
         &lt;div&gt;
           {props.product.map((product) =&gt; {
             return (
               &lt;section
-                className='amount-product'
-                key={'order-product-' + product.id}
+                className="amount-product"
+                key={"order-product-" + product.id}
               &gt;
-                &lt;div className='amount'&gt;{product.quantity}&lt;/div&gt;
-                &lt;div className='product-name'&gt;{product.name}&lt;/div&gt;
+                &lt;div className="amount"&gt;{product.quantity}&lt;/div&gt;
+                &lt;div className="product-name"&gt;{product.name}&lt;/div&gt;
               &lt;/section&gt;
             );
           })}
         &lt;/div&gt;
-        &lt;div className='dataEntry'&gt;{props.dataEntry}&lt;/div&gt;
-        &lt;button type='button' className='btn-order' onClick={handleClick}&gt;
+        &lt;div className="dataEntry"&gt;{props.dataEntry}&lt;/div&gt;
+        &lt;button type="button" className="btn-order" onClick={handleClick}&gt;
           ENVIAR
         &lt;/button&gt;
-        {messageTime &amp;&amp; &lt;Alert data-testid='delivered-order' color='success'&gt;{messageTime}&lt;/Alert&gt;}
+        {messageTime &amp;&amp; (
+          &lt;Alert data-testid="delivered-order" color="success"&gt;
+            {messageTime}
+          &lt;/Alert&gt;
+        )}
       &lt;/section&gt;
     &lt;/div&gt;
   );
@@ -367,7 +367,7 @@ export default Kitchen;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jun 06 2022 17:09:51 GMT-0500 (Colombia Standard Time)
+                at Tue Jun 07 2022 15:25:52 GMT-0500 (hora de verano central)
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.23% </span>
+                <span class="strong">96.29% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/21</span>
+                <span class='fraction'>26/27</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/7</span>
+                <span class='fraction'>8/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.23% </span>
+                <span class="strong">96% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/21</span>
+                <span class='fraction'>24/25</span>
             </div>
         
             
@@ -169,22 +169,21 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -204,14 +203,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,6 +213,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -227,8 +224,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,7 +238,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -275,67 +274,69 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
-import Productsummary from './productSummary';
-import '../css/orderSummary.scss';
-import { createOrder } from '../../providers/OrderProducts.js';
-import { Alert } from 'reactstrap';
-&nbsp;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState, useEffect, useMemo } from "react";
+import Productsummary from "./productSummary";
+import "../css/orderSummary.scss";
+import { createOrder } from "../../providers/OrderProducts.js";
+import { Alert } from "reactstrap";
 &nbsp;
 const Ordersummary = ({ productList, handleRemoveProduct, reset }) =&gt; {
- 
-  // console.log(productList)
+  const channel = useMemo(() =&gt; new BroadcastChannel("orders"), []);
 &nbsp;
   const [values, setValues] = useState({
-    client: '',
+    client: "",
   });
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 &nbsp;
   const handleSubmit = (e) =&gt; {
     e.preventDefault();
     let dateNow = new Date();
     const oder = {
-      // userId: getId(),
       client: values.client,
       products: productList,
-      status: 'pending',
+      status: "pending",
       dataEntry:
         dateNow.getFullYear() +
-        '-' +
-        (dateNow.getMonth() + 1 )+
-        '-' +
-       dateNow.getDate() +
-        ' ' +
+        "-" +
+        (dateNow.getMonth() + 1) +
+        "-" +
+        dateNow.getDate() +
+        " " +
         dateNow.getHours() +
-        ':' +
+        ":" +
         dateNow.getMinutes(),
     };
-  //  localStorage.setItem('order', JSON.stringify(oder));
 &nbsp;
     createOrder(oder)
       .then((response) =&gt; {
-        // console.log(response.data);
-        setMessage('Orden creada con éxito');
+        setMessage("Orden creada con éxito");
+&nbsp;
+        channel.postMessage("createOrder");
       })
       .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {});
 &nbsp;
     setValues({
-      client: '',
+      client: "",
     });
 &nbsp;
     reset();
 &nbsp;
-  
     setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >      setMessage(null);</span>
     }, 1500);
   };
 &nbsp;
+  useEffect(() =&gt; {
+    return () =&gt; channel.close();
+  }, [channel]);
+&nbsp;
   const handleChange = (e) =&gt; {
     const { target } = e;
     const { name, value } = target;
 &nbsp;
-    // console.log(value);
     const newValues = {
       ...values,
       [name]: value,
@@ -344,38 +345,40 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) =&gt; {
   };
 &nbsp;
   const totalPrice = productList.reduce(
-    
     (total, product) =&gt; total + product.price * product.quantity,
     0
   );
   return (
-    &lt;section className='contain-form-client'&gt;
-      &lt;form id='form' className='form-client' onSubmit={handleSubmit}&gt;
+    &lt;section className="contain-form-client"&gt;
+      &lt;form id="form" className="form-client" onSubmit={handleSubmit}&gt;
         &lt;div&gt;
-          &lt;p className='nameClient'&gt;CLIENTE&lt;/p&gt;
+          &lt;p className="nameClient"&gt;CLIENTE&lt;/p&gt;
           &lt;input
-            type='text'
-            name='client'
-            className='client'
+            type="text"
+            name="client"
+            className="client"
             value={values.client}
             required
             onChange={handleChange}
-            data-testid='input-client'
+            data-testid="input-client"
           /&gt;
         &lt;/div&gt;
         &lt;Productsummary
           productList={productList}
           handleRemoveProduct={handleRemoveProduct}
         /&gt;
-        &lt;div className='final-summary'&gt;
+        &lt;div className="final-summary"&gt;
           &lt;div&gt;TOTAL: {totalPrice}&lt;/div&gt;
-          {message &amp;&amp; &lt;Alert color='success' data-testid='created-order'&gt;{message}&lt;/Alert&gt;}
-          &lt;button type='submit' data-testid='btn-client' className='btn-client'&gt;
+          {message &amp;&amp; (
+            &lt;Alert color="success" data-testid="created-order"&gt;
+              {message}
+            &lt;/Alert&gt;
+          )}
+          &lt;button type="submit" data-testid="btn-client" className="btn-client"&gt;
             ENVIAR
           &lt;/button&gt;
         &lt;/div&gt;
       &lt;/form&gt;
-   
     &lt;/section&gt;
   );
 };
@@ -388,7 +391,7 @@ export default Ordersummary;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jun 06 2022 17:09:51 GMT-0500 (Colombia Standard Time)
+                at Tue Jun 07 2022 15:25:52 GMT-0500 (hora de verano central)
             </div>
         <script src="../../prettify.js"></script>
         <script>

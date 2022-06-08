@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/views/Login.jsx</title>
+    <title>Code coverage report for src/views/Adminworkers.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/views</a> Login.jsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/views</a> Adminworkers.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -81,13 +81,19 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,24 +105,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "./css/Logincontainer.scss";
-import Login from "../components/login/login.jsx";
-import logoburger from "../images/LogoSample4.png";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import  "./css/Adminworkers.scss";
+import Navbar from "../components/navBar.jsx";
+import AdminFormWorkers from "../components/admin/adminFormWorkers.jsx";
+import AdminWorkers from "../components/admin/adminWorkers.jsx";
+&nbsp;
+const Admincontainer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 &nbsp;
 &nbsp;
-&nbsp;
-const Logincontainer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt;{</span>
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className="login-container"&gt;
-      &lt;img className="logo-burger" src={ logoburger } alt="logo-burger" /&gt;
-      &lt;div className="login"&gt;
-          &lt;Login/&gt;
+    &lt;div &gt;
+      &lt;Navbar item1="EMPLEADOS" item2="PRODUCTOS" link1="/admin" link2="/admin-products" /&gt;
+      &lt;div className="admin-workers"&gt;
+        &lt;AdminFormWorkers /&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
-  );
-}
+        &lt;div className='workers'&gt;
+        &lt;AdminWorkers /&gt;
 &nbsp;
-export default Logincontainer;
+&nbsp;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+export default Admincontainer;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

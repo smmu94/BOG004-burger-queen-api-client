@@ -31,9 +31,10 @@ const Login = () => {
       // navigate("/order")
       const users = await getUser();
       const user =users.data.find((user) => user.email === values.email); 
-      if(user.roles.hasOwnProperty("waiter")){
+      console.log(user.roles);
+      if(user.roles === "waiter"){
         navigate("/order");
-      } else if(user.roles.hasOwnProperty("admin")){
+      } else if(user.roles === "admin"){
         navigate("/admin");
       } else {
         navigate("/kitchen");

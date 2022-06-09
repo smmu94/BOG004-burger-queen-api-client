@@ -6,7 +6,7 @@ import ReadyOrder from "../components/waiter/readyOrder/readyOrder";
 import DeliveredOrder from "../components/waiter/readyOrder/deliveredOrder";
 // import Table from 'react-bootstrap/Table'
 
-const Readyorders = async () => {
+const Readyorders = () => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);
 
   const [rdOrder, setRdOrder] = useState([]); //array de objetos

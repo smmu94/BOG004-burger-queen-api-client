@@ -90,16 +90,16 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
         />
         <div className="final-summary">
           <div>TOTAL: {totalPrice}</div>
-          {message && (
-            <Alert color="success" data-testid="created-order">
-              {message}
-            </Alert>
-          )}
           <button type="submit" data-testid="btn-client" className="btn-client">
             ENVIAR
           </button>
         </div>
       </form>
+      {message && (
+            <Alert color="success" data-testid="created-order">
+              {message}
+            </Alert>
+          )}
     </section>
   );
 };

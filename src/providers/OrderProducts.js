@@ -17,7 +17,14 @@ const products = () => {
 
     });
 }
-
+const updateProduct = (id, update) => { 
+    return axios.patch(BASE_URL+'products/'+id, update, {
+           headers: {
+               "content-type": "application/json",
+               authorization: 'Bearer ' + getToken()
+           }
+       });
+   }
 const deleteProduct = (id) => {
     return axios.delete(BASE_URL+'products/'+id, {
         headers: {
@@ -51,6 +58,6 @@ const updateOrder = (id, update) => {
     });
 }
 
- export {products, createProduct, deleteProduct, createOrder, getOrder, updateOrder} ;
+ export {products, createProduct, updateProduct, deleteProduct, createOrder, getOrder, updateOrder} ;
    
  

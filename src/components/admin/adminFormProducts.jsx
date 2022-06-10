@@ -3,17 +3,11 @@ import { useState, useEffect, useMemo } from "react";
 import { Alert } from "reactstrap";
 import { createProduct } from "../../providers/OrderProducts";
 
-const AdminFormProducts = () => {
+const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
   const channel = useMemo(() => new BroadcastChannel("product"), []);
 
   const [hasError, setHasError] = useState("");
-  const [values, setValues] = useState({
-    // estado para guardar los datos del formgitulario
-    name: "",
-    price: "",
-    image: "",
-    type: "",
-  });
+  const [values, setValues] = useState(productData || { name: "", price: "", image: "", type: "" });
   const [message, setMessage] = useState("");
   const dateNow = new Date();
   const product = {
@@ -32,6 +26,10 @@ const AdminFormProducts = () => {
       ":" +
       dateNow.getMinutes(),
   };
+  const onClickUpdate = () => {
+    editProducts(id,values);
+    edit(false);
+  }
   const startRegister = async (e) => {
     e.preventDefault();
     try {
@@ -80,7 +78,7 @@ const AdminFormProducts = () => {
             id="name"
             type="name"
             name="name"
-            placeholder="Nombre"
+            placeholder="Nombre del Producto"
             className="name-product"
             value={values.name}
             onChange={handleChange} // cuando se cambia el valor del input
@@ -92,7 +90,7 @@ const AdminFormProducts = () => {
             id="price"
             type="number"
             name="price"
-            placeholder="price"
+            placeholder="Precio del Producto"
             className="price-product"
             value={values.price}
             onChange={handleChange} // cuando se cambia el valor del input
@@ -104,7 +102,7 @@ const AdminFormProducts = () => {
             id="image" // input para el password
             type="url"
             name="image"
-            placeholder="image"
+            placeholder="Url de la Imagen"
             className="image-product"
             value={values.image}
             onChange={handleChange} // cuando se cambia el valor del input
@@ -117,17 +115,18 @@ const AdminFormProducts = () => {
             id="type" // input para el password
             type="text"
             name="type"
-            placeholder="type"
+            placeholder="Tipo de Producto"
             className="type-product"
             value={values.type}
             onChange={handleChange} // cuando se cambia el valor del input
             data-testid="type-product"
           />
         </div>
-
-        <button type="submit" className="btn-register" onClick={startRegister}>
-          REGISTRAR
-        </button>
+        {edit? (<button type="submit" className="btn-register" onClick={onClickUpdate}>
+          EDITAR PRODUCTO
+        </button>) : <button type="submit" className="btn-register" onClick={startRegister}>
+          AGREGAR PRODUCTO
+        </button>}
         {hasError && (
           <Alert data-testid="register-error-message">{hasError}</Alert>
         )}

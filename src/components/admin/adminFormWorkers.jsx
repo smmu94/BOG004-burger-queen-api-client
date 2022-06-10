@@ -5,9 +5,8 @@ import { Alert } from "reactstrap";
 import { Form } from "react-bootstrap";
 import { createUser } from "../../providers/UserProvider";
 
-const AdminFormWorkers = ({edit, editUser, success,  userData}) => {
+const AdminFormWorkers = ({id, edit, editUser, userData}) => {
   const channel = useMemo(() => new BroadcastChannel("user"), []);
-
   const {
     register,
     formState: { errors },
@@ -31,9 +30,8 @@ const AdminFormWorkers = ({edit, editUser, success,  userData}) => {
   };
 
   const onClickUpdate = () => {
-    editUser(values).then(() => {
-      success();
-    })
+    editUser(id,values);
+    edit(false);
   }
 
   

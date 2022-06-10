@@ -3,7 +3,7 @@ import Navbar from "../components/navBar.jsx";
 import AdminFormWorkers from "../components/admin/adminFormWorkers.jsx";
 import AdminWorkers from "../components/admin/adminWorkers.jsx";
 import { useState, useEffect, useMemo } from "react";
-import { getUser} from "../providers/UserProvider";
+import { getUser, deleteUser, updateUser } from "../providers/UserProvider";
 
 const Admincontainer = () => {
   const [users, setUsers] = useState([]);
@@ -17,6 +17,20 @@ const fetchUsers =() => {
       })
       .catch(() => {});
     }
+
+    const editUser = (id, user) => {
+      return updateUser(id, user).then((user) => {
+        console.log('id', user);
+        fetchUsers();
+       });    
+    }
+    
+    const deleteUsers = (id) => {
+      return deleteUser(id).then((user) => {
+        fetchUsers();
+      });
+    }
+
     useEffect(() => {
       fetchUsers();
     }, []);
@@ -51,7 +65,9 @@ const fetchUsers =() => {
               email={user.email}
               password={user.password}
               roles={user.roles}
-              afterSave={fetchUsers}
+              // afterSave={fetchUsers}
+              editUser={editUser}
+              deleteUsers={deleteUsers}
             />
           );
         })}

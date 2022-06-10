@@ -43,6 +43,14 @@ const updateUser = (id, update) => {
        });
    }
 
+   const deleteUser = (id) => {
+    return axios.delete(BASE_URL+'users/'+id, {
+        headers: {
+            "content-type": "application/json",
+            authorization: 'Bearer ' + getToken()
+        }
+    });
+}
 
  
 
@@ -58,7 +66,8 @@ export {
     getToken,
     getId,
     getUser,
-    updateUser
+    updateUser,
+    deleteUser
 }
 
 // const getUsers = () => {

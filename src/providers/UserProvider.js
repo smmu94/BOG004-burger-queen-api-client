@@ -34,6 +34,15 @@ const getUser = () => {
     }} );
 }
 
+const updateUser = (id, update) => { 
+    return axios.patch(BASE_URL+'users/'+id, update, {
+           headers: {
+               "content-type": "application/json",
+               authorization: 'Bearer ' + getToken()
+           }
+       });
+   }
+
 
  
 
@@ -48,7 +57,8 @@ export {
     getUserData,
     getToken,
     getId,
-    getUser
+    getUser,
+    updateUser
 }
 
 // const getUsers = () => {

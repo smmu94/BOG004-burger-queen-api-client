@@ -1,0 +1,20 @@
+.admin-products {
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    padding: 1.5625rem;
+    align-items: center;
+    margin: 0.625rem;
+    background-color: rgb(55, 29, 15, 0.35);
+    border-radius: 1.625rem;
+    height: 24vh;
+    width: 45vw;
+    box-shadow: 0.375rem 0.375rem 0.375rem #505050;
+    border: 0.1865rem solid #303030a3;
+  }
+  
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  

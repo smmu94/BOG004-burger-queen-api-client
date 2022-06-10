@@ -1,24 +1,25 @@
-import '../css/adminFormWorkers.scss';
-import { useState } from 'react';
-import { login, saveUser, getUser } from '../../providers/UserProvider';
-import { useForm } from 'react-hook-form'; // librería para validacion de formulario
-import { Alert } from 'reactstrap';
-import { Form } from 'react-bootstrap';
-import { createUser } from '../../providers/UserProvider';
+import "../css/adminFormWorkers.scss";
+import { useState, useEffect, useMemo } from "react";
+import { useForm } from "react-hook-form"; // librería para validacion de formulario
+import { Alert } from "reactstrap";
+import { Form } from "react-bootstrap";
+import { createUser } from "../../providers/UserProvider";
 
-const AdminFormWorkers = () => {
+const AdminFormWorkers = ({edit, editUser, success,  userData}) => {
+  const channel = useMemo(() => new BroadcastChannel("user"), []);
+
   const {
     register,
     formState: { errors },
-  } = useForm({ mode: 'onBlur', reValidateMode: 'onChange' }); // librería validacion form
+  } = useForm({ mode: "onBlur", reValidateMode: "onChange" }); // librería validacion form
 
-  const [hasError, setHasError] = useState('');
-  const [values, setValues] = useState({
+  const [hasError, setHasError] = useState("");
+  const [values, setValues] = useState(userData || {
     // estado para guardar los datos del formgitulario
-    name: '',
-    email: '',
-    password: '',
-    roles: '',
+    name: "",
+    email: "",
+    password: "",
+    roles: "",
   });
   const [message, setMessage] = useState("");
 
@@ -28,29 +29,40 @@ const AdminFormWorkers = () => {
     password: values.password,
     roles: values.roles,
   };
+
+  const onClickUpdate = () => {
+    editUser(values).then(() => {
+      success();
+    })
+  }
+
+  
   const startRegister = async (e) => {
     e.preventDefault();
     // funcion para iniciar sesion, (se llama con el handleSumbmit)
     try {
-      await createUser(user).then( 
-        
-
-        setMessage("Usuario creado correctamente")
-
-       ) // llamada a la funcion login de la api
+      await createUser(user).then((response) => {
+        channel.postMessage("registerUser");
+        setMessage("Usuario creado correctamente");
+      }); // llamada a la funcion login de la api
     } catch {
-      setHasError('El usuario ya está registrado');
+      setHasError("El usuario ya está registrado");
     }
     setTimeout(() => {
       setMessage(null);
     }, 1500);
-   setValues({
-    name: '',
-    email: '',
-    password: '',
-    roles: '',
-  })
+    setValues({
+      name: "",
+      email: "",
+      password: "",
+      roles: "",
+    });
   };
+
+  useEffect(() => {
+    return () => channel.close();
+  }, [channel]);
+
   const handleChange = (e) => {
     // funcion para guardar los datos del formulario
     const { target } = e;
@@ -67,86 +79,85 @@ const AdminFormWorkers = () => {
     e.preventDefault();
   };
   const style = {
-    color: 'white',
+    color: "white",
   };
 
   return (
     <div>
-     
-      <form noValidate className='form-workers' onSubmit={handleSubmit}>
+      <form noValidate className="form-workers" onSubmit={handleSubmit}>
         <div>
-          <Form.Label htmlFor='name' visuallyHidden>
+          <Form.Label htmlFor="name" visuallyHidden>
             name
           </Form.Label>
           <input
-            id='name'
-            type='name'
-            name='name'
-            placeholder='Nombre'
-            className='name-worker'
+            id="name"
+            type="name"
+            name="name"
+            placeholder="Nombre"
+            className="name-worker"
             value={values.name}
             onChange={handleChange} // cuando se cambia el valor del input
-            data-testid='name-worker'
+            data-testid="name-worker"
           />
         </div>
         <div>
-          <Form.Label htmlFor='name' visuallyHidden>
+          <Form.Label htmlFor="name" visuallyHidden>
             email
           </Form.Label>
           <input
-            id='email'
-            type='email'
-            name='email'
-            placeholder='Correo Electrónico'
-            className='email-worker'
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Correo Electrónico"
+            className="email-worker"
             value={values.email}
-            {...register('email', {
+            {...register("email", {
               // inicio validacion del formulario
               required: {
                 value: true,
-                message: 'El campo es requerido',
+                message: "El campo es requerido",
               },
               pattern: {
                 // validacion de email con expresion regular
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'El formato no es correcto',
+                message: "El formato no es correcto",
               },
             })}
             onChange={handleChange} // cuando se cambia el valor del input
-            data-testid='email-worker'
+            data-testid="email-worker"
           />
           {errors.email && <span style={style}>{errors.email.message}</span>}
         </div>
         <div>
-          <Form.Label htmlFor='password' visuallyHidden>
+          <Form.Label htmlFor="password" visuallyHidden>
             password
           </Form.Label>
           <input
-            id='password' // input para el password
-            type='password'
-            name='password'
-            placeholder='Contraseña'
-            className='password-worker'
+            id="password" // input para el password
+            type="password"
+            name="password"
+            placeholder="Contraseña"
+            className="password-worker"
             value={values.password}
-            {...register('password', {
+            {...register("password", {
               // inicio validacion del formulario
               required: {
                 value: true,
-                message: 'El campo es requerido',
+                message: "El campo es requerido",
               },
               minLength: {
                 // validacion de longitud minima
                 value: 6,
-                message: 'La contraseña debe tener al menos 6 caracteres',
+                message: "La contraseña debe tener al menos 6 caracteres",
               },
               maxLength: {
                 // validacion de longitud maxima
                 value: 12,
-                message: 'La contraseña debe tener máximo 12 caracteres',
+                message: "La contraseña debe tener máximo 12 caracteres",
               },
             })}
             onChange={handleChange} // cuando se cambia el valor del input
-            data-testid='password-worker'
+            data-testid="password-worker"
           />
           {errors.password && (
             <span style={style}>{errors.password.message}</span>
@@ -154,30 +165,31 @@ const AdminFormWorkers = () => {
         </div>
 
         <div>
-          <Form.Label htmlFor='password' visuallyHidden>
+          <Form.Label htmlFor="password" visuallyHidden>
             roles
           </Form.Label>
           <input
-            id='roles' // input para el password
-            type='name'
-            name='roles'
-            placeholder='Rol'
-            className='roles-worker'
+            id="roles" // input para el password
+            type="name"
+            name="roles"
+            placeholder="Rol"
+            className="roles-worker"
             value={values.roles}
             onChange={handleChange} // cuando se cambia el valor del input
-            data-testid='roles-worker'
+            data-testid="roles-worker"
           />
         </div>
-
-        <button type='submit' className='btn-register' onClick={startRegister}>
+{edit ? (<button type="submit" className="btn-register" onClick={onClickUpdate}>
+          GUARDAR
+        </button>) : (<button type="submit" className="btn-register" onClick={startRegister}>
           REGISTRAR
-        </button>
+        </button>)}
         {hasError && (
-          <Alert data-testid='register-error-message'>{hasError}</Alert>
+          <Alert data-testid="register-error-message">{hasError}</Alert>
         )}
       </form>
       {message && (
-        <Alert color='success' data-testid='created-order'>
+        <Alert color="success" data-testid="created-order">
           {message}
         </Alert>
       )}

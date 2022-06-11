@@ -21,16 +21,20 @@
 Table {
   border: none;
   padding: 5px;
-  margin: 2rem;
+  margin: 1rem 2rem;
   box-shadow: 0.375rem 0.375rem 0.375rem #505050;
-  border-radius: 1.625rem;
-  background-color: papayawhip;
+  border-radius: 0.5rem;
+  background-color: bisque;
+}
+Table thead{
+background-color: rgba(55, 29, 15, 0.099);
 }
 
 .subtitles-delivered {
   font-weight: bold;
   font-size: 1.2rem;
   padding: 5px;
+  background-color: bisque;
 }
 // Desktop version
 @media (min-width: 1024px) and (max-height: 800px) {

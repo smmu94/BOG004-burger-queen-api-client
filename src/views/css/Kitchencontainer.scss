@@ -6,4 +6,15 @@
     flex-direction: row;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+// Desktop version
+@media (min-width: 1024px) and (max-height: 800px) {
+  .order-container {
+
+  }
+}
+
+// Mobile version
+@media (max-width: 540px) {
 }

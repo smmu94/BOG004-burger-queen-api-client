@@ -20,13 +20,16 @@ const AdminProduct = ({id, image, name, price, type, deleteProducts, editProduct
   return (
     <div className="admin-product">
       {edit === false ? (<>
+      <img src={image} alt={name}/>
+      <div className="admin-product-info">
+      <p>{name}</p>
+      <p>Precio: ${price}</p>
+      </div>
       <div className="buttons-product">
         <GrEdit onClick={onClick}/>
         <RiDeleteBin6Line onClick={()=>deleteProducts(id)}/>
-      </div>
-      <img src={image} alt={name} />
-      <p>{name}</p>
-      <p>${price}</p></>) : <AdminFormProducts id={id} edit={setEdit} editProducts={editProducts} productData={productData}/> }
+      </div></>
+      ) : <div className="edit"><AdminFormProducts id={id} edit={setEdit} editProducts={editProducts} productData={productData}/> </div>}
     </div>
   );
 };

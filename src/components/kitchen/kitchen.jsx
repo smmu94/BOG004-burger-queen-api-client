@@ -66,10 +66,11 @@ const Kitchen = (props) => {
   }, [channel]);
 
   return (
-    <div className="container-Kitchen">
-      <section className="container-order">
+    <div className="container-order">
+      <section>
         <p className="clientName">Cliente: {props.client}</p>
-        <div>
+        <p className="orderNum">Ordén #{props.id}</p>
+        <div className="description-order">
           {props.product.map((product) => {
             return (
               <section
@@ -82,7 +83,7 @@ const Kitchen = (props) => {
             );
           })}
         </div>
-        <div className="dataEntry">{props.dataEntry}</div>
+        {/* <div className="dataEntry">{props.dataEntry}</div> */}
         <button type="button" className="btn-order" onClick={handleClick}>
           ENVIAR
         </button>

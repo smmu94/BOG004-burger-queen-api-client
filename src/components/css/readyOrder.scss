@@ -1,7 +1,11 @@
 .container-ready {
     display: flex;
-    margin-bottom: 5px;
     padding: 20px;
-    width: 50%;
+    width: 45vw;
     min-height: 20vh;
+}
+.btn-order{
+    width: 55%;
+    align-self: center;
+    margin: 10px;
 }

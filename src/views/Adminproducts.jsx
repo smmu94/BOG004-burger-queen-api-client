@@ -49,10 +49,11 @@ const Adminproducts = () => {
         link1="/admin"
         link2="/admin-products"
       />
-
       <div className="products">
+        <div className="container-form">
         <div className="admin-products">
           <AdminFormProducts />
+        </div>
         </div>
         {product.map((product) => {
           return (

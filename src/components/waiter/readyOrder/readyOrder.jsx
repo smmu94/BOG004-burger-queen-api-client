@@ -9,7 +9,7 @@ const ReadyOrder = (props) => {
   };
 
   return (
-    <div className="container-ready">
+   
       <section className="container-order">
         <p className="clientName">Cliente: {props.client}</p>
         <p className="orderNum">Ordén #{props.id}</p>
@@ -30,7 +30,7 @@ const ReadyOrder = (props) => {
           ENTREGAR ORDEN
         </button>
       </section>
-    </div>
+ 
   );
 };
 

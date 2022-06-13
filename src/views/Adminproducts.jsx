@@ -5,6 +5,7 @@ import AdminProducts from "../components/admin/adminProducts.jsx";
 import { useState, useEffect, useMemo } from "react";
 import { products, deleteProduct, updateProduct } from "../providers/OrderProducts";
 
+
 const Adminproducts = () => {
   const [product, setProduct] = useState([]);
   const channel = useMemo(() => new BroadcastChannel("product"), []);
@@ -49,12 +50,14 @@ const Adminproducts = () => {
         link1="/admin"
         link2="/admin-products"
       />
-
       <div className="products">
+        <div className="container-form">
         <div className="admin-products">
           <AdminFormProducts />
         </div>
+        </div>
         {product.map((product) => {
+          console.log('ver', product)
           return (
             <AdminProducts
               key={"products" + product.id}
@@ -65,6 +68,7 @@ const Adminproducts = () => {
               type={product.type}
               deleteProducts={deleteProducts}
               editProducts={editProducts}
+              data-testid="products-product"
             />
           );
         })}

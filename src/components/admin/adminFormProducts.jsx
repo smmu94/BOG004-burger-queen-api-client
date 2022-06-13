@@ -2,6 +2,7 @@ import "../css/adminFormProducts.scss";
 import { useState, useEffect, useMemo } from "react";
 import { Alert } from "reactstrap";
 import { createProduct } from "../../providers/OrderProducts";
+import {RiCloseCircleFill} from 'react-icons/ri';
 
 const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
   const channel = useMemo(() => new BroadcastChannel("product"), []);
@@ -34,6 +35,7 @@ const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
     e.preventDefault();
     try {
       await createProduct(product).then((response) => {
+        console.log('response', response.data);
         channel.postMessage("registerProduct");
         setMessage("Producto creado correctamente");
       });
@@ -71,8 +73,9 @@ const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
     e.preventDefault();
   };
   return (
-    <div>
+    <div> 
       <form noValidate className="form-products" onSubmit={handleSubmit}>
+        <div className="close-icon">{edit ? (<RiCloseCircleFill  onClick={() => edit(false)} />) : null}</div>
         <div>
           <input
             id="name"
@@ -122,9 +125,9 @@ const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
             data-testid="type-product"
           />
         </div>
-        {edit? (<button type="submit" className="btn-register" onClick={onClickUpdate}>
+        {edit? (<button type="submit" className="btn-register" data-testid='update-product' onClick={onClickUpdate}>
           EDITAR PRODUCTO
-        </button>) : <button type="submit" className="btn-register" onClick={startRegister}>
+        </button>) : <button type="submit" className="btn-register" data-testid='add-product' onClick={startRegister}>
           AGREGAR PRODUCTO
         </button>}
         {hasError && (

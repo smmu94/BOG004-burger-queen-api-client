@@ -3,10 +3,10 @@ import "../../css/deliveredOrder.scss";
 
 const DeliveredOrder = ({ client, timeOrd }) => {
   return (
-    <div className="deliveredOrder" data-testid="deliveredOrder">
-      <p>{client}</p>
-      <p>{timeOrd}</p>
-    </div>
+    <tr className="deliveredOrder" data-testid="deliveredOrder">
+      <td> <p>{client}</p></td>
+      <td><p>{timeOrd}</p></td>
+    </tr>
   );
 };
 

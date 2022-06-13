@@ -56,6 +56,25 @@ const createOrder = () => {
   });
 };
 
+const createProduct = () => {
+  return new Promise((resolve) => {
+    resolve({
+      data: [
+  
+          {
+            "id": 1,
+            "name": "Sandwich de jamón y queso",
+            "price": "15000",
+            "image": "http://localhost:3000/image-data/Sandwich.png",
+            "type": "Desayuno",
+            "dateEntry": "2022-03-05 15:14:10"
+          }
+        
+      ],
+    });
+  });
+};
+
 const updateOrder = () => {
   return new Promise((resolve) => {
     resolve({
@@ -89,4 +108,4 @@ const updateOrder = () => {
   });
 };
 
-export { products, createOrder, updateOrder };
+export { products, createOrder, createProduct, updateOrder };

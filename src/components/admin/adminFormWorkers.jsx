@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"; // librería para validacion de formu
 import { Alert } from "reactstrap";
 import { Form } from "react-bootstrap";
 import { createUser } from "../../providers/UserProvider";
+import {RiCloseCircleFill} from 'react-icons/ri';
 
 const AdminFormWorkers = ({id, edit, editUser, userData}) => {
   const channel = useMemo(() => new BroadcastChannel("user"), []);
@@ -83,6 +84,7 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
   return (
     <div>
       <form noValidate className="form-workers" onSubmit={handleSubmit}>
+      <div className="close-icon">{edit ? (<RiCloseCircleFill  onClick={() => edit(false)} />) : null}</div>
         <div>
           <Form.Label htmlFor="name" visuallyHidden>
             name
@@ -177,7 +179,7 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
             data-testid="roles-worker"
           />
         </div>
-{edit ? (<button type="submit" className="btn-register" onClick={onClickUpdate}>
+{edit ? (<button type="submit" className="btn-register" data-testid='update-worker'onClick={onClickUpdate}>
           GUARDAR
         </button>) : (<button type="submit" className="btn-register" onClick={startRegister}>
           REGISTRAR

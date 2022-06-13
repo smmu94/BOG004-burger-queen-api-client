@@ -10,7 +10,6 @@ body {
 
 .login-container {
   display: flex;
-  // flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -23,33 +22,38 @@ body {
 }
 
 .login {
-  box-sizing: border-box;
+  box-sizing: content-box;
   display: flex;
   justify-content: center;
   padding: 1.5625rem;
   align-items: center;
   margin: 0.625rem;
   background-color: #804000;
-  border-radius: 1.625rem;
-  height: 45%;
-  width: 60%;
+  border-radius: 2rem;
+  height: 35%;
+  width: 55%;
   box-shadow: 0.375rem 0.375rem 0.375rem #505050;
   border: 0.1875rem solid #303030;
 }
 
-@media (min-width: 1280px) {
-
+// Desktop version
+@media (min-width: 1024px) and (max-height: 800px) {
+  .login{
+    width: 35vw;
+    height: 40vh;
+    margin-bottom: 2rem;
+  }
   .logo-burger {
-   height: 50%;
-   width: 30%;
+    height: 45vh;
+    width: 45vh;
   }
-  .login {
-    width: 40%;
-    height: 53%;
-    margin: 2.1rem;
-    margin-top: 0;
-    padding: 0;
-  }
- 
 }
+
+// Mobile version
+@media (max-width: 540px) {
+  .login{
+    width: 60vw;
+  }
+}
+
   

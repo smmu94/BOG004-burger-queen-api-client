@@ -4,7 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import { getOrder, updateOrder } from "../providers/OrderProducts.js";
 import ReadyOrder from "../components/waiter/readyOrder/readyOrder";
 import DeliveredOrder from "../components/waiter/readyOrder/deliveredOrder";
-// import Table from 'react-bootstrap/Table'
+import Table from "react-bootstrap/Table";
 
 const Readyorders = () => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);
@@ -86,22 +86,28 @@ const Readyorders = () => {
         </section>
 
         <section className="deliveredOrders">
-          <h1>HISTORIAL DE PEDIDOS</h1>
-          <div className="subtitles-delivered">
-            <p>Cliente</p>
-            <p>Tiempo de entrega</p>
-          </div>
-          {rdOrder
-            .filter((o) => o.status === "served")
-            .map((dlOrd) => {
-              return (
-                <DeliveredOrder
-                  key={"dlOrder" + dlOrd.id}
-                  client={dlOrd.client}
-                  timeOrd={dlOrd.timeOrd}
-                />
-              );
-            })}
+          <Table striped bordered hover>
+            <thead>
+              <tr><h3>HISTORIAL DE PEDIDOS</h3></tr>
+              <tr className="subtitles-delivered">
+                <th>Cliente</th>
+                <th>Tiempo de entrega</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rdOrder
+                .filter((o) => o.status === "served")
+                .map((dlOrd) => {
+                  return (
+                    <DeliveredOrder
+                      key={"dlOrder" + dlOrd.id}
+                      client={dlOrd.client}
+                      timeOrd={dlOrd.timeOrd}
+                    />
+                  );
+                })}
+            </tbody>
+          </Table>
         </section>
       </section>
     </section>

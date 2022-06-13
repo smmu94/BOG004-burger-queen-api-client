@@ -9,10 +9,11 @@ const ReadyOrder = (props) => {
   };
 
   return (
-    <div className="container-ready">
+   
       <section className="container-order">
         <p className="clientName">Cliente: {props.client}</p>
-        <div>
+        <p className="orderNum">Ordén #{props.id}</p>
+        <div className="description-order">
           {props.product.map((product) => {
             return (
               <section
@@ -25,12 +26,11 @@ const ReadyOrder = (props) => {
             );
           })}
         </div>
-        <div className="dataEntry">{props.dateProcessed}</div>
         <button type="button" className="btn-order" data-testid="btn-order" onClick={handleClick}>
           ENTREGAR ORDEN
         </button>
       </section>
-    </div>
+ 
   );
 };
 

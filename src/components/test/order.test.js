@@ -8,9 +8,6 @@ import Order from "../waiter/order";
 
 
 describe("Order test", () => {
-  beforeEach(() => {
-    
-  });
 
   test("muestra los productos", async () => {
     render(<Order />);

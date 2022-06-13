@@ -1,7 +1,25 @@
-.container-ready {
+.container-order {
     display: flex;
-    margin-bottom: 5px;
     padding: 20px;
-    width: 50%;
     min-height: 20vh;
+    margin: 1rem;
 }
+
+.btn-order{
+    width: 55%;
+    align-self: center;
+    margin: 10px;
+}
+
+// Desktop version
+@media (min-width: 1024px) and (max-height: 800px) {
+  .container-order{
+    width: 28vw;
+  }
+  }
+  
+  // Mobile version
+  @media (max-width: 540px) {
+  
+  }
+  

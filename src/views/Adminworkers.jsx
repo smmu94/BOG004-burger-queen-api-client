@@ -53,8 +53,10 @@ const fetchUsers =() => {
         link2="/admin-products"
       />
       <div className="workers">
+      <div className="container-worker">
         <div className="admin-workers">
           <AdminFormWorkers />
+        </div>
         </div>
         {users.map((user) => {
           return (

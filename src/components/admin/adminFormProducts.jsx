@@ -35,6 +35,7 @@ const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
     e.preventDefault();
     try {
       await createProduct(product).then((response) => {
+        console.log('response', response.data);
         channel.postMessage("registerProduct");
         setMessage("Producto creado correctamente");
       });
@@ -124,9 +125,9 @@ const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
             data-testid="type-product"
           />
         </div>
-        {edit? (<button type="submit" className="btn-register" onClick={onClickUpdate}>
+        {edit? (<button type="submit" className="btn-register" data-testid='update-product' onClick={onClickUpdate}>
           EDITAR PRODUCTO
-        </button>) : <button type="submit" className="btn-register" onClick={startRegister}>
+        </button>) : <button type="submit" className="btn-register" data-testid='add-product' onClick={startRegister}>
           AGREGAR PRODUCTO
         </button>}
         {hasError && (

@@ -5,8 +5,13 @@
 
 }
 
-.menu-icon a{
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
+
+// Desktop version
+@media (min-width: 1024px) and (max-height: 800px) {
+
+}
+
+// Mobile version
+@media (max-width: 540px) {
+   
 }

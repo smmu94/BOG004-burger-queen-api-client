@@ -50,8 +50,11 @@
   
   }
   .container-form {
-    width: 100vw;
-    height: 40vh;
+    width: 70vw;
+    height: 38vh;
+  }
+  ::placeholder{
+    font-size: 1rem;
   }
   .admin-products {
     height: 35vh;

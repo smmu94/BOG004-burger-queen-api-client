@@ -2,10 +2,22 @@
 // const BASE_URL = 'http://localhost:8080/';
 
 
-// const createUser = (user) => {
+const createUser = () => {
+    return new Promise((resolve) => {
+      resolve({
+        data: 
+          {
+            "name": "Ana Pérez",
+            "email": "anita.borg@systers.xyz",
+            "password": "$2a$10$itZyq8s85",
+            "roles": "admin",
+            "id": 1
+          },
+      });
+    });
+  };
 
-//     return axios.post(BASE_URL+'users', user);
-//  }
+
  
 // const login = (payload) => {
 //     return axios.post(BASE_URL+'login', payload);
@@ -29,10 +41,14 @@
 // // }
 
 // const getUser = () => {
-//     return axios({method: "GET", url:BASE_URL+'users', headers: {
-//         authorization: "Bearer " + getToken()
-//     }} );
-// }
+//     return {
+//         "name": "Ana Pérez",
+//         "email": "anita.borg@systers.xyz",
+//         "password": "$2a$10$itZyq8s85",
+//         "roles": "admin",
+//         "id": 1
+//     }};
+
 
 
  
@@ -44,6 +60,7 @@
 export {
     getUserData,
     getToken,
+    createUser
 
 }
 

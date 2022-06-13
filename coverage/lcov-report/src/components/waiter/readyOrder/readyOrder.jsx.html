@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>0/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,21 +103,21 @@
 <a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,20 +140,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../../css/readyOrder.scss";
 &nbsp;
 &nbsp;
-const ReadyOrder = (props) =&gt; {
-  console.log('readyOrder', props.product);
-  const handleClick = () =&gt; {
-    props.addDeliveredOrder({ client: props.client, timeOrd: props.timeOrd, id: props.id });
-    props.resetReadyOrder(props.id);
+const ReadyOrder = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  console.log('readyOrder', props.product);</span>
+  const handleClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    props.addDeliveredOrder({ client: props.client, timeOrd: props.timeOrd, id: props.id });</span>
+<span class="cstat-no" title="statement not covered" >    props.resetReadyOrder(props.id);</span>
   };
 &nbsp;
-  return (
-    &lt;div className="container-ready"&gt;
+<span class="cstat-no" title="statement not covered" >  return (</span>
+   
       &lt;section className="container-order"&gt;
         &lt;p className="clientName"&gt;Cliente: {props.client}&lt;/p&gt;
-        &lt;div&gt;
-          {props.product.map((product) =&gt; {
-            return (
+        &lt;p className="orderNum"&gt;Ordén #{props.id}&lt;/p&gt;
+        &lt;div className="description-order"&gt;
+          {props.product.map(<span class="fstat-no" title="function not covered" >(p</span>roduct) =&gt; {
+<span class="cstat-no" title="statement not covered" >            return (</span>
               &lt;section
                 className="amount-product"
                 key={"order-product-" + product.id}
@@ -164,12 +165,11 @@ const ReadyOrder = (props) =&gt; {
             );
           })}
         &lt;/div&gt;
-        &lt;div className="dataEntry"&gt;{props.dateProcessed}&lt;/div&gt;
         &lt;button type="button" className="btn-order" data-testid="btn-order" onClick={handleClick}&gt;
           ENTREGAR ORDEN
         &lt;/button&gt;
       &lt;/section&gt;
-    &lt;/div&gt;
+ 
   );
 };
 &nbsp;
@@ -181,7 +181,7 @@ export default ReadyOrder;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Jun 08 2022 13:02:20 GMT-0500 (Colombia Standard Time)
+                at Mon Jun 13 2022 12:39:28 GMT-0500 (Colombia Standard Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

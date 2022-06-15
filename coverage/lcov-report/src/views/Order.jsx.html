@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">26.08% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/23</span>
+                <span class='fraction'>6/23</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">11.11% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>1/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>6/18</span>
             </div>
         
             
@@ -119,37 +119,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,10 +169,10 @@ import Ordersummary from "../components/waiter/orderSummary";
 import Navbar from "../components/navBar.jsx";
 import { useState } from "react";
 &nbsp;
-const  Ordercontainer = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops) =&gt;{</span>
-  const [summaryProducts, setSummaryProducts] = <span class="cstat-no" title="statement not covered" >useState([]);</span> //array de objetos
+const  Ordercontainer = () =&gt;{
+  const [summaryProducts, setSummaryProducts] = useState([]); //array de objetos
 &nbsp;
-  const addProduct = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>roduct) =&gt; { // add product to summary</span>
+  const addProduct = <span class="fstat-no" title="function not covered" >(p</span>roduct) =&gt; { // add product to summary
     const newSummaryProducts = <span class="cstat-no" title="statement not covered" >[...summaryProducts];</span> //copia el array
 <span class="cstat-no" title="statement not covered" >if(newSummaryProducts.find(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >p.id === product.id)</span>){ // si el producto ya está en el array</span>
 <span class="cstat-no" title="statement not covered" >  newSummaryProducts.find(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >p.id === product.id)</span>.quantity += 1; </span>// aumenta la cantidad
@@ -183,7 +183,7 @@ const  Ordercontainer = <span class="cstat-no" title="statement not covered" ><s
 <span class="cstat-no" title="statement not covered" >    console.log(newSummaryProducts)</span>
               
   }
-  const removeProduct = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(i</span>d) =&gt; { // remove product to summary</span>
+  const removeProduct = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; { // remove product to summary
     const removeSummaryProducts = <span class="cstat-no" title="statement not covered" >[...summaryProducts];</span> //copia el array
 <span class="cstat-no" title="statement not covered" >      removeSummaryProducts.find(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >p.id === id)</span>.quantity -= 1; </span>// disminuye la cantidad
 <span class="cstat-no" title="statement not covered" >      if (removeSummaryProducts.find(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >p.id === id)</span>.quantity === 0) { // si la cantidad es 0, lo elimina</span>
@@ -194,15 +194,15 @@ const  Ordercontainer = <span class="cstat-no" title="statement not covered" ><s
 &nbsp;
 &nbsp;
 &nbsp;
-  const resetProduct = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const resetProduct = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >      setSummaryProducts([]);</span>
   }
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div&gt;
+  return (
+    &lt;div data-testid='order-view'&gt;
     &lt;Navbar item1="ÓRDENES" item2="PEDIDOS LISTOS" link1="/order" link2="/readyorder" /&gt;
-    &lt;div className="order-container"&gt;
+    &lt;div className="order-container" data-testid='order-container'&gt;
       &lt;div className="order-summary"&gt;
         &lt;Order handleAddProduct={addProduct}/&gt;
         &lt;Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct} reset={resetProduct}/&gt;
@@ -220,7 +220,7 @@ export default Ordercontainer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jun 13 2022 12:39:28 GMT-0500 (Colombia Standard Time)
+                at Tue Jun 14 2022 17:33:20 GMT-0500 (hora de verano central)
             </div>
         <script src="../../prettify.js"></script>
         <script>

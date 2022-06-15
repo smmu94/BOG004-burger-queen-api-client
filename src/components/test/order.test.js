@@ -6,6 +6,13 @@ import Order from "../waiter/order";
 
  jest.mock('../../providers/OrderProducts.js');
 
+ window.BroadcastChannel = function (){ 
+  this.name= ""; 
+  this.close= jest.fn(); 
+  this.postMessage= jest.fn()
+  this.addEventListener = jest.fn();
+}
+
 
 describe("Order test", () => {
 

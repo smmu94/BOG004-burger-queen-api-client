@@ -11,7 +11,7 @@ window.BroadcastChannel = function (){
 describe("adminWorkers", () => {
     test("it renders the AdminWorkers", () => {
       render(<AdminWorkers />);
-      expect(screen.getByTestId("worker")).toBeInTheDocument();
+      expect(screen.getByTestId("admin-worker")).toBeInTheDocument();
     });
  
     test("Testing edit of AdminWorkers component", () => {

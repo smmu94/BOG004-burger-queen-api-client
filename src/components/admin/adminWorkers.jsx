@@ -40,7 +40,7 @@ const AdminWorkers = ({
   }, [name, email, password, roles]);
 
   return (
-    <div className='admin-worker' data-testid='worker'>
+    <div className='admin-worker' data-testid='admin-worker'>
       {edit === false ? (<>
         <div>
         <div className='admin-worker-info'>

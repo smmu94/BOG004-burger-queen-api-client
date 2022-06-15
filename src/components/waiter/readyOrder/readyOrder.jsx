@@ -10,7 +10,7 @@ const ReadyOrder = (props) => {
 
   return (
    
-      <section className="container-order">
+      <section className="container-order" data-testid='container-ready-order'>
         <p className="clientName">Cliente: {props.client}</p>
         <p className="orderNum">Ordén #{props.id}</p>
         <div className="description-order">

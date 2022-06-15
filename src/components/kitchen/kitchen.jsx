@@ -66,7 +66,7 @@ const Kitchen = (props) => {
   }, [channel]);
 
   return (
-    <div className="container-order">
+    <div className="container-order" data-testid='container-order'>
       <section>
         <p className="clientName">Cliente: {props.client}</p>
         <p className="orderNum">Ordén #{props.id}</p>

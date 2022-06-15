@@ -1,5 +1,5 @@
 import "../css/order.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { products } from "../../providers/OrderProducts";
 import { Nav } from "react-bootstrap";
 import Product from "./product";
@@ -9,14 +9,18 @@ export default function Order({ handleAddProduct }) {
   const [productos, setProductos] = useState([]); //a rray de objetos
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [foodType, setFoodType] = useState('Desayuno');
+  const channel = useMemo(() => new BroadcastChannel("product"), []);
   
+const fetchProducts = () => {
+  products() // llamamos a la función products() que está en el provider
+  .then((response) => {
+    setProductos(response.data); // actualizamos el estado
+  })
+  .catch(() => {});
+}
 
   useEffect(()=>{
-    products() // llamamos a la función products() que está en el provider
-      .then((response) => {
-        setProductos(response.data); // actualizamos el estado
-      })
-      .catch(() => {});
+    fetchProducts();
   }, []);
 
   useEffect(() => {
@@ -24,6 +28,16 @@ export default function Order({ handleAddProduct }) {
       setFilteredProducts(productos.filter((p) => p.type === foodType))
     
   },[foodType, productos]);
+
+  useEffect(() => {
+    console.log("Channel:", channel.name);
+    channel.addEventListener("message", (event) => {
+      if (event.data === "registerProduct") {
+        fetchProducts();
+      }
+    });
+    return () => channel.close();
+  }, [channel]);
 
 
   return (
@@ -33,7 +47,7 @@ export default function Order({ handleAddProduct }) {
         <button data-id="breakfast" onClick={()=> setFoodType("Desayuno")}>DESAYUNOS</button>
         <button data-id="lunch" onClick={()=> setFoodType("Almuerzo")}>ALMUERZOS</button>
       </Nav>
-      <div data-testid="products">
+      <div data-testid="products" className="products">
       {filteredProducts.map((producto) => {
         return (
             <Product

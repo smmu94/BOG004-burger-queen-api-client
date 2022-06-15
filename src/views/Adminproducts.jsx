@@ -6,7 +6,7 @@ import { useState, useEffect, useMemo } from "react";
 import { products, deleteProduct, updateProduct } from "../providers/OrderProducts";
 
 
-const Adminproducts = () => {
+const AdminproductsView = () => {
   const [product, setProduct] = useState([]);
   const channel = useMemo(() => new BroadcastChannel("product"), []);
 
@@ -77,4 +77,4 @@ const Adminproducts = () => {
   );
 };
 
-export default Adminproducts;
+export default AdminproductsView;

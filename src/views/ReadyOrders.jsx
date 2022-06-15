@@ -88,7 +88,9 @@ const Readyorders = () => {
         <section className="deliveredOrders">
           <Table striped bordered hover>
             <thead>
-              <tr><h3>HISTORIAL DE PEDIDOS</h3></tr>
+              <tr>
+                <th><p>HISTORIAL DE PEDIDOS</p></th>
+              </tr>
               <tr className="subtitles-delivered">
                 <th>Cliente</th>
                 <th>Tiempo de entrega</th>

@@ -4,7 +4,7 @@ import Ordercontainer from "../views/Order";
 import Kitchencontainer from "../views/Kitchen";
 import Readyorders from "../views/ReadyOrders";
 import Admincontainer from "../views/Adminworkers";
-import Adminproducts from "../views/Adminproducts";
+import AdminproductsView from "../views/Adminproducts";
 
 
 
@@ -18,7 +18,7 @@ const Routercomponent = () => {
             <Route path="/kitchen" element={<Kitchencontainer />} />
             <Route path="/readyorder" element={<Readyorders />} />
             <Route path="/admin" element={<Admincontainer />} />
-            <Route path="/admin-products" element={<Adminproducts />} />
+            <Route path="/admin-products" element={<AdminproductsView />} />
           </Routes>
         </Router>
    

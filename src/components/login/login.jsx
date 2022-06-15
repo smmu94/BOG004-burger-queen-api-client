@@ -63,7 +63,7 @@ const Login = () => {
   };
   return (
     /* formulario de login */
-    <form noValidate className="form-login" onSubmit={handleSubmit}>
+    <form noValidate className="form-login" data-testid='login-componente' onSubmit={handleSubmit}>
       <div>
         {/* {hasError && <Alert >Usuario y/o contraseña no encontrado</Alert>} */}
         <Form.Label htmlFor="email" visuallyHidden>email</Form.Label>

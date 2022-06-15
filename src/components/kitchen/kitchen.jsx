@@ -21,7 +21,6 @@ const Kitchen = (props) => {
       ":" +
       dateNow.getMinutes(),
   };
-  console.log("fecha de procesada", upOrder.dateProcessed);
   const handleClick = () => {
     updateOrder(props.id, upOrder).then((res) => {
       let timeMs = Math.abs(

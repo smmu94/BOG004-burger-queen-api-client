@@ -30,7 +30,6 @@ const fetchProducts = () => {
   },[foodType, productos]);
 
   useEffect(() => {
-    console.log("Channel:", channel.name);
     channel.addEventListener("message", (event) => {
       if (event.data === "registerProduct") {
         fetchProducts();

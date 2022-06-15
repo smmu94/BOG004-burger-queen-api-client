@@ -24,7 +24,6 @@ window.BroadcastChannel = function (){
   
     test('deberia registrar un empleado', async () => {
       render(<AdminFormWorkers editUser={users} />);
-      console.log('product', users);
   
       const userName = screen.getByTestId('name-worker');
       fireEvent.change(userName, { target: { value: 'Ana Pérez' } });
@@ -51,7 +50,6 @@ window.BroadcastChannel = function (){
       }
         const onClickUpdate = jest.fn();
         // const edit = jest.fn();
-        console.log('Se hizo click');
         render(<AdminFormWorkers editUser={onClickUpdate} edit={onClick}/>);
         const updateIcon = screen.getByTestId("update-worker");
         fireEvent.click(updateIcon);

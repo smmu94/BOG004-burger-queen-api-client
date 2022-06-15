@@ -33,7 +33,6 @@ const AdminproductsView = () => {
     fetchProducts();
   }, []);
   useEffect(() => {
-    console.log("Channel:", channel.name);
     channel.addEventListener("message", (event) => {
       if (event.data === "registerProduct") {
         fetchProducts();
@@ -57,7 +56,6 @@ const AdminproductsView = () => {
         </div>
         </div>
         {product.map((product) => {
-          console.log('ver', product)
           return (
             <AdminProducts
               key={"products" + product.id}

@@ -25,12 +25,6 @@ const AdminWorkers = ({
     roles,
   });
 
-  // const editUser = (user) => {
-  //   return updateUser(id, user).then((user) => {
-  //     console.log('id', user)
-  //     setEdit(false);
-  //    });
-  // }
   const onClick = () => {
     setEdit(true);
   };

@@ -15,7 +15,7 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya estÃ
   newSummaryProducts.push({...product, quantity: 1}); // si no estÃ¡ en el array, lo agrega
 }
     setSummaryProducts(newSummaryProducts); // actualiza el estado
-    console.log(newSummaryProducts)
+
               
   }
   const removeProduct = (id) => { // remove product to summary

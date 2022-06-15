@@ -1,15 +1,32 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
 import Routercomponent from '../src/router/Router';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
 root.render(
- 
+  <Router>
     <Routercomponent />
-  
+  </Router>
 );
+
+// // 👇️ wrap App in Router
+
+// root.render(
+//   <Router>
+//     <App />
+//   </Router>
+// );
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// root.render( <Router>
+//     <Routercomponent />
+//   </Router>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

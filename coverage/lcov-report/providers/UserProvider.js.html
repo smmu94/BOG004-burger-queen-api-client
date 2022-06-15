@@ -142,16 +142,10 @@
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
 <a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L80'></a><a href='#L80'>80</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -159,7 +153,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,11 +175,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -198,6 +186,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -232,94 +224,90 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import axios from 'axios';
 const BASE_URL = 'http://localhost:8080/';
 &nbsp;
-&nbsp;
 const createUser = <span class="fstat-no" title="function not covered" >(u</span>ser) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return axios.post(BASE_URL + 'users', user);</span>
+};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return axios.post(BASE_URL+'users', user);</span>
- }
- 
 const login = (payload) =&gt; {
-    return axios.post(BASE_URL+'login', payload);
-}
-&nbsp;
+  return axios.post(BASE_URL + 'login', payload);
+};
 &nbsp;
 const saveUser = (user) =&gt; {
-    sessionStorage.setItem('user', JSON.stringify(user));
-}
+  sessionStorage.setItem('user', JSON.stringify(user));
+};
 &nbsp;
- const getUserData = () =&gt; {
-     return JSON.parse(sessionStorage.getItem('user'));
- }
+const getUserData = () =&gt; {
+  return JSON.parse(sessionStorage.getItem('user'));
+};
 &nbsp;
- const getToken = () =&gt; {
-     return getUserData().accessToken;
- }
+const getToken = () =&gt; {
+  return getUserData().accessToken;
+};
 &nbsp;
- const getId = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    return getUserData().user.id;</span>
-}
+const getId = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >  return getUserData().user.id;</span>
+};
 &nbsp;
 const getUser = () =&gt; {
-    return axios({method: "GET", url:BASE_URL+'users', headers: {
-        authorization: "Bearer " + getToken()
-    }} );
-}
+  return axios({
+    method: 'GET',
+    url: BASE_URL + 'users',
+    headers: {
+      authorization: 'Bearer ' + getToken(),
+    },
+  });
+};
 &nbsp;
-const updateUser = <span class="fstat-no" title="function not covered" >(i</span>d, update) =&gt; { 
-<span class="cstat-no" title="statement not covered" >    return axios.patch(BASE_URL+'users/'+id, update, {</span>
-           headers: {
-               "content-type": "application/json",
-               authorization: 'Bearer ' + getToken()
-           }
-       });
-   }
+const updateUser = <span class="fstat-no" title="function not covered" >(i</span>d, update) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return axios.patch(BASE_URL + 'users/' + id, update, {</span>
+    headers: {
+      'content-type': 'application/json',
+      authorization: 'Bearer ' + getToken(),
+    },
+  });
+};
 &nbsp;
-   const deleteUser = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
-<span class="cstat-no" title="statement not covered" >    return axios.delete(BASE_URL+'users/'+id, {</span>
-        headers: {
-            "content-type": "application/json",
-            authorization: 'Bearer ' + getToken()
-        }
-    });
-}
-&nbsp;
- 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+const deleteUser = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return axios.delete(BASE_URL + 'users/' + id, {</span>
+    headers: {
+      'content-type': 'application/json',
+      authorization: 'Bearer ' + getToken(),
+    },
+  });
+};
 &nbsp;
 export {
-    login,
-    saveUser,
-    createUser,
-    getUserData,
-    getToken,
-    getId,
-    getUser,
-    updateUser,
-    deleteUser
-}
+  login,
+  saveUser,
+  createUser,
+  getUserData,
+  getToken,
+  getId,
+  getUser,
+  updateUser,
+  deleteUser,
+};
 &nbsp;
 // const getUsers = () =&gt; {
 //     return axios.get(BASE_URL+'users',{
 //         headers: {
 //             authorization: 'Bearer ' + getToken()
 //         }
-    
+&nbsp;
 // });
 // }
 &nbsp;
 // const getId = () =&gt; {
 //         return getUserData().id;
-//     }</pre></td></tr></table></pre>
+//     }
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jun 14 2022 17:33:57 GMT-0500 (hora de verano central)
+                at Wed Jun 15 2022 11:21:48 GMT-0500 (Colombia Standard Time)
             </div>
         <script src="../prettify.js"></script>
         <script>

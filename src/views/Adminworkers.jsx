@@ -20,7 +20,6 @@ const fetchUsers =() => {
 
     const editUser = (id, user) => {
       return updateUser(id, user).then((user) => {
-        console.log('id', user);
         fetchUsers();
        });    
     }
@@ -35,7 +34,6 @@ const fetchUsers =() => {
       fetchUsers();
     }, []);
     useEffect(()=>{
-      console.log("Channel:", channel.name);
       channel.addEventListener("message",(event) => {
         if (event.data === "registerUser"){
           fetchUsers();

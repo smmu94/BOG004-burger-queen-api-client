@@ -21,7 +21,6 @@ describe("adminProducts", () => {
   
     test("Testing product component", () => {
       // const onClick = jest.fn();
-      console.log('Se hizo click');
       render(<AdminProduct  />);
       const editIcon = screen.getByTestId("edit-product");
       fireEvent.click(editIcon);
@@ -30,7 +29,6 @@ describe("adminProducts", () => {
     });
     test("Testing product delete component", () => {
       const onClick = jest.fn();
-      console.log('Se hizo click');
       render(<AdminProduct  deleteProducts={onClick} />);
       const deleteIcon = screen.getByTestId("product-delete");
       fireEvent.click(deleteIcon);

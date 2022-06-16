@@ -26,7 +26,6 @@ describe('OrderSummary test', () => {
   
   test('deberia crear una orden', async () => {
     render(<Ordersummary productList={summaryProducts} reset={jest.fn()}/>);
-    console.log('product', summaryProducts);
 
     const client = screen.getByTestId('input-client');
     fireEvent.change(client, { target: { value: 'Pepe Gonzalez' } });

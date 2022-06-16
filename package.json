@@ -53,5 +53,12 @@
     "msw": "^0.40.2",
     "react-test-renderer": "^18.1.0",
     "sass-loader": "^12.6.0"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/babel.config.js",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/reportWebVitals.js"
+    ]
   }
 }

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.61% </span>
+                <span class="strong">82.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/13</span>
+                <span class='fraction'>19/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/9</span>
+                <span class='fraction'>10/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/12</span>
+                <span class='fraction'>16/20</span>
             </div>
         
             
@@ -118,7 +118,20 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,27 +139,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,7 +200,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "../css/order.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { products } from "../../providers/OrderProducts";
 import { Nav } from "react-bootstrap";
 import Product from "./product";
@@ -184,14 +210,18 @@ export default function Order({ handleAddProduct }) {
   const [productos, setProductos] = useState([]); //a rray de objetos
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [foodType, setFoodType] = useState('Desayuno');
+  const channel = useMemo(() =&gt; new BroadcastChannel("product"), []);
   
+const fetchProducts = () =&gt; {
+  products() // llamamos a la función products() que está en el provider
+  .then((response) =&gt; {
+    setProductos(response.data); // actualizamos el estado
+  })
+  .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {});
+}
 &nbsp;
   useEffect(()=&gt;{
-    products() // llamamos a la función products() que está en el provider
-      .then((response) =&gt; {
-        setProductos(response.data); // actualizamos el estado
-      })
-      .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {});
+    fetchProducts();
   }, []);
 &nbsp;
   useEffect(() =&gt; {
@@ -199,6 +229,15 @@ export default function Order({ handleAddProduct }) {
       setFilteredProducts(productos.filter((p) =&gt; p.type === foodType))
     
   },[foodType, productos]);
+&nbsp;
+  useEffect(() =&gt; {
+    channel.addEventListener("message", <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
+<span class="cstat-no" title="statement not covered" >      if (event.data === "registerProduct") {</span>
+<span class="cstat-no" title="statement not covered" >        fetchProducts();</span>
+      }
+    });
+    return () =&gt; channel.close();
+  }, [channel]);
 &nbsp;
 &nbsp;
   return (
@@ -208,7 +247,7 @@ export default function Order({ handleAddProduct }) {
         &lt;button data-id="breakfast" onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt; <span class="cstat-no" title="statement not covered" >setFoodType("Desayuno")}</span>&gt;DESAYUNOS&lt;/button&gt;
         &lt;button data-id="lunch" onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt; <span class="cstat-no" title="statement not covered" >setFoodType("Almuerzo")}</span>&gt;ALMUERZOS&lt;/button&gt;
       &lt;/Nav&gt;
-      &lt;div data-testid="products"&gt;
+      &lt;div data-testid="products" className="products"&gt;
       {filteredProducts.map((producto) =&gt; {
         return (
             &lt;Product
@@ -235,7 +274,7 @@ export default function Order({ handleAddProduct }) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jun 13 2022 17:33:44 GMT-0500 (Colombia Standard Time)
+                at Wed Jun 15 2022 11:21:48 GMT-0500 (Colombia Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>

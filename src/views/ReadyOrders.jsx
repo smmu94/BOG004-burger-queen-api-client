@@ -23,7 +23,6 @@ const Readyorders = () => {
     getOrder() // llamamos a la función products() que está en el provider
       .then((response) => {
         // cuando la función products() se ejecuta, se ejecuta la función then()
-        console.log(response.data);
         setRdOrder(response.data); // guardamos los datos en el estado
       })
       .catch(() => {});
@@ -35,7 +34,6 @@ const Readyorders = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Channel:", channel.name);
     channel.addEventListener("message", (event) => {
       if (event.data === "updateOrder") {
         fetchOrders();
@@ -56,7 +54,7 @@ const Readyorders = () => {
 
     setRdOrder(resetDeliveredOrder); // actualiza el estado
   };
-  console.log(deliveredOrder);
+
   return (
     <section>
       <Navbar
@@ -88,7 +86,9 @@ const Readyorders = () => {
         <section className="deliveredOrders">
           <Table striped bordered hover>
             <thead>
-              <tr><h3>HISTORIAL DE PEDIDOS</h3></tr>
+              <tr>
+                <th><p>HISTORIAL DE PEDIDOS</p></th>
+              </tr>
               <tr className="subtitles-delivered">
                 <th>Cliente</th>
                 <th>Tiempo de entrega</th>

@@ -2,7 +2,6 @@ import "../../css/readyOrder.scss";
 
 
 const ReadyOrder = (props) => {
-  console.log('readyOrder', props.product);
   const handleClick = () => {
     props.addDeliveredOrder({ client: props.client, timeOrd: props.timeOrd, id: props.id });
     props.resetReadyOrder(props.id);
@@ -10,7 +9,7 @@ const ReadyOrder = (props) => {
 
   return (
    
-      <section className="container-order">
+      <section className="container-order" data-testid='container-ready-order'>
         <p className="clientName">Cliente: {props.client}</p>
         <p className="orderNum">Ordén #{props.id}</p>
         <div className="description-order">

@@ -18,7 +18,7 @@ const Navbar = (props) => {
       <img className="logo-navBar" src={logo_navBar} alt="logo-navBar" />
         <img className="logo-navBar-mobile" src={logo_navBar_mobile} alt="logo-navBar" />
         <div className="menu-icon">
-          <NavLink to={props.link1}>{props.item1}</NavLink>
+          <NavLink  data-testid='link1' to={props.link1}>{props.item1}</NavLink>
           <NavLink to={props.link2}>{props.item2}</NavLink>
           <BiLogOut className="logout" data-testid="logout" onClick={logout} />
         </div>

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -106,20 +106,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,7 +129,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,20 +143,20 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState, useEffect } from "react";
 import AdminFormProducts from "./adminFormProducts";
 &nbsp;
-const AdminProduct = <span class="fstat-no" title="function not covered" >({</span>id, image, name, price, type, deleteProducts, editProducts }) =&gt; {
-  const [edit, setEdit] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const [productData, setProductData] = <span class="cstat-no" title="statement not covered" >useState({name, price, image, type});</span>
+const AdminProduct = ({id, image, name, price, type, deleteProducts, editProducts }) =&gt; {
+  const [edit, setEdit] = useState(false);
+  const [productData, setProductData] = useState({name, price, image, type});
 &nbsp;
-  const onClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setEdit(true);</span>
+  const onClick = () =&gt; {
+    setEdit(true);
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span>=&gt;{</span>
-<span class="cstat-no" title="statement not covered" >    setProductData({name, price, image, type})</span>
+  useEffect(()=&gt;{
+    setProductData({name, price, image, type})
   }
   , [name, price, image, type])
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className="admin-product" data-testid='admin-product'&gt;
       {edit === false ? (&lt;&gt;
       &lt;img src={image} alt={name}/&gt;
@@ -166,7 +166,7 @@ const AdminProduct = <span class="fstat-no" title="function not covered" >({</sp
       &lt;/div&gt;
       &lt;div className="buttons-product"&gt;
         &lt;GrEdit data-testid='edit-product' onClick={onClick}/&gt;
-        &lt;RiDeleteBin6Line data-testid='product-delete' onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt;<span class="cstat-no" title="statement not covered" >deleteProducts(id)}</span>/&gt;
+        &lt;RiDeleteBin6Line data-testid='product-delete' onClick={()=&gt;deleteProducts(id)}/&gt;
       &lt;/div&gt;&lt;/&gt;
       ) : &lt;div className="edit" data-testid='product-edit'&gt;&lt;AdminFormProducts id={id} edit={setEdit} editProducts={editProducts} productData={productData}/&gt; &lt;/div&gt;}
     &lt;/div&gt;
@@ -181,7 +181,7 @@ export default AdminProduct;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jun 13 2022 12:39:28 GMT-0500 (Colombia Standard Time)
+                at Tue Jun 14 2022 17:33:20 GMT-0500 (hora de verano central)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

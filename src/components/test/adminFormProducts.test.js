@@ -24,7 +24,6 @@ const products = [
 describe('AdminFormProducts test', () => {
   test('deberia agregar un producto', async () => {
     render(<AdminFormProducts editProducts={products} />);
-    console.log('product', products);
 
     const productName = screen.getByTestId('name-product');
     fireEvent.change(productName, {
@@ -58,7 +57,6 @@ describe('AdminFormProducts test', () => {
     };
     const onClickUpdate = jest.fn();
     // const edit = jest.fn();
-    console.log('Se hizo click');
     render(<AdminFormProducts editProducts={onClickUpdate} edit={onClick} />);
     const updateButton = screen.getByTestId('update-product');
     fireEvent.click(updateButton);

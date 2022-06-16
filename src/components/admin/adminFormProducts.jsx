@@ -35,7 +35,6 @@ const AdminFormProducts = ({ id, edit, editProducts, productData }) => {
     e.preventDefault();
     try {
       await createProduct(product).then((response) => {
-        console.log('response', response.data);
         channel.postMessage("registerProduct");
         setMessage("Producto creado correctamente");
       });

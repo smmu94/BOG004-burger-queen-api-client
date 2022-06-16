@@ -25,12 +25,6 @@ const AdminWorkers = ({
     roles,
   });
 
-  // const editUser = (user) => {
-  //   return updateUser(id, user).then((user) => {
-  //     console.log('id', user)
-  //     setEdit(false);
-  //    });
-  // }
   const onClick = () => {
     setEdit(true);
   };
@@ -40,7 +34,7 @@ const AdminWorkers = ({
   }, [name, email, password, roles]);
 
   return (
-    <div className='admin-worker' data-testid='worker'>
+    <div className='admin-worker' data-testid='admin-worker'>
       {edit === false ? (<>
         <div>
         <div className='admin-worker-info'>

@@ -6,7 +6,7 @@ import { useState, useEffect, useMemo } from "react";
 import { products, deleteProduct, updateProduct } from "../providers/OrderProducts";
 
 
-const Adminproducts = () => {
+const AdminproductsView = () => {
   const [product, setProduct] = useState([]);
   const channel = useMemo(() => new BroadcastChannel("product"), []);
 
@@ -33,7 +33,6 @@ const Adminproducts = () => {
     fetchProducts();
   }, []);
   useEffect(() => {
-    console.log("Channel:", channel.name);
     channel.addEventListener("message", (event) => {
       if (event.data === "registerProduct") {
         fetchProducts();
@@ -57,7 +56,6 @@ const Adminproducts = () => {
         </div>
         </div>
         {product.map((product) => {
-          console.log('ver', product)
           return (
             <AdminProducts
               key={"products" + product.id}
@@ -77,4 +75,4 @@ const Adminproducts = () => {
   );
 };
 
-export default Adminproducts;
+export default AdminproductsView;

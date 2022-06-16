@@ -11,9 +11,7 @@ const Kitchencontainer = () => {
 
 
   const resetKitchen = (id) => {
-    console.log(id);
     const resetKitchenOrder = [...order]; //copia el array}
-    console.log(resetKitchenOrder);
     if (resetKitchenOrder.find((p) => p.id === id)) {
       resetKitchenOrder.splice(
         resetKitchenOrder.findIndex((p) => p.id === id),
@@ -27,7 +25,6 @@ const Kitchencontainer = () => {
     getOrder() // llamamos a la función products() que está en el provider
       .then((response) => {
         // cuando la función products() se ejecuta, se ejecuta la función then()
-        console.log(response.data);
         setOrder(response.data); // guardamos los datos en el estado
       })
       .catch(() => {});
@@ -38,7 +35,6 @@ const Kitchencontainer = () => {
   }, []);
 
   useEffect(()=>{
-    console.log("Channel:", channel.name);
     channel.addEventListener("message",(event) => {
       if (event.data === "createOrder"){
         fetchOrder();

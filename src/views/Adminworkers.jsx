@@ -14,6 +14,7 @@ const fetchUsers =() => {
     getUser()
       .then((response) => {
         setUsers(response.data); // actualizamos el estado
+        console.log(response.data);
       })
       .catch(() => {});
     }
@@ -69,6 +70,7 @@ const fetchUsers =() => {
               editUser={editUser}
               deleteUsers={deleteUsers}
             />
+          
           );
         })}
       </div>

@@ -8,9 +8,10 @@ const Product = (props) => {
   return (
     <div className='product' data-testid='card-product' onClick={onClick}>
       <img src={props.image} alt={props.name} />
+      <div className='product-info'>
       <p>{props.name}</p>
       <p>${props.price}</p>
-      <p>{props.type}</p>
+      </div>
     </div>
   );
 };

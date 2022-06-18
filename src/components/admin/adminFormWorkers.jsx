@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form"; // librería para validacion de formu
 import { Alert } from "reactstrap";
 import { Form } from "react-bootstrap";
 import { createUser } from "../../providers/UserProvider";
-import {RiCloseCircleFill} from 'react-icons/ri';
+import { RiCloseCircleFill } from "react-icons/ri";
 
-const AdminFormWorkers = ({id, edit, editUser, userData}) => {
+const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
   const channel = useMemo(() => new BroadcastChannel("user"), []);
   const {
     register,
@@ -14,33 +14,36 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
   } = useForm({ mode: "onBlur", reValidateMode: "onChange" }); // librería validacion form
 
   const [hasError, setHasError] = useState("");
-  const [values, setValues] = useState(userData || {
-    // estado para guardar los datos del formgitulario
-    name: "",
-    email: "",
-    password: "",
-    roles: "",
-  });
+ 
+  const [values, setValues] = useState(
+    userData || {
+      //estado para guardar los datos del formgitulario
+      name: "",
+      email: "",
+      password: "",
+      roles: {},
+    }
+
+  );
   const [message, setMessage] = useState("");
 
-  const user = {
-    name: values.name,
-    email: values.email,
-    password: values.password,
-    roles: values.roles,
-  };
+  // const user = {
+  //   name: values.name,
+  //   email: values.email,
+  //   password: values.password,
+  //   roles: values.roles,
+  // };
 
   const onClickUpdate = () => {
-    editUser(id,values);
+    editUser(id, values);
     edit(false);
-  }
+  };
 
-  
   const startRegister = async (e) => {
     e.preventDefault();
     // funcion para iniciar sesion, (se llama con el handleSumbmit)
     try {
-      await createUser(user).then((response) => {
+      await createUser(values).then((response) => {
         channel.postMessage("registerUser");
         setMessage("Usuario creado correctamente");
       }); // llamada a la funcion login de la api
@@ -54,7 +57,7 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
       name: "",
       email: "",
       password: "",
-      roles: "",
+      roles: {}
     });
   };
 
@@ -62,29 +65,40 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
     return () => channel.close();
   }, [channel]);
 
-  const handleChange = (e) => {
+  const handleInput = (e) => {
     // funcion para guardar los datos del formulario
     const { target } = e;
     const { name, value } = target;
-
-    const newValues = {
-      // nuevo estado con los datos del formulario
+    const newValue = {
       ...values, // estado anterior
       [name]: value, // nuevo valor
     };
-    setValues(newValues); // actualizar el estado
+    
+    setValues(newValue); // actualizar el estado
   };
+
+  const handleChange = (e) => {
+    const newValue = {
+    ...values,
+   roles: { },
+    };
+    newValue.roles[e.target.value] = true;
+    setValues(newValue);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   const style = {
     color: "white",
   };
-
+console.log(values);
   return (
     <div>
       <form noValidate className="form-workers" onSubmit={handleSubmit}>
-      <div className="close-icon">{edit ? (<RiCloseCircleFill  onClick={() => edit(false)} />) : null}</div>
+        <div className="close-icon">
+          {edit ? <RiCloseCircleFill onClick={() => edit(false)} /> : null}
+        </div>
         <div>
           <Form.Label htmlFor="name" visuallyHidden>
             name
@@ -96,7 +110,7 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
             placeholder="Nombre"
             className="name-worker"
             value={values.name}
-            onChange={handleChange} // cuando se cambia el valor del input
+            onChange={handleInput} // cuando se cambia el valor del input
             data-testid="name-worker"
           />
         </div>
@@ -123,7 +137,7 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
                 message: "El formato no es correcto",
               },
             })}
-            onChange={handleChange} // cuando se cambia el valor del input
+            onChange={handleInput} // cuando se cambia el valor del input
             data-testid="email-worker"
           />
           {errors.email && <span style={style}>{errors.email.message}</span>}
@@ -156,7 +170,7 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
                 message: "La contraseña debe tener máximo 12 caracteres",
               },
             })}
-            onChange={handleChange} // cuando se cambia el valor del input
+            onChange={handleInput} // cuando se cambia el valor del input
             data-testid="password-worker"
           />
           {errors.password && (
@@ -165,25 +179,44 @@ const AdminFormWorkers = ({id, edit, editUser, userData}) => {
         </div>
 
         <div>
-          <Form.Label htmlFor="password" visuallyHidden>
+          <Form.Label htmlFor="roles" visuallyHidden>
             roles
           </Form.Label>
-          <input
-            id="roles" // input para el password
-            type="name"
+          <select
+            className="form-select form-select-sm"
+            aria-label=".form-select-sm example"
+            id="roles"
             name="roles"
             placeholder="Rol"
-            className="roles-worker"
-            value={values.roles}
-            onChange={handleChange} // cuando se cambia el valor del input
             data-testid="roles-worker"
-          />
+            // value={values.roles}
+            value={Object.keys(values.roles)[0]}
+            onChange={handleChange}
+          >
+            <option>Rol</option>
+            <option value="admin">Administrador</option>
+            <option value="chef">Chef</option>
+            <option value="waiter">Mesero</option>
+          </select>
         </div>
-{edit ? (<button type="submit" className="btn-register" data-testid='update-worker'onClick={onClickUpdate}>
-          GUARDAR
-        </button>) : (<button type="submit" className="btn-register" onClick={startRegister}>
-          REGISTRAR
-        </button>)}
+        {edit ? (
+          <button
+            type="submit"
+            className="btn-register"
+            data-testid="update-worker"
+            onClick={onClickUpdate}
+          >
+            GUARDAR
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="btn-register"
+            onClick={startRegister}
+          >
+            REGISTRAR
+          </button>
+        )}
         {hasError && (
           <Alert data-testid="register-error-message">{hasError}</Alert>
         )}

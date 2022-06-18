@@ -48,7 +48,10 @@ const AdminWorkers = ({
           </p>
           <p>
             <ImProfile className='icon' />
-            {roles}
+            {Object.keys(roles).map((key) => {
+              return `${roles[key] ? key : ''}`;
+            }
+            )}
           </p>
           </div>
           <div className='buttons-worker'>

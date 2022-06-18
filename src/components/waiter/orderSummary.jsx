@@ -3,6 +3,7 @@ import Productsummary from "./productSummary";
 import "../css/orderSummary.scss";
 import { createOrder } from "../../providers/OrderProducts.js";
 import { Alert } from "reactstrap";
+import Table from "react-bootstrap/Table";
 
 const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);
@@ -72,12 +73,12 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
   return (
     <section className="contain-form-client">
       <form id="form" className="form-client" onSubmit={handleSubmit}>
-        <div>
+        <div className="client">
           <p className="nameClient">CLIENTE</p>
           <input
             type="text"
             name="client"
-            className="client"
+            className="input-client"
             value={values.client}
             required
             onChange={handleChange}
@@ -89,7 +90,7 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
           handleRemoveProduct={handleRemoveProduct}
         />
         <div className="final-summary">
-          <div>TOTAL: {totalPrice}</div>
+          <div>TOTAL: ${totalPrice}</div>
           <button type="submit" data-testid="btn-client" className="btn-client">
             ENVIAR
           </button>

@@ -15,7 +15,9 @@ window.BroadcastChannel = function (){
         "name": "Ana Pérez",
         "email": "anita.borg@systers.xyz",
         "password": "$2a$10$itZyq8s85",
-        "roles": "admin",
+        "roles": {
+          "admin": true
+        },
         "id": 1
       },
  ]
@@ -32,7 +34,7 @@ window.BroadcastChannel = function (){
       const userPassword = screen.getByTestId('password-worker');
       fireEvent.change(userPassword, { target: { value: '$2a$10$itZyq8s85' } });
       const userRoles = screen.getByTestId('roles-worker');
-      fireEvent.change(userRoles, { target: { value: 'admin' } });
+      fireEvent.change(userRoles, { target: { value:  "admin" }});
       const button = screen.getByText('REGISTRAR');
     fireEvent.click(button);
       // let message = await screen.findByText('Pedido enviado');

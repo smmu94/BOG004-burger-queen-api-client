@@ -10,7 +10,9 @@ const getUser = () => {
           email: "anita.borg@systers.xyz",
           password:
             "$2a$10$itZyq8s85.gdN4ynUG567ePfM675smRktiKGgAGSQHwvmXhGNqLSq",
-          roles: "admin",
+            "roles": {
+              "admin": true
+            },
           id: 1,
         },
         {
@@ -18,7 +20,9 @@ const getUser = () => {
           email: "grace.hopper@systers.xyz",
           password:
             "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
-          roles: "admin",
+            "roles": {
+              "admin": true
+            },
           id: 2,
         },
       ],
@@ -33,7 +37,9 @@ const createUser = () => {
         name: "Ana Pérez",
         email: "anita.borg@systers.xyz",
         password: "$2a$10$itZyq8s85",
-        roles: "admin",
+        "roles": {
+          "admin": true
+        },
         id: 1,
       },
     });

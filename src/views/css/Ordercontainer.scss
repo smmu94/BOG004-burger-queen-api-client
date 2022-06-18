@@ -1,17 +1,13 @@
-.order-summary{
-    margin: 5%;
-   display: flex;
-
-
+.order-container{
+    display: flex;
+    flex-direction: row;
 }
 
 
 // Desktop version
 @media (min-width: 1024px) and (max-height: 800px) {
-
 }
 
 // Mobile version
 @media (max-width: 540px) {
-   
 }

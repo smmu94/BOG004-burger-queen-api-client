@@ -1,27 +1,36 @@
 import React from "react";
 import "./css/navBar.scss";
 import { Nav } from "react-bootstrap";
-import { BiLogOut } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import logo_navBar_mobile from "../images/Logo-mobile-view.png";
 import logo_navBar from "../images/Logo-Navbar.png";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useState } from "react";
+import MenuNavBar from "./menuNavBar";
 
-const Navbar = (props) => {
-  const navigate = useNavigate();
-  const logout=()=>{
-    sessionStorage.clear();
-    navigate('/');
-  }
+const Navbar = ({item1, item2, link1, link2}) => {
+  const [menu, setMenu] = useState(false);
+ 
+
+  const handleMenu = () => {
+    setMenu(!menu);
+  };
+
   return (
     <div>
       <Nav className="NavbarItems">
-      <img className="logo-navBar" src={logo_navBar} alt="logo-navBar" />
-        <img className="logo-navBar-mobile" src={logo_navBar_mobile} alt="logo-navBar" />
-        <div className="menu-icon">
-          <NavLink  data-testid='link1' to={props.link1}>{props.item1}</NavLink>
-          <NavLink to={props.link2}>{props.item2}</NavLink>
-          <BiLogOut className="logout" data-testid="logout" onClick={logout} />
-        </div>
+        <img
+          className="logo-navBar-mobile"
+          src={logo_navBar_mobile}
+          alt="logo-navBar"
+        />
+        <img className="logo-navBar" src={logo_navBar} alt="logo-navBar" />
+        <GiHamburgerMenu className="menu-mobile" onClick={handleMenu} />
+        {menu ? (
+          <>
+           <div className="menu-content-mobile"><MenuNavBar item1={item1} item2={item2} link1={link1} link2={link2}/></div> 
+          </>
+        ) : null}
+        <div className="menu-content"><MenuNavBar item1={item1} item2={item2} link1={link1} link2={link2}/> </div>
       </Nav>
     </div>
   );

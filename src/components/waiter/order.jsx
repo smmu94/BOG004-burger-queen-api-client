@@ -40,7 +40,7 @@ const fetchProducts = () => {
 
 
   return (
-    <div className="order" >
+    <section className="order" >
       <h2>MENÚ</h2>
       <Nav className="type-order" >
         <button data-id="breakfast" onClick={()=> setFoodType("Desayuno")}>DESAYUNOS</button>
@@ -63,6 +63,6 @@ const fetchProducts = () => {
         }
       )}
       </div>
-    </div>
+    </section>
   );
 }

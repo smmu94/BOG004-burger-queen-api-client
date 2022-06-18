@@ -38,10 +38,8 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya est√
     <div data-testid='order-view'>
     <Navbar item1="√ìRDENES" item2="PEDIDOS LISTOS" link1="/order" link2="/readyorder" />
     <div className="order-container" data-testid='order-container'>
-      <div className="order-summary">
         <Order handleAddProduct={addProduct}/>
         <Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct} reset={resetProduct}/>
-      </div>
     </div>
     </div>
   );

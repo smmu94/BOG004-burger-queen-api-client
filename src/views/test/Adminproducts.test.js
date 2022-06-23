@@ -16,11 +16,12 @@ window.BroadcastChannel = function () {
 describe('Adminproducts', () => {
   
   test('muestra los productos (view)', async () => {
+ 
 
     const history = createMemoryHistory();
     render(
       <Router location={history.location} navigator={history}>
-          <AdminproductsView />
+          <AdminproductsView  />
       </Router>
       );
     await waitFor(() => {

@@ -10,13 +10,13 @@ window.BroadcastChannel = function (){
 
 describe("adminWorkers", () => {
     test("it renders the AdminWorkers", () => {
-      render(<AdminWorkers />);
+      render(<AdminWorkers roles={{admin: true}}  />);
       expect(screen.getByTestId("admin-worker")).toBeInTheDocument();
     });
  
     test("Testing edit of AdminWorkers component", () => {
       // const onClick = jest.fn();
-      render(<AdminWorkers  />);
+      render(<AdminWorkers roles={{admin: true}}  />);
       const editIcon = screen.getByTestId("edit-worker");
       fireEvent.click(editIcon);
       expect(screen.getByTestId('admin-form-workers')).toBeInTheDocument();
@@ -24,7 +24,8 @@ describe("adminWorkers", () => {
     });
     test("Testing delete of AdminWorkers component", () => {
       const onClick = jest.fn();
-      render(<AdminWorkers  deleteUsers={onClick} />);
+      
+      render(<AdminWorkers  deleteUsers={onClick} roles={{admin: true}} />);
       const deleteIcon = screen.getByTestId("delete-worker");
       fireEvent.click(deleteIcon);
       

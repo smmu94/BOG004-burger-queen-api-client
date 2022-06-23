@@ -50,3 +50,23 @@ test("allows the user to login successfully", async() => {
   expect(history.location.pathname).toBe("/order");
   });
 });
+test("allows the user to admin successfully", async() => {
+
+  const history = createMemoryHistory();
+  render(
+    <Router location={history.location} navigator={history}>
+      <Login />
+    </Router>
+  );
+  const email = screen.getByPlaceholderText("Usuario");
+
+  fireEvent.change(email, { target: { value: "anita.borg@systers.xyz" } });
+
+  const password = screen.getByPlaceholderText("Contraseña");
+  fireEvent.change(password, { target: { value: "123456" } });
+  const button = screen.getByText("INICIAR SESIÓN");
+  fireEvent.click(button);
+  await waitFor(() => {
+  expect(history.location.pathname).toBe("/admin");
+  });
+});

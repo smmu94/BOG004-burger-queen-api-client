@@ -25,6 +25,7 @@ describe('Adminworkers', () => {
       );
     await waitFor(() => {
       const cards = screen.getAllByTestId('admin-worker');
+      console.log('cards', cards)
       expect(cards.length).toBe(2);
     });
   });

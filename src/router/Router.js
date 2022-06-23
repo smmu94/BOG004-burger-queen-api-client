@@ -18,9 +18,7 @@ const Routercomponent = () => {
           </ProtectedRoute>
         }
       />
-{/* 
-      <Route index element={<Logincontainer />} />
-      <Route path='/' element={<Logincontainer />} /> */}
+
 
       <Route
         path='/order'

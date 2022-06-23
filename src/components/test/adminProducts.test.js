@@ -8,6 +8,8 @@ window.BroadcastChannel = function (){
   this.postMessage= jest.fn()
 }
 
+
+
 describe("adminProducts", () => {
     test("it renders the Adminproduct", () => {
       render(<AdminProduct />);
@@ -19,7 +21,7 @@ describe("adminProducts", () => {
       expect(screen.getByRole("img")).toBeInTheDocument();
     });
   
-    test("Testing product component", () => {
+    test("Testing edit component", () => {
       // const onClick = jest.fn();
       render(<AdminProduct  />);
       const editIcon = screen.getByTestId("edit-product");

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getToken } from './UserProvider';
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = process.env.REACT_APP_API_URL;;
 
 const products = () => {
 

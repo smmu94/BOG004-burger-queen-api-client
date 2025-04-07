@@ -1,21 +1,18 @@
-import "@testing-library/jest-dom";
 import { render, waitFor, screen } from "@testing-library/react";
 import Order from "../waiter/order";
 
 // import axios from 'axios';
 
- jest.mock('../../providers/OrderProducts.js');
+jest.mock("../../providers/OrderProducts.js");
 
- window.BroadcastChannel = function (){ 
-  this.name= ""; 
-  this.close= jest.fn(); 
-  this.postMessage= jest.fn()
+window.BroadcastChannel = function () {
+  this.name = "";
+  this.close = jest.fn();
+  this.postMessage = jest.fn();
   this.addEventListener = jest.fn();
-}
-
+};
 
 describe("Order test", () => {
-
   test("muestra los productos", async () => {
     render(<Order />);
     await waitFor(() => {

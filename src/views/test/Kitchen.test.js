@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import Kitchen from "../Kitchen";
 import { Router } from "react-router-dom";

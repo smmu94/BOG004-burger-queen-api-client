@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import Adminworkers from '../Adminworkers';
 import { Router } from "react-router-dom";
@@ -25,7 +24,6 @@ describe('Adminworkers', () => {
       );
     await waitFor(() => {
       const cards = screen.getAllByTestId('admin-worker');
-      console.log('cards', cards)
       expect(cards.length).toBe(2);
     });
   });

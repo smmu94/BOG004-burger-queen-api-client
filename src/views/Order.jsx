@@ -3,6 +3,7 @@ import Order from "../components/waiter/order.jsx";
 import Ordersummary from "../components/waiter/orderSummary";
 import Navbar from "../components/navBar.jsx";
 import { useState } from "react";
+import { routes } from "../utils/constants.js";
 
 const  Ordercontainer = () =>{
   const [summaryProducts, setSummaryProducts] = useState([]); //array de objetos
@@ -36,7 +37,7 @@ if(newSummaryProducts.find(p => p.id === product.id)){ // si el producto ya est�
 
   return (
     <div data-testid='order-view'>
-    <Navbar item1="ÓRDENES" item2="PEDIDOS LISTOS" link1="/order" link2="/readyorder" />
+    <Navbar item1="ÓRDENES" item2="PEDIDOS LISTOS" link1={routes.order} link2={routes.readyOrder} />
     <div className="order-container" data-testid='order-container'>
         <Order handleAddProduct={addProduct}/>
         <Ordersummary  productList={summaryProducts} handleRemoveProduct={removeProduct} reset={resetProduct}/>

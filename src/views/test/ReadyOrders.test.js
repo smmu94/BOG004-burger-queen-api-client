@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
 import Readyorders from "../ReadyOrders";
 import { Router } from "react-router-dom";

@@ -2,12 +2,13 @@ import React from "react";
 import "./css/navBar.scss";
 import { BiLogOut } from "react-icons/bi";
 import { useNavigate, NavLink } from "react-router-dom";
+import {routes} from "../utils/constants";
 
 const MenuNavBar = (props) => {
   const navigate = useNavigate();
   const logout = () => {
     sessionStorage.clear();
-    navigate("/");
+    navigate(routes.home);
   };
   return (
     <>

@@ -92,7 +92,7 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
   const style = {
     color: "white",
   };
-console.log(values);
+
   return (
     <div>
       <form noValidate className="form-workers" onSubmit={handleSubmit}>

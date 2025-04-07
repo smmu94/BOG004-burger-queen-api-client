@@ -4,7 +4,7 @@ import AdminFormProducts from "../components/admin/adminFormProducts.jsx";
 import AdminProducts from "../components/admin/adminProducts.jsx";
 import { useState, useEffect, useMemo } from "react";
 import { products, deleteProduct, updateProduct } from "../providers/OrderProducts";
-
+import { routes } from "../utils/constants.js";
 
 const AdminproductsView = () => {
   const [product, setProduct] = useState([]);
@@ -46,8 +46,8 @@ const AdminproductsView = () => {
       <Navbar
         item1="EMPLEADOS"
         item2="PRODUCTOS"
-        link1="/admin"
-        link2="/admin-products"
+        link1={routes.admin}
+        link2={routes.adminProducts}
       />
       <div className="products">
         <div className="container-form">

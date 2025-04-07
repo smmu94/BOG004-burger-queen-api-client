@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Login from "../Login";
 import { Router } from "react-router-dom";
@@ -12,6 +11,7 @@ describe("Login", () => {
         <Login />
       </Router>
     );
-    expect(screen.getByRole("img")).toBeInTheDocument();
+    const image = screen.getByTestId("logo-burger");
+    expect(image).toBeInTheDocument();
   });
 });

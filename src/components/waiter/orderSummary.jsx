@@ -3,7 +3,6 @@ import Productsummary from "./productSummary";
 import "../css/orderSummary.scss";
 import { createOrder } from "../../providers/OrderProducts.js";
 import { Alert } from "reactstrap";
-import Table from "react-bootstrap/Table";
 
 const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);

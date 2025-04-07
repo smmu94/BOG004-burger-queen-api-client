@@ -1,8 +1,8 @@
-import "@testing-library/jest-dom";
 import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import Navbar from "../navBar";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import { routes } from "../../utils/constants";
 
 describe("navBar", () => {
   beforeEach(() => {
@@ -22,17 +22,19 @@ describe("navBar", () => {
     const history = createMemoryHistory();
     render(
       <Router location={history.location} navigator={history}>
-        <Navbar  item1="EMPLEADOS"
-        item2="PRODUCTOS"
-        link1="/admin"
-        link2="/admin-products" />
+        <Navbar
+          item1="EMPLEADOS"
+          item2="PRODUCTOS"
+          link1={routes.admin}
+          link2={routes.adminProducts}
+        />
       </Router>
     );
     const logOutIcon = screen.getByTestId("logout");
     fireEvent.click(logOutIcon);
 
     await waitFor(() => {
-      expect(history.location.pathname).toBe("/");
+      expect(history.location.pathname).toBe(routes.home);
     });
   });
 });

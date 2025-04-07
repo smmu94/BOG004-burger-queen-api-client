@@ -4,6 +4,7 @@ import AdminFormWorkers from "../components/admin/adminFormWorkers.jsx";
 import AdminWorkers from "../components/admin/adminWorkers.jsx";
 import { useState, useEffect, useMemo } from "react";
 import { getUser, deleteUser, updateUser } from "../providers/UserProvider";
+import { routes } from "../utils/constants.js";
 
 const Admincontainer = () => {
   const [users, setUsers] = useState([]);
@@ -14,7 +15,6 @@ const fetchUsers =() => {
     getUser()
       .then((response) => {
         setUsers(response.data); // actualizamos el estado
-        console.log(response.data);
       })
       .catch(() => {});
     }
@@ -48,8 +48,8 @@ const fetchUsers =() => {
       <Navbar
         item1="EMPLEADOS"
         item2="PRODUCTOS"
-        link1="/admin"
-        link2="/admin-products"
+        link1={routes.admin}
+        link2={routes.adminProducts}
       />
       <div className="workers">
       <div className="container-worker">

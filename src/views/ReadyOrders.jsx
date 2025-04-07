@@ -5,6 +5,7 @@ import { getOrder, updateOrder } from "../providers/OrderProducts.js";
 import ReadyOrder from "../components/waiter/readyOrder/readyOrder";
 import DeliveredOrder from "../components/waiter/readyOrder/deliveredOrder";
 import Table from "react-bootstrap/Table";
+import { routes } from "../utils/constants.js";
 
 const Readyorders = () => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);
@@ -60,8 +61,8 @@ const Readyorders = () => {
       <Navbar
         item1="ÓRDENES"
         item2="PEDIDOS LISTOS"
-        link1="/order"
-        link2="/readyorder"
+        link1={routes.order}
+        link2={routes.readyOrder}
       />
       <section className="containerReady">
         <section className="readyOrders">

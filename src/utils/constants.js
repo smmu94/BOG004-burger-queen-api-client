@@ -9,6 +9,6 @@ export const routes = {
     admin: "/admin",
     adminProducts: "/admin-products",
     order: "/order",
-    readyOrderr: "/readyOrder",
+    readyOrder: "/readyOrder",
     kitchen: "/kitchen",
 };

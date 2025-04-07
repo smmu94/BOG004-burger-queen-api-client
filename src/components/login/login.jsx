@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { Alert } from "reactstrap";
 import { Form } from "react-bootstrap";
 import { loginError, tags, formValidation } from "./constants";
-import { routes } from "../../utils/constants";
+import { roles, routes } from "../../utils/constants";
 
 const Login = () => {
   const {
@@ -30,10 +30,10 @@ const Login = () => {
       const user = users.data.find((user) => user.email === values.email);
 
       switch (Object.keys(user.roles)[0]) {
-        case "admin":
+        case roles.admin:
           navigate(routes.admin);
           break;
-        case "waiter":
+        case roles.waiter:
           navigate(routes.order);
           break;
         default:

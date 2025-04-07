@@ -1,28 +1,30 @@
-import { Navigate } from 'react-router-dom';
-// import Logincontainer from "../views/Login";
-import { getUserData } from '../providers/UserProvider';
+import { Navigate } from "react-router-dom";
+import { getUserData } from "../providers/UserProvider";
+import { routes, roles } from "../utils/constants";
+
+const accessMap = {
+  [routes.admin]: [roles.admin],
+  [routes.adminProducts]: [roles.admin],
+  [routes.order]: [roles.waiter],
+  [routes.readyOrder]: [roles.waiter],
+  [routes.kitchen]: [roles.chef],
+};
 
 const ProtectedRoute = ({ target, children }) => {
-  // const navigate = useNavigate();
-  const user = getUserData();
+  const role = Object.keys(getUserData()?.user?.roles || {})[0];
 
-  const accessMap = {
-    '/order': 'waiter',
-    '/kitchen': 'chef',
-    '/admin': 'admin',
-  };
-  if (target === '/' && user) {
-    const newTargetIndex = Object.entries(accessMap).findIndex(
-      (role) => role[1] === Object.keys(user?.user?.roles)[0])
-    const newTarget = Object.keys(accessMap)[newTargetIndex];
-    return <Navigate to={newTarget} replace />;
+  if (target === routes.home && role) {
+    const redirect =
+      Object.entries(accessMap).find(([_, roles]) =>
+        roles.includes(role)
+      )?.[0] || routes.home;
+    return <Navigate to={redirect} replace />;
   }
-  if (accessMap[target] && !accessMap[target].includes(Object.keys(user?.user?.roles)[0])) {
-    return <Navigate to={'/'} replace />;
-  
+
+  if (accessMap[target] && !accessMap[target].includes(role)) {
+    return <Navigate to={routes.home} replace />;
   }
 
   return children;
 };
-
 export default ProtectedRoute;

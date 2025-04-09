@@ -1,58 +1,50 @@
 .product {
-  display: flex;
-  flex-direction: column;
-  width: 20vw;
-  height: 23vh;
-  margin: 1.5rem 0.7rem 0.5rem;
-  border: 1px solid black;
-  background: #fa625146;
-  box-shadow: 0.375rem 0.375rem 0.375rem #505050;
-  border-radius: 1.625rem;
-  img {
-    height: 10vh;
-    width: 15vw;
-    align-self: center;
-    margin: 1.2rem;
-  }
-  .product-info {
-    background: bisque;
-    height: 7vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    p{
-        margin: 0.5rem;
-        font-weight: bold;
-        line-height: 1;
+    display: grid;
+    grid-template-rows: 70% 30%;
+    height: 50vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 1rem;
+  
+    .img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #090E47;
+  
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
     }
-  }
-}
-// Desktop version
-@media (min-width: 1024px) and (max-height: 800px) {
-    .product  {
-        width: 17vw;
-        height: 40vh;
-        img {
-            height: 20vh;
-            width: 12vw;
-        }
-        .product-info {
-            height: 10vh;
-        }
-    }
-}
 
-// Mobile version
-@media (max-width: 540px) {
-    .product  {
-        width: 60vw;
-        height: 40vh;
-        img {
-            height: 20vh;
-            width: auto;
-        }
-        .product-info {
-            height: 10vh;
+    .product-info {
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        justify-content: center;
+        font-size: x-large;
+        font-weight: 600;
+    }
+  }
+
+/* Versión de tablet */
+@media (min-width: 768px) {
+    .product {
+        grid-template-rows: 60% 40%;
+        .product-info{
+            font-size: x-large;
         }
     }
+}
+     
+/* Versión de escritorio */
+@media (min-width: 1024px) {
+  .product {
+    grid-template-rows: 60% 40%;
+    .product-info{
+        font-size: large;
+    }
+}
 }

@@ -5,29 +5,33 @@ import { Nav } from "react-bootstrap";
 import Product from "./product";
 
 export default function Order({ handleAddProduct }) {
-  //handleAddProduct es una funcion que se le pasa como prop desde el container
-  const [productos, setProductos] = useState([]); //a rray de objetos
+  const [productos, setProductos] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [foodType, setFoodType] = useState('Desayuno');
+  const [foodType, setFoodType] = useState("Desayuno");
   const channel = useMemo(() => new BroadcastChannel("product"), []);
-  
-const fetchProducts = () => {
-  products() // llamamos a la función products() que está en el provider
-  .then((response) => {
-    setProductos(response.data); // actualizamos el estado
-  })
-  .catch(() => {});
-}
 
-  useEffect(()=>{
+  const fetchProducts = () => {
+    products()
+      .then((response) => {
+        setProductos(response.data);
+      })
+      .catch(() => { });
+  }
+
+  useEffect(() => {
     fetchProducts();
   }, []);
 
+
   useEffect(() => {
-    
-      setFilteredProducts(productos.filter((p) => p.type === foodType))
-    
-  },[foodType, productos]);
+
+    setFilteredProducts(productos.filter((p) => p.type === foodType))
+
+  }, [foodType, productos]);
+
+  console.log("productos", productos);
+  console.log("filteredProducts", filteredProducts);
+
 
   useEffect(() => {
     channel.addEventListener("message", (event) => {
@@ -38,17 +42,23 @@ const fetchProducts = () => {
     return () => channel.close();
   }, [channel]);
 
-
   return (
     <section className="order" >
-      <h2>MENÚ</h2>
       <Nav className="type-order" >
-        <button data-id="breakfast" onClick={()=> setFoodType("Desayuno")}>DESAYUNOS</button>
-        <button data-id="lunch" onClick={()=> setFoodType("Almuerzo")}>ALMUERZOS</button>
+        {["Desayuno", "Almuerzo"].map((type) => (
+          <button
+            key={type}
+            data-id={type.toLowerCase()}
+            className={`foodType ${foodType === type ? "selected" : ""}`}
+            onClick={() => setFoodType(type)}
+          >
+            {type}
+          </button>
+        ))}
       </Nav>
       <div data-testid="products" className="products">
-      {filteredProducts.map((producto) => {
-        return (
+        {filteredProducts.map((producto) => {
+          return (
             <Product
               key={"ord" + producto.id}
               id={producto.id}
@@ -61,7 +71,7 @@ const fetchProducts = () => {
             />
           );
         }
-      )}
+        )}
       </div>
     </section>
   );

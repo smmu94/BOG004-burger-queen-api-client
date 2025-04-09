@@ -1,16 +1,23 @@
-import '../css/product.scss';
+import "../css/product.scss";
 
 const Product = (props) => {
   const onClick = () => {
-    props.handleAddProduct({name: props.name, price: props.price, id: props.id, type: props.type});
-  }
+    props.handleAddProduct({
+      name: props.name,
+      price: props.price,
+      id: props.id,
+      type: props.type,
+    });
+  };
 
   return (
-    <div className='product' data-testid='card-product' onClick={onClick}>
-      <img src={props.image} alt={props.name} />
-      <div className='product-info'>
-      <p>{props.name}</p>
-      <p>${props.price}</p>
+    <div className="product" data-testid="card-product" onClick={onClick}>
+      <div className="img">
+        <img src={props.image} alt={props.name} />
+      </div>
+      <div className="product-info">
+        <p>{props.name}</p>
+        <p>${props.price}</p>
       </div>
     </div>
   );

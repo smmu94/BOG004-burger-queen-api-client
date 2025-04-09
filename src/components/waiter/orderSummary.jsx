@@ -70,37 +70,35 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
     0
   );
   return (
-    <section className="contain-form-client">
-      <form id="form" className="form-client" onSubmit={handleSubmit}>
-        <div className="client">
-          <p className="nameClient">CLIENTE</p>
-          <input
-            type="text"
-            name="client"
-            className="input-client"
-            value={values.client}
-            required
-            onChange={handleChange}
-            data-testid="input-client"
-          />
-        </div>
-        <Productsummary
-          productList={productList}
-          handleRemoveProduct={handleRemoveProduct}
+    <form id="form" className="form-client" onSubmit={handleSubmit}>
+      <div className="client">
+        <p className="nameClient">Customer Name</p>
+        <input
+          type="text"
+          name="client"
+          className="input-client"
+          value={values.client}
+          required
+          onChange={handleChange}
+          data-testid="input-client"
         />
-        <div className="final-summary">
-          <div>TOTAL: ${totalPrice}</div>
-          <button type="submit" data-testid="btn-client" className="btn-client">
-            ENVIAR
-          </button>
-        </div>
-      </form>
+      </div>
+      <Productsummary
+        productList={productList}
+        handleRemoveProduct={handleRemoveProduct}
+      />
+      <div className="final-summary">
+        <div>Total: ${totalPrice}</div>
+        <button type="submit" data-testid="btn-client" className="btn-client">
+          Send
+        </button>
+      </div>
       {message && (
-            <Alert color="success" data-testid="created-order">
-              {message}
-            </Alert>
-          )}
-    </section>
+        <Alert color="success" data-testid="created-order">
+          {message}
+        </Alert>
+      )}
+    </form>
   );
 };
 

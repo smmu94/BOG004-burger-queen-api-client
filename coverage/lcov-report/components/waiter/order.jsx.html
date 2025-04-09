@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.6% </span>
+                <span class="strong">88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/23</span>
+                <span class='fraction'>22/25</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">78.57% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>10/14</span>
+                <span class='fraction'>11/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">86.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/20</span>
+                <span class='fraction'>19/22</span>
             </div>
         
             
@@ -131,8 +131,17 @@
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,6 +165,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -163,21 +173,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,29 +226,33 @@ import { Nav } from "react-bootstrap";
 import Product from "./product";
 &nbsp;
 export default function Order({ handleAddProduct }) {
-  //handleAddProduct es una funcion que se le pasa como prop desde el container
-  const [productos, setProductos] = useState([]); //a rray de objetos
+  const [productos, setProductos] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [foodType, setFoodType] = useState('Desayuno');
+  const [foodType, setFoodType] = useState("Desayuno");
   const channel = useMemo(() =&gt; new BroadcastChannel("product"), []);
-  
-const fetchProducts = () =&gt; {
-  products() // llamamos a la función products() que está en el provider
-  .then((response) =&gt; {
-    setProductos(response.data); // actualizamos el estado
-  })
-  .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {});
-}
 &nbsp;
-  useEffect(()=&gt;{
+  const fetchProducts = () =&gt; {
+    products()
+      .then((response) =&gt; {
+        setProductos(response.data);
+      })
+      .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; { });
+  }
+&nbsp;
+  useEffect(() =&gt; {
     fetchProducts();
   }, []);
 &nbsp;
+&nbsp;
   useEffect(() =&gt; {
-    
-      setFilteredProducts(productos.filter((p) =&gt; p.type === foodType))
-    
-  },[foodType, productos]);
+&nbsp;
+    setFilteredProducts(productos.filter((p) =&gt; p.type === foodType))
+&nbsp;
+  }, [foodType, productos]);
+&nbsp;
+  console.log("productos", productos);
+  console.log("filteredProducts", filteredProducts);
+&nbsp;
 &nbsp;
   useEffect(() =&gt; {
     channel.addEventListener("message", <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
@@ -239,17 +263,23 @@ const fetchProducts = () =&gt; {
     return () =&gt; channel.close();
   }, [channel]);
 &nbsp;
-&nbsp;
   return (
     &lt;section className="order" &gt;
-      &lt;h2&gt;MENÚ&lt;/h2&gt;
       &lt;Nav className="type-order" &gt;
-        &lt;button data-id="breakfast" onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt; <span class="cstat-no" title="statement not covered" >setFoodType("Desayuno")}</span>&gt;DESAYUNOS&lt;/button&gt;
-        &lt;button data-id="lunch" onClick={<span class="fstat-no" title="function not covered" >()</span>=&gt; <span class="cstat-no" title="statement not covered" >setFoodType("Almuerzo")}</span>&gt;ALMUERZOS&lt;/button&gt;
+        {["Desayuno", "Almuerzo"].map((type) =&gt; (
+          &lt;button
+            key={type}
+            data-id={type.toLowerCase()}
+            className={`foodType ${foodType === type ? "selected" : ""}`}
+            onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setFoodType(type)}</span>
+          &gt;
+            {type}
+          &lt;/button&gt;
+        ))}
       &lt;/Nav&gt;
       &lt;div data-testid="products" className="products"&gt;
-      {filteredProducts.map((producto) =&gt; {
-        return (
+        {filteredProducts.map((producto) =&gt; {
+          return (
             &lt;Product
               key={"ord" + producto.id}
               id={producto.id}
@@ -262,7 +292,7 @@ const fetchProducts = () =&gt; {
             /&gt;
           );
         }
-      )}
+        )}
       &lt;/div&gt;
     &lt;/section&gt;
   );
@@ -274,7 +304,7 @@ const fetchProducts = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-07T16:52:10.763Z
+                at 2025-04-08T06:14:04.702Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

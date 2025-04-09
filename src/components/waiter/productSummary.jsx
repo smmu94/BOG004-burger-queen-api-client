@@ -11,7 +11,7 @@ const Productsummary = ({ productList, handleRemoveProduct }) => {
 
   return (
     <div className="product-summary-wrapper">
-      <Table striped bordered hover className="summary-table">
+      <Table striped bordered hover responsive className="summary-table">
         <thead>
           <tr>
             <th>Quantity</th>

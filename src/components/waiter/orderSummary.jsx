@@ -33,7 +33,7 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
 
     createOrder(oder)
       .then((response) => {
-        setMessage("Orden creada con éxito");
+        setMessage("Order created successfully");
 
         channel.postMessage("createOrder");
       })
@@ -89,15 +89,13 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
       />
       <div className="final-summary">
         <div>Total: ${totalPrice}</div>
+        <Alert color="success" isOpen={!!message} data-testid="created-order">
+          {message}
+        </Alert>
         <button type="submit" data-testid="btn-client" className="btn-client">
           Send
         </button>
       </div>
-      {message && (
-        <Alert color="success" data-testid="created-order">
-          {message}
-        </Alert>
-      )}
     </form>
   );
 };

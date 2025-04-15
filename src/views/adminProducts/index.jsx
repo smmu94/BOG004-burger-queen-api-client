@@ -1,7 +1,7 @@
 import "./Adminproducts.scss";
-import Navbar from "../../components/navBar.jsx";
-import AdminFormProducts from "../../components/admin/adminFormProducts.jsx";
-import AdminProducts from "../../components/admin/adminProducts.jsx";
+import Navbar from "../../components/navBar";
+import AdminFormProducts from "../../components/admin/adminProducts/form";
+import AdminProducts from "../../components/admin/adminProducts";
 import { useState, useEffect, useMemo } from "react";
 import { products, deleteProduct, updateProduct } from "../../providers/OrderProducts.js";
 import { routes } from "../../utils/constants.js";

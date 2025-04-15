@@ -1,5 +1,5 @@
 import "./Kitchencontainer.scss";
-import Navbar from "../../components/navBar.jsx";
+import Navbar from "../../components/navBar";
 import { getOrder } from "../../providers/OrderProducts.js";
 import { useEffect, useState, useMemo } from "react";
 import Kitchen from "../../components/kitchen/kitchen";

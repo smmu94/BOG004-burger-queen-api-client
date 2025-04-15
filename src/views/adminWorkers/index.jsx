@@ -1,7 +1,7 @@
 import "./Adminworkers.scss";
-import Navbar from "../../components/navBar.jsx";
-import AdminFormWorkers from "../../components/admin/adminFormWorkers.jsx";
-import AdminWorkers from "../../components/admin/adminWorkers.jsx";
+import Navbar from "../../components/navBar";
+import AdminFormWorkers from "../../components/admin/adminWorkers/form";
+import AdminWorkers from "../../components/admin/adminWorkers";
 import { useState, useEffect, useMemo } from "react";
 import { getUser, deleteUser, updateUser } from "../../providers/UserProvider";
 import { routes } from "../../utils/constants.js";

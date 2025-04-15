@@ -1,9 +1,9 @@
-import "./css/Ordercontainer.scss";
-import Order from "../components/waiter/order.jsx";
-import Ordersummary from "../components/waiter/orderSummary";
-import Navbar from "../components/navBar.jsx";
+import "./Ordercontainer.scss";
+import Order from "../../components/waiter/order.jsx";
+import Ordersummary from "../../components/waiter/orderSummary.jsx";
+import Navbar from "../../components/navBar.jsx";
 import { useState } from "react";
-import { routes } from "../utils/constants.js";
+import { routes } from "../../utils/constants.js";
 
 const Ordercontainer = () => {
   const [summaryProducts, setSummaryProducts] = useState([]);

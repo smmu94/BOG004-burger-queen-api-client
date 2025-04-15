@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Login from "../Login";
+import Login from ".";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 

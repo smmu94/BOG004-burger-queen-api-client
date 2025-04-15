@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import Readyorders from "../ReadyOrders";
+import Readyorders from ".";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 

@@ -1,31 +1,28 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import Adminworkers from '../Adminworkers';
+import { render, screen, waitFor } from "@testing-library/react";
+import Kitchen from ".";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 
-jest.mock('../../providers/UserProvider.js');
+jest.mock("../../providers/OrderProducts.js");
 
 window.BroadcastChannel = function () {
-  this.name = '';
+  this.name = "";
   this.close = jest.fn();
   this.postMessage = jest.fn();
   this.addEventListener = jest.fn();
 };
- 
-describe('Adminworkers', () => {
-  
-  test('Debería mostrar la lista de empleados', async () => {
 
+describe("Kitchen", () => {
+  test("Debería mostrar las órdenes pendientes", async () => {
     const history = createMemoryHistory();
     render(
       <Router location={history.location} navigator={history}>
-          <Adminworkers />
+        <Kitchen />
       </Router>
-      );
+    );
     await waitFor(() => {
-      const cards = screen.getAllByTestId('admin-worker');
+      const cards = screen.getAllByTestId("container-order");
       expect(cards.length).toBe(2);
     });
   });
 });
-

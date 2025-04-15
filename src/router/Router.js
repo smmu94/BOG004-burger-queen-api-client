@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Logincontainer from "../views/Login";
-import Ordercontainer from "../views/Order";
-import Kitchencontainer from "../views/Kitchen";
-import Readyorders from "../views/ReadyOrders";
-import Admincontainer from "../views/Adminworkers";
-import AdminproductsView from "../views/Adminproducts";
+import Logincontainer from "../views/login";
+import Ordercontainer from "../views/order";
+import Kitchencontainer from "../views/kitchen";
+import Readyorders from "../views/readyOrders";
+import Admincontainer from "../views/adminWorkers";
+import AdminproductsView from "../views/adminProducts";
 import ProtectedRoute from "./ProtectedRoute";
 import { routes } from "../utils/constants";
 

@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import Kitchen from "../Kitchen";
+import Adminworkers from ".";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 
-jest.mock("../../providers/OrderProducts.js");
+jest.mock("../../providers/UserProvider.js");
 
 window.BroadcastChannel = function () {
   this.name = "";
@@ -12,16 +12,16 @@ window.BroadcastChannel = function () {
   this.addEventListener = jest.fn();
 };
 
-describe("Kitchen", () => {
-  test("Debería mostrar las órdenes pendientes", async () => {
+describe("Adminworkers", () => {
+  test("Debería mostrar la lista de empleados", async () => {
     const history = createMemoryHistory();
     render(
       <Router location={history.location} navigator={history}>
-        <Kitchen />
+        <Adminworkers />
       </Router>
     );
     await waitFor(() => {
-      const cards = screen.getAllByTestId("container-order");
+      const cards = screen.getAllByTestId("admin-worker");
       expect(cards.length).toBe(2);
     });
   });

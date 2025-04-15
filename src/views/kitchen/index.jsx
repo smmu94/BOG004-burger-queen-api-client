@@ -1,8 +1,8 @@
-import "./css/Kitchencontainer.scss";
-import Navbar from "../components/navBar.jsx";
-import { getOrder } from "../providers/OrderProducts.js";
+import "./Kitchencontainer.scss";
+import Navbar from "../../components/navBar.jsx";
+import { getOrder } from "../../providers/OrderProducts.js";
 import { useEffect, useState, useMemo } from "react";
-import Kitchen from "../components/kitchen/kitchen";
+import Kitchen from "../../components/kitchen/kitchen";
 
 
 const Kitchencontainer = () => {

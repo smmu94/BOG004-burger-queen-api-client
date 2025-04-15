@@ -1,15 +1,14 @@
-import "./css/Readyorders.scss";
-import Navbar from "../components/navBar.jsx";
+import "./Readyorders.scss";
+import Navbar from "../../components/navBar.jsx";
 import { useEffect, useState, useMemo } from "react";
-import { getOrder, updateOrder } from "../providers/OrderProducts.js";
-import ReadyOrder from "../components/waiter/readyOrder/readyOrder";
-import DeliveredOrder from "../components/waiter/readyOrder/deliveredOrder";
+import { getOrder, updateOrder } from "../../providers/OrderProducts.js";
+import ReadyOrder from "../../components/waiter/readyOrder/readyOrder";
+import DeliveredOrder from "../../components/waiter/readyOrder/deliveredOrder";
 import Table from "react-bootstrap/Table";
-import { routes } from "../utils/constants.js";
+import { routes } from "../../utils/constants.js";
 
 const Readyorders = () => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);
-
   const [rdOrder, setRdOrder] = useState([]); //array de objetos
   const [deliveredOrder, setDeliveredOrder] = useState([]); //array de objetos
 

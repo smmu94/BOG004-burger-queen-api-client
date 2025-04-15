@@ -1,5 +1,5 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import AdminproductsView from '../Adminproducts';
+import AdminproductsView from ".";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 

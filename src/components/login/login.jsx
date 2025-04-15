@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/login.scss";
+import "./login.scss";
 import { login, saveUser, getUser } from "../../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";

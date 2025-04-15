@@ -1,7 +1,7 @@
 import "./Ordercontainer.scss";
-import Order from "../../components/waiter/order.jsx";
-import Ordersummary from "../../components/waiter/orderSummary.jsx";
-import Navbar from "../../components/navBar.jsx";
+import Order from "../../components/waiter/order/order";
+import Ordersummary from "../../components/waiter/order/summary";
+import Navbar from "../../components/navBar";
 import { useState } from "react";
 import { routes } from "../../utils/constants.js";
 

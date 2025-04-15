@@ -1,9 +1,9 @@
 import "./Readyorders.scss";
-import Navbar from "../../components/navBar.jsx";
+import Navbar from "../../components/navBar";
 import { useEffect, useState, useMemo } from "react";
 import { getOrder, updateOrder } from "../../providers/OrderProducts.js";
-import ReadyOrder from "../../components/waiter/readyOrder/readyOrder";
-import DeliveredOrder from "../../components/waiter/readyOrder/deliveredOrder";
+import ReadyOrder from "../../components/waiter/readyOrder/readyOrder/index.jsx";
+import DeliveredOrder from "../../components/waiter/readyOrder/deliveredOrder/index.jsx";
 import Table from "react-bootstrap/Table";
 import { routes } from "../../utils/constants.js";
 

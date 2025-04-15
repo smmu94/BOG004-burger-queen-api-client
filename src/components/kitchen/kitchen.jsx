@@ -1,4 +1,4 @@
-import "../css/kitchen.scss";
+import "./kitchen.scss";
 import { updateOrder } from "../../providers/OrderProducts.js";
 import { useState, useMemo, useEffect } from "react";
 import { Alert } from "reactstrap";

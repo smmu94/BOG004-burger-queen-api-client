@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom";
-import { render, fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Ordersummary from ".";
 
-jest.mock("../../../../providers/OrderProducts.js");
-jest.mock("../../../../providers/UserProvider.js");
+jest.mock("@/providers/OrderProducts.js");
+jest.mock("@/providers/UserProvider.js");
 
 window.BroadcastChannel = function () {
   this.name = "";

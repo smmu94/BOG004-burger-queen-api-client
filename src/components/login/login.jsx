@@ -1,12 +1,12 @@
+import { getUser, login, saveUser } from "@/providers/UserProvider";
+import { roles, routes } from "@/utils/constants";
 import React, { useState } from "react";
-import "./login.scss";
-import { login, saveUser, getUser } from "../../providers/UserProvider";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { Alert } from "reactstrap";
 import { Form } from "react-bootstrap";
-import { loginError, tags, formValidation } from "./constants";
-import { roles, routes } from "../../utils/constants";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "reactstrap";
+import { formValidation, loginError, tags } from "./constants";
+import "./login.scss";
 
 const Login = () => {
   const {

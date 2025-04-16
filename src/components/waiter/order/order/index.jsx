@@ -1,7 +1,7 @@
-import "./order.scss";
-import { useEffect, useState, useMemo } from "react";
-import { products } from "../../../../providers/OrderProducts";
+import { products } from "@/providers/OrderProducts";
+import { useEffect, useMemo, useState } from "react";
 import { Nav } from "react-bootstrap";
+import "./order.scss";
 import Product from "./product";
 
 export default function Order({ handleAddProduct }) {

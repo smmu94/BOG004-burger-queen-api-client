@@ -1,7 +1,7 @@
-import "./kitchen.scss";
-import { updateOrder } from "../../providers/OrderProducts.js";
-import { useState, useMemo, useEffect } from "react";
+import { updateOrder } from "@/providers/OrderProducts.js";
+import { useEffect, useMemo, useState } from "react";
 import { Alert } from "reactstrap";
+import "./kitchen.scss";
 
 const Kitchen = (props) => {
   const [messageTime, setMessageTime] = useState("");

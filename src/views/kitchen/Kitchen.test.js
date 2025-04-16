@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import Kitchen from ".";
-import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
+import Kitchen from ".";
 
-jest.mock("../../providers/OrderProducts.js");
+jest.mock("@/providers/OrderProducts.js");
 
 window.BroadcastChannel = function () {
   this.name = "";

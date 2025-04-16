@@ -1,13 +1,13 @@
-import React from "react";
-import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import Login from "./login";
-import { Router } from "react-router-dom";
+import * as UserProvider from "@/providers/UserProvider";
+import { routes } from "@/utils/constants";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import * as UserProvider from "../../providers/UserProvider";
-import { routes } from "../../utils/constants";
+import React from "react";
+import { Router } from "react-router-dom";
 import { loginError, tags } from "./constants";
+import Login from "./login";
 
-jest.mock("../../providers/UserProvider", () => ({
+jest.mock("@/providers/UserProvider", () => ({
   login: jest.fn(),
   getUser: jest.fn(),
   saveUser: jest.fn(),
@@ -36,9 +36,7 @@ test("it does not allow the user to login successfully", async () => {
 
   await waitFor(() => {
     const errMessage = screen.queryByTestId("login-error-message");
-    expect(errMessage).toHaveTextContent(
-      loginError
-    );
+    expect(errMessage).toHaveTextContent(loginError);
   });
 });
 

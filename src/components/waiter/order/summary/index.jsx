@@ -1,8 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
-import Productsummary from "./summary";
-import "./orderSummary.scss";
-import { createOrder } from "../../../../providers/OrderProducts.js";
+import { createOrder } from "@/providers/OrderProducts.js";
+import { useEffect, useMemo, useState } from "react";
 import { Alert } from "reactstrap";
+import "./orderSummary.scss";
+import Productsummary from "./summary";
 
 const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
   const channel = useMemo(() => new BroadcastChannel("orders"), []);

@@ -1,10 +1,10 @@
-import "./adminFormWorkers.scss";
-import { useState, useEffect, useMemo } from "react";
-import { useForm } from "react-hook-form"; // librería para validacion de formulario
-import { Alert } from "reactstrap";
+import { createUser } from "@/providers/UserProvider";
+import { useEffect, useMemo, useState } from "react";
 import { Form } from "react-bootstrap";
-import { createUser } from "../../../../providers/UserProvider";
+import { useForm } from "react-hook-form"; // librería para validacion de formulario
 import { RiCloseCircleFill } from "react-icons/ri";
+import { Alert } from "reactstrap";
+import "./adminFormWorkers.scss";
 
 const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
   const channel = useMemo(() => new BroadcastChannel("user"), []);

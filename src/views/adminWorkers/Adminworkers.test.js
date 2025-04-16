@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import Adminworkers from ".";
-import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
+import Adminworkers from ".";
 
-jest.mock("../../providers/UserProvider.js");
+jest.mock("@/providers/UserProvider.js");
 
 window.BroadcastChannel = function () {
   this.name = "";

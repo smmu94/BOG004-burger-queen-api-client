@@ -1,8 +1,8 @@
 import React from "react";
-import "../navBar.scss";
 import { BiLogOut } from "react-icons/bi";
-import { useNavigate, NavLink } from "react-router-dom";
-import {routes} from "../../../utils/constants";
+import { NavLink, useNavigate } from "react-router-dom";
+import { routes } from "@/utils/constants";
+import "@components/navBar/navBar.scss";
 
 const MenuNavBar = (props) => {
   const navigate = useNavigate();

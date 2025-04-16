@@ -1,11 +1,10 @@
-import React from "react";
-import "./navBar.scss";
+import logo_navBar_mobile from "@/images/Logo-mobile-view.png";
+import logo_navBar from "@/images/Logo-Navbar.png";
+import React, { useState } from "react";
 import { Nav } from "react-bootstrap";
 import { GiHamburgerMenu } from "react-icons/gi";
-import logo_navBar_mobile from "../../images/Logo-mobile-view.png";
-import logo_navBar from "../../images/Logo-Navbar.png";
-import { useState } from "react";
 import MenuNavBar from "./menuNavbar";
+import "./navBar.scss";
 
 const Navbar = ({item1, item2, link1, link2}) => {
   const [menu, setMenu] = useState(false);

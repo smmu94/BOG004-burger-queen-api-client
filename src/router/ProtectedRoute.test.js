@@ -1,10 +1,10 @@
-import { render, waitFor, screen } from "@testing-library/react";
-import ProtectedRoute from "./ProtectedRoute";
+import { routes } from "@/utils/constants";
+import { render, screen, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { routes } from "../utils/constants";
+import ProtectedRoute from "./ProtectedRoute";
 
-jest.mock("../providers/UserProvider.js");
+jest.mock("@/providers/UserProvider.js");
 
 describe("App", () => {
   test("should render Order page", async () => {

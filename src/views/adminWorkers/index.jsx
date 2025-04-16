@@ -1,10 +1,10 @@
+import AdminWorkers from "@/components/admin/adminWorkers";
+import AdminFormWorkers from "@/components/admin/adminWorkers/form";
+import Navbar from "@/components/navBar";
+import { deleteUser, getUser, updateUser } from "@/providers/UserProvider";
+import { routes } from "@/utils/constants.js";
+import { useEffect, useMemo, useState } from "react";
 import "./Adminworkers.scss";
-import Navbar from "../../components/navBar";
-import AdminFormWorkers from "../../components/admin/adminWorkers/form";
-import AdminWorkers from "../../components/admin/adminWorkers";
-import { useState, useEffect, useMemo } from "react";
-import { getUser, deleteUser, updateUser } from "../../providers/UserProvider";
-import { routes } from "../../utils/constants.js";
 
 const Admincontainer = () => {
   const [users, setUsers] = useState([]);

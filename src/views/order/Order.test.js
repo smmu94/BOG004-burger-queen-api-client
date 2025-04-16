@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Ordercontainer from ".";
-import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
+import { Router } from "react-router-dom";
+import Ordercontainer from ".";
 
-jest.mock("../../providers/UserProvider.js");
+jest.mock("@/providers/UserProvider.js");
 
 window.BroadcastChannel = function () {
   this.name = "";

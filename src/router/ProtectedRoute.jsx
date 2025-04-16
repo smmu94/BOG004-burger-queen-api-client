@@ -1,6 +1,6 @@
+import { getUserData } from "@/providers/UserProvider";
+import { roles, routes } from "@/utils/constants";
 import { Navigate } from "react-router-dom";
-import { getUserData } from "../providers/UserProvider";
-import { routes, roles } from "../utils/constants";
 
 const accessMap = {
   [routes.admin]: [roles.admin],

@@ -1,13 +1,11 @@
-import { render, waitFor, screen, fireEvent } from "@testing-library/react";
-import Navbar from "../navBar";
-import { Router } from "react-router-dom";
+import { routes } from "@/utils/constants";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import { routes } from "../../utils/constants";
+import { Router } from "react-router-dom";
+import Navbar from ".";
 
 describe("navBar", () => {
   beforeEach(() => {
-    // window.sessionStorage = { setItem: jest.fn() };
-    // window.JSON2 = { stringify: jest.fn()};
     const user = {
       name: "Ana Pérez",
       email: "anita.borg@systers.xyz",

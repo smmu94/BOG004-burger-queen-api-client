@@ -19,7 +19,6 @@ describe("adminProducts", () => {
   });
 
   test("Testing edit component", () => {
-    // const onClick = jest.fn();
     render(<AdminProduct />);
     const editIcon = screen.getByTestId("edit-product");
     fireEvent.click(editIcon);

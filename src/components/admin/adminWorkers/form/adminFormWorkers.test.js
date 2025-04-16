@@ -1,7 +1,7 @@
-import { render, fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import AdminFormWorkers from ".";
 
-jest.mock("../../../../providers/UserProvider.js");
+jest.mock("@/providers/UserProvider.js");
 
 window.BroadcastChannel = function () {
   this.name = "";

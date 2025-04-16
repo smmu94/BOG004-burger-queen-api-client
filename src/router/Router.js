@@ -1,12 +1,12 @@
-import { Routes, Route } from "react-router-dom";
-import Logincontainer from "../views/login";
-import Ordercontainer from "../views/order";
-import Kitchencontainer from "../views/kitchen";
-import Readyorders from "../views/readyOrders";
-import Admincontainer from "../views/adminWorkers";
-import AdminproductsView from "../views/adminProducts";
+import { routes } from "@/utils/constants";
+import AdminproductsView from "@/views/adminProducts";
+import Admincontainer from "@/views/adminWorkers";
+import Kitchencontainer from "@/views/kitchen";
+import Logincontainer from "@/views/login";
+import Ordercontainer from "@/views/order";
+import Readyorders from "@/views/readyOrders";
+import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import { routes } from "../utils/constants";
 
 const Routercomponent = () => {
   return (

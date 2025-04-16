@@ -1,10 +1,10 @@
+import AdminProducts from "@/components/admin/adminProducts";
+import AdminFormProducts from "@/components/admin/adminProducts/form";
+import Navbar from "@/components/navBar";
+import { deleteProduct, products, updateProduct } from "@/providers/OrderProducts.js";
+import { routes } from "@/utils/constants.js";
+import { useEffect, useMemo, useState } from "react";
 import "./Adminproducts.scss";
-import Navbar from "../../components/navBar";
-import AdminFormProducts from "../../components/admin/adminProducts/form";
-import AdminProducts from "../../components/admin/adminProducts";
-import { useState, useEffect, useMemo } from "react";
-import { products, deleteProduct, updateProduct } from "../../providers/OrderProducts.js";
-import { routes } from "../../utils/constants.js";
 
 const AdminproductsView = () => {
   const [product, setProduct] = useState([]);

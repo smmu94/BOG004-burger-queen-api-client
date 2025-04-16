@@ -1,9 +1,9 @@
-import { render, waitFor, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Order from ".";
 
 // import axios from 'axios';
 
-jest.mock("../../../../providers/OrderProducts.js");
+jest.mock("@/providers/OrderProducts.js");
 
 window.BroadcastChannel = function () {
   this.name = "";

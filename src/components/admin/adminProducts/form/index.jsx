@@ -1,7 +1,7 @@
 import "./adminFormProducts.scss";
 import { useState, useEffect, useMemo } from "react";
 import { Alert } from "reactstrap";
-import { createProduct } from "../../../../providers/OrderProducts";
+import { createProduct } from "@/providers/OrderProducts";
 import { RiCloseCircleFill } from "react-icons/ri";
 
 const AdminFormProducts = ({ id, edit, editProducts, productData }) => {

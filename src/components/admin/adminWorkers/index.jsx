@@ -5,7 +5,6 @@ import { ImProfile } from 'react-icons/im';
 import AdminFormWorkers from './form';
 import { GrEdit } from 'react-icons/gr';
 import { useState, useEffect } from 'react';
-// import { updateUser } from "../../providers/UserProvider";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
 const AdminWorkers = ({

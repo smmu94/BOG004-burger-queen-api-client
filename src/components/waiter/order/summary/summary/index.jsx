@@ -1,16 +1,20 @@
-import "./productSummary.scss";
-import { AiOutlineMinusCircle } from "react-icons/ai";
+import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
 import Table from "react-bootstrap/Table";
+import { AiOutlineMinusCircle } from "react-icons/ai";
+import "./productSummary.scss";
+import { placeholderProduct } from "./constants";
 
-const Productsummary = ({ productList, handleRemoveProduct }) => {
-  const isEmpty = productList.length === 0;
+const ProductSummary = () => {
+  const { products, removeProduct } = useCurrentOrderStore();
+  const isEmpty = products.length === 0;
 
-  const productsToRender = isEmpty
-    ? [{ id: "placeholder", quantity: 0, name: "-", price: 0 }]
-    : productList;
+  const displayedProducts = isEmpty ? [placeholderProduct] : products;
+  const handleRemove = (id) => {
+    if (!isEmpty) removeProduct(id);
+  };
 
   return (
-    <div className="product-summary-wrapper">
+    <div className="product-summary-wrapper" data-testid="product-summary">
       <Table striped bordered hover responsive className="summary-table">
         <thead>
           <tr>
@@ -21,20 +25,18 @@ const Productsummary = ({ productList, handleRemoveProduct }) => {
           </tr>
         </thead>
         <tbody data-testid="quantity-product">
-          {productsToRender.map((product) => (
-            <tr className="product-summary" key={"sum" + product.id}>
+          {displayedProducts.map(({ id, quantity, name, price }) => (
+            <tr className="product-summary" key={"sum" + id}>
               <td>
-                <div className="quantity">{product.quantity}</div>
+                <div className="quantity">{quantity}</div>
               </td>
-              <td className="name">{product.name}</td>
-              <td>${product.price}</td>
+              <td className="name">{name}</td>
+              <td>${price}</td>
               <td>
                 <AiOutlineMinusCircle
                   data-testid="subtract"
                   className={`subtract ${isEmpty ? "disabled" : ""}`}
-                  onClick={
-                    isEmpty ? undefined : () => handleRemoveProduct(product.id)
-                  }
+                  onClick={handleRemove(id)}
                 />
               </td>
             </tr>
@@ -45,4 +47,4 @@ const Productsummary = ({ productList, handleRemoveProduct }) => {
   );
 };
 
-export default Productsummary;
+export default ProductSummary;

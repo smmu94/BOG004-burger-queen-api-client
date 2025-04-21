@@ -1,23 +1,20 @@
+import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
 import "./product.scss";
 
-const Product = (props) => {
-  const onClick = () => {
-    props.handleAddProduct({
-      name: props.name,
-      price: props.price,
-      id: props.id,
-      type: props.type,
-    });
+const Product = ({ name, price, id, type, image }) => {
+  const { addProduct } = useCurrentOrderStore();
+  const handleClick = () => {
+    addProduct({ name, price, id, type });
   };
 
   return (
-    <div className="product" data-testid="card-product" onClick={onClick}>
+    <div className="product" data-testid="card-product" onClick={handleClick}>
       <div className="img">
-        <img src={props.image} alt={props.name} />
+        <img src={image} alt={name} />
       </div>
       <div className="product-info">
-        <p>{props.name}</p>
-        <p>${props.price}</p>
+        <p>{name}</p>
+        <p>${price}</p>
       </div>
     </div>
   );

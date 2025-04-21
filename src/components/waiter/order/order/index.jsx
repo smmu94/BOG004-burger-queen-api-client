@@ -1,77 +1,48 @@
-import { products } from "@/providers/OrderProducts";
-import { useEffect, useMemo, useState } from "react";
-import { Nav } from "react-bootstrap";
+import { useProductStore } from "@/store/useProductStore";
+import { useEffect, useState } from "react";
+import { FOODTYPE } from "./constants";
 import "./order.scss";
 import Product from "./product";
 
-export default function Order({ handleAddProduct }) {
-  const [productos, setProductos] = useState([]);
+export default function Order() {
+  const { products, getProducts } = useProductStore();
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [foodType, setFoodType] = useState("Desayuno");
-  const channel = useMemo(() => new BroadcastChannel("product"), []);
-
-  const fetchProducts = () => {
-    products()
-      .then((response) => {
-        setProductos(response.data);
-      })
-      .catch(() => { });
-  }
+  const [foodType, setFoodType] = useState(FOODTYPE.breakFast);
 
   useEffect(() => {
-    fetchProducts();
+    getProducts();
   }, []);
 
-
   useEffect(() => {
-
-    setFilteredProducts(productos.filter((p) => p.type === foodType))
-
-  }, [foodType, productos]);
-
-  console.log("productos", productos);
-  console.log("filteredProducts", filteredProducts);
-
-
-  useEffect(() => {
-    channel.addEventListener("message", (event) => {
-      if (event.data === "registerProduct") {
-        fetchProducts();
-      }
-    });
-    return () => channel.close();
-  }, [channel]);
+    setFilteredProducts(products.filter((p) => p.type === foodType));
+  }, [foodType, products]);
 
   return (
-    <section className="order" >
-      <Nav className="type-order" >
-        {["Desayuno", "Almuerzo"].map((type) => (
+    <section className="order">
+      <div className="type-order">
+        {Object.values(FOODTYPE).map((type) => (
           <button
             key={type}
-            data-id={type.toLowerCase()}
             className={`foodType ${foodType === type ? "selected" : ""}`}
             onClick={() => setFoodType(type)}
           >
             {type}
           </button>
         ))}
-      </Nav>
+      </div>
       <div data-testid="products" className="products">
         {filteredProducts.map((producto) => {
           return (
             <Product
-              key={"ord" + producto.id}
+              key={producto.id}
               id={producto.id}
-              handleAddProduct={handleAddProduct}
               name={producto.name}
               price={producto.price}
               image={producto.image}
               type={producto.type}
-              data-testid="products-product"
             />
           );
-        }
-        )}
+        })}
       </div>
     </section>
   );

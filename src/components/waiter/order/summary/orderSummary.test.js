@@ -1,17 +1,11 @@
-import "@testing-library/jest-dom";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import Ordersummary from ".";
+import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
+import { useOrderStore } from "@/store/useOrderStore";
+import { fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import OrderSummary from ".";
+import { getTotalPrice } from "./utils";
 
-jest.mock("@/providers/OrderProducts.js");
-jest.mock("@/providers/UserProvider.js");
-
-window.BroadcastChannel = function () {
-  this.name = "";
-  this.close = jest.fn();
-  this.postMessage = jest.fn();
-};
-
-const summaryProducts = [
+const mockProductsSummary = [
   {
     id: 2,
     name: "Café americano",
@@ -21,22 +15,79 @@ const summaryProducts = [
   },
 ];
 
-describe("OrderSummary test", () => {
-  test("deberia crear una orden", async () => {
-    render(<Ordersummary productList={summaryProducts} reset={jest.fn()} />);
+jest.mock("@/store/useOrderStore", () => ({
+  useOrderStore: jest.fn(),
+}));
+jest.mock("@/store/useCurrentOrderStore", () => ({
+  useCurrentOrderStore: jest.fn(),
+}));
 
-    const client = screen.getByTestId("input-client");
-    fireEvent.change(client, { target: { value: "Pepe Gonzalez" } });
-    const button = screen.getByText("Send");
-    fireEvent.click(button);
-    // let message = await screen.findByText('Pedido enviado');
-    await waitFor(
-      () => {
-        const message = screen.queryByTestId("created-order");
+describe("OrderSummary", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useCurrentOrderStore.mockReturnValue({
+      products: [],
+      resetProduct: jest.fn(),
+    });
+    useOrderStore.mockReturnValue({
+      createOrder: jest.fn(),
+      message: null,
+      error: null,
+    });
+  });
 
-        expect(message.textContent).toBe("Order created successfully");
-      },
-      { timeout: 3000 }
-    );
+  test("render default", () => {
+    render(<OrderSummary />);
+    const inputClient = screen.getByTestId("input-client");
+    expect(inputClient).toBeInTheDocument();
+    const btnClient = screen.getByTestId("btn-client");
+    expect(btnClient).toBeInTheDocument();
+    const productSummary = screen.getByTestId("product-summary");
+    expect(productSummary).toBeInTheDocument();
+    const finalSummary = screen.getByTestId("final-summary");
+    expect(finalSummary).toBeInTheDocument();
+  });
+  test("should display total price correctly", () => {  
+    useCurrentOrderStore.mockReturnValue({
+      products: mockProductsSummary,
+      resetProduct: jest.fn(),
+      removeProduct: jest.fn(),
+    });
+    render(<OrderSummary />);
+    const totalPrice = getTotalPrice(mockProductsSummary);
+    const totalPriceElement = screen.getByText(`Total: $${totalPrice}`);
+    expect(totalPriceElement).toBeInTheDocument();
+  });
+
+  test("displays success message when order is created successfully", () => {
+    useCurrentOrderStore.mockReturnValue({
+      products: mockProductsSummary,
+      resetProduct: jest.fn(),
+      removeProduct: jest.fn(),
+    });
+    useOrderStore.mockReturnValue({
+      createOrder: jest.fn(),
+      message: "Order created successfully",
+      error: undefined,
+    });
+    render(<OrderSummary />);
+    const alertMessage = screen.getByTestId("alert-message");
+    expect(alertMessage).toHaveTextContent("Order created successfully");
+  });
+
+  test("displays error message when order creation fails", () => {
+    useCurrentOrderStore.mockReturnValue({
+      products: mockProductsSummary,
+      resetProduct: jest.fn(),
+      removeProduct: jest.fn(),
+    });
+    useOrderStore.mockReturnValue({
+      createOrder: jest.fn(),
+      message: undefined,
+      error: "Failed to create order",
+    });
+    render(<OrderSummary />);
+    const alertMessage = screen.getByTestId("alert-error");
+    expect(alertMessage).toHaveTextContent("Failed to create order");
   });
 });

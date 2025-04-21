@@ -1,74 +1,34 @@
-import { createOrder } from "@/providers/OrderProducts.js";
-import { useEffect, useMemo, useState } from "react";
+import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
+import { useOrderStore } from "@/store/useOrderStore";
+import { useState } from "react";
 import { Alert } from "reactstrap";
 import "./orderSummary.scss";
-import Productsummary from "./summary";
+import ProductSummary from "./summary";
+import { getCurrentDate, getTotalPrice } from "./utils";
 
-const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
-  const channel = useMemo(() => new BroadcastChannel("orders"), []);
-
-  const [values, setValues] = useState({
-    client: "",
-  });
-  const [message, setMessage] = useState("");
+const OrderSummary = () => {
+  const { products, resetProduct } = useCurrentOrderStore();
+  const { createOrder, message, error } = useOrderStore();
+  const [client, setClient] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let dateNow = new Date();
-    const oder = {
-      client: values.client,
-      products: productList,
+
+    const order = {
+      client,
+      products,
       status: "pending",
-      dataEntry:
-        dateNow.getFullYear() +
-        "-" +
-        (dateNow.getMonth() + 1) +
-        "-" +
-        dateNow.getDate() +
-        " " +
-        dateNow.getHours() +
-        ":" +
-        dateNow.getMinutes(),
+      dataEntry: getCurrentDate(),
     };
 
-    createOrder(oder)
-      .then((response) => {
-        setMessage("Order created successfully");
-
-        channel.postMessage("createOrder");
-      })
-      .catch(() => {});
-
-    setValues({
-      client: "",
-    });
-
-    reset();
-
-    setTimeout(() => {
-      setMessage(null);
-    }, 1500);
+    createOrder(order);
+    setClient("");
+    resetProduct();
   };
 
-  useEffect(() => {
-    return () => channel.close();
-  }, [channel]);
+  const totalPrice = getTotalPrice(products);
+  console.log(totalPrice);
 
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    const newValues = {
-      ...values,
-      [name]: value,
-    };
-    setValues(newValues);
-  };
-
-  const totalPrice = productList.reduce(
-    (total, product) => total + product.price * product.quantity,
-    0
-  );
   return (
     <form id="form" className="form-client" onSubmit={handleSubmit}>
       <div className="client">
@@ -77,20 +37,21 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
           type="text"
           name="client"
           className="input-client"
-          value={values.client}
+          value={client}
           required
-          onChange={handleChange}
+          onChange={(e) => setClient(e.target.value)}
           data-testid="input-client"
         />
       </div>
-      <Productsummary
-        productList={productList}
-        handleRemoveProduct={handleRemoveProduct}
-      />
-      <div className="final-summary">
+      <ProductSummary />
+      <div className="final-summary" data-testid="final-summary">
         <div>Total: ${totalPrice}</div>
-        <Alert color="success" isOpen={!!message} data-testid="created-order">
-          {message}
+        <Alert
+          color={error ? "danger" : "success"}
+          isOpen={!!(message || error)}
+          data-testid={`alert-${error ? "error" : "message"}`}
+        >
+          {message || error}
         </Alert>
         <button type="submit" data-testid="btn-client" className="btn-client">
           Send
@@ -100,4 +61,4 @@ const Ordersummary = ({ productList, handleRemoveProduct, reset }) => {
   );
 };
 
-export default Ordersummary;
+export default OrderSummary;

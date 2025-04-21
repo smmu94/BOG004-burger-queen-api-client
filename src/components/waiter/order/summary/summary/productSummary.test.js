@@ -1,8 +1,9 @@
-import "@testing-library/jest-dom";
+import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Productsummary from ".";
+import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
 
-const product = {
+const mockProductSummary = {
   name: "Sandwich de jamón y queso",
   price: 1000,
   id: 1,
@@ -10,20 +11,52 @@ const product = {
   quantity: 2,
 };
 
-describe("productSummary test", () => {
-  test("La cantidad de productos agregados deberia disminuir", async () => {
-    const onHandleRemoveProduct = jest.fn();
-    render(
-      <Productsummary
-        productList={[product]}
-        handleRemoveProduct={onHandleRemoveProduct}
-      />
-    );
-    const button = screen.getByTestId("subtract");
-    fireEvent.click(button);
-    await waitFor(() => {
-      expect(button).toBeInTheDocument();
+jest.mock("@/store/useCurrentOrderStore", () => ({
+  useCurrentOrderStore: jest.fn(),
+}));
+
+describe("ProductSummary", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useCurrentOrderStore.mockReturnValue({
+      products: [],
+      addProduct: jest.fn(),
+      removeProduct: jest.fn(),
     });
-    expect(onHandleRemoveProduct).toHaveBeenCalled();
+  });
+  test("renders product summary with placeholder when no products are added", () => {
+    render(<Productsummary />);
+    const quantityProduct = screen.getByTestId("quantity-product");
+    expect(quantityProduct).toBeInTheDocument();
+    expect(quantityProduct).toHaveTextContent("0");
+  });
+  test("renders product summary with added products", () => {
+    useCurrentOrderStore.mockReturnValue({
+      products: [mockProductSummary],
+      addProduct: jest.fn(),
+      removeProduct: jest.fn(),
+    });
+    render(<Productsummary />);
+    const quantityProduct = screen.getByTestId("quantity-product");
+    expect(quantityProduct).toBeInTheDocument();
+    expect(quantityProduct).toHaveTextContent("0");
+    waitFor(() => {
+      expect(quantityProduct).toHaveTextContent(mockProductSummary.quantity);
+      expect(quantityProduct).toHaveTextContent(mockProductSummary.name);
+      expect(quantityProduct).toHaveTextContent(mockProductSummary.price);
+    });
+  });
+  test("calls removeProduct when subtract icon is clicked", () => {
+    useCurrentOrderStore.mockReturnValue({
+      products: [mockProductSummary],
+      addProduct: jest.fn(),
+      removeProduct: jest.fn(),
+    });
+    render(<Productsummary />);
+    const subtractIcon = screen.getByTestId("subtract");
+    fireEvent.click(subtractIcon);
+    expect(useCurrentOrderStore().removeProduct).toHaveBeenCalledWith(
+      mockProductSummary.id
+    );
   });
 });

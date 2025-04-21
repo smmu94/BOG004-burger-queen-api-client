@@ -1,23 +1,46 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import React from "react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import Order from ".";
+import { FOODTYPE } from "./constants";
+import { products } from "@/providers/__mocks__/OrderProducts.js";
+import { useProductStore } from "@/store/useProductStore";
 
-// import axios from 'axios';
+const mockProducts = products.data;
 
-jest.mock("@/providers/OrderProducts.js");
+jest.mock("@/store/useProductStore", () => ({
+  useProductStore: jest.fn(),
+}));
 
-window.BroadcastChannel = function () {
-  this.name = "";
-  this.close = jest.fn();
-  this.postMessage = jest.fn();
-  this.addEventListener = jest.fn();
-};
-
-describe("Order test", () => {
-  test("muestra los productos", async () => {
+describe("Order", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useProductStore.mockReturnValue({
+      getProducts: jest.fn(),
+      products: mockProducts,
+    });
+  });
+  test("it renders the order component", () => {
     render(<Order />);
+    expect(screen.getByRole("button", { name: FOODTYPE.breakFast })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: FOODTYPE.lunch })).toBeInTheDocument();
+    expect(screen.getByTestId("products")).toBeInTheDocument();
+  });
+  test("it renders the products by breakFast type", async () => {
+    render(<Order />);
+    const breakFastButton = screen.getByRole("button", { name: FOODTYPE.breakFast });
+    fireEvent.click(breakFastButton);
     await waitFor(() => {
-      const cards = screen.getAllByTestId("card-product");
-      expect(cards.length).toBe(2);
+      const products = screen.getAllByTestId("card-product");
+      expect(products.length).toBe(2);
+    });
+  });
+  test("it renders the products by lunch type", async () => {
+    render(<Order />);
+    const lunchButton = screen.getByRole("button", { name: FOODTYPE.lunch });
+    fireEvent.click(lunchButton);
+    await waitFor(() => {
+      const products = screen.getAllByTestId("card-product");
+      expect(products.length).toBe(1);
     });
   });
 });

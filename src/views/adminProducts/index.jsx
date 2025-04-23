@@ -2,9 +2,9 @@ import AdminProducts from "@/components/admin/adminProducts";
 import AdminFormProducts from "@/components/admin/adminProducts/form";
 import Navbar from "@/components/navBar";
 import { deleteProduct, products, updateProduct } from "@/providers/OrderProducts.js";
-import { routes } from "@/utils/constants.js";
 import { useEffect, useMemo, useState } from "react";
 import "./Adminproducts.scss";
+import { NAVBAR_ITEMS } from "./constants";
 
 const AdminproductsView = () => {
   const [product, setProduct] = useState([]);
@@ -21,14 +21,14 @@ const AdminproductsView = () => {
     return deleteProduct(id).then(() => {
       fetchProducts();
     });
-  }
-  
-    const editProducts = (id, product) => {
-      return updateProduct(id, product).then(() => {
-        fetchProducts();
-       });    
-    };
-  
+  };
+
+  const editProducts = (id, product) => {
+    return updateProduct(id, product).then(() => {
+      fetchProducts();
+    });
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -43,17 +43,12 @@ const AdminproductsView = () => {
 
   return (
     <div>
-      <Navbar
-        item1="EMPLEADOS"
-        item2="PRODUCTOS"
-        link1={routes.admin}
-        link2={routes.adminProducts}
-      />
+      <Navbar items={NAVBAR_ITEMS} />
       <div className="products">
         <div className="container-form">
-        <div className="admin-products">
-          <AdminFormProducts />
-        </div>
+          <div className="admin-products">
+            <AdminFormProducts />
+          </div>
         </div>
         {product.map((product) => {
           return (

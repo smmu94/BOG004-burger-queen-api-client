@@ -1,45 +1,13 @@
 import Navbar from "@/components/navBar";
 import Order from "@/components/waiter/order/order";
 import Ordersummary from "@/components/waiter/order/summary";
-import { routes } from "@/utils/constants.js";
-import { useState } from "react";
 import "./Ordercontainer.scss";
+import { NAVBAR_ITEMS } from "./constants";
 
 const Ordercontainer = () => {
-  // const [summaryProducts, setSummaryProducts] = useState([]);
-  // const addProduct = (product) => {
-  //   const newSummaryProducts = [...summaryProducts];
-  //   if (summaryProducts.find((p) => p.id === product.id)) {
-  //     newSummaryProducts.find((p) => p.id === product.id).quantity += 1;
-  //   } else {
-  //     newSummaryProducts.push({ ...product, quantity: 1 });
-  //   }
-  //   setSummaryProducts(newSummaryProducts);
-  // };
-  // const removeProduct = (id) => {
-  //   const removeSummaryProducts = [...summaryProducts];
-  //   removeSummaryProducts.find((p) => p.id === id).quantity -= 1;
-  //   if (removeSummaryProducts.find((p) => p.id === id).quantity === 0) {
-  //     removeSummaryProducts.splice(
-  //       removeSummaryProducts.findIndex((p) => p.id === id),
-  //       1
-  //     );
-  //   }
-  //   setSummaryProducts(removeSummaryProducts);
-  // };
-
-  // const resetProduct = () => {
-  //   setSummaryProducts([]);
-  // };
-
   return (
     <div className="order-view" data-testid="order-view">
-      <Navbar
-        item1="ÓRDENES"
-        item2="PEDIDOS LISTOS"
-        link1={routes.order}
-        link2={routes.readyOrder}
-      />
+      <Navbar items={NAVBAR_ITEMS} />
       <div className="order-container" data-testid="order-container">
         <Order />
         <Ordersummary />

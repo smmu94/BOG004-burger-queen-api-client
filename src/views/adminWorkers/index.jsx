@@ -2,60 +2,54 @@ import AdminWorkers from "@/components/admin/adminWorkers";
 import AdminFormWorkers from "@/components/admin/adminWorkers/form";
 import Navbar from "@/components/navBar";
 import { deleteUser, getUser, updateUser } from "@/providers/UserProvider";
-import { routes } from "@/utils/constants.js";
 import { useEffect, useMemo, useState } from "react";
 import "./Adminworkers.scss";
+import { NAVBAR_ITEMS } from "@/views/adminProducts/constants.js";
 
 const Admincontainer = () => {
   const [users, setUsers] = useState([]);
-  const channel = useMemo(()=> new BroadcastChannel('user'), []);
-  
+  const channel = useMemo(() => new BroadcastChannel("user"), []);
 
-const fetchUsers =() => {
+  const fetchUsers = () => {
     getUser()
       .then((response) => {
         setUsers(response.data); // actualizamos el estado
       })
       .catch(() => {});
-    }
+  };
 
-    const editUser = (id, user) => {
-      return updateUser(id, user).then((user) => {
-        fetchUsers();
-       });    
-    }
-    
-    const deleteUsers = (id) => {
-      return deleteUser(id).then((user) => {
-        fetchUsers();
-      });
-    }
-
-    useEffect(() => {
+  const editUser = (id, user) => {
+    return updateUser(id, user).then((user) => {
       fetchUsers();
-    }, []);
-    useEffect(()=>{
-      channel.addEventListener("message",(event) => {
-        if (event.data === "registerUser"){
-          fetchUsers();
-        }
-      });
-      return ()=> channel.close();
-    }, [channel])
- 
+    });
+  };
+
+  const deleteUsers = (id) => {
+    return deleteUser(id).then((user) => {
+      fetchUsers();
+    });
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+  useEffect(() => {
+    channel.addEventListener("message", (event) => {
+      if (event.data === "registerUser") {
+        fetchUsers();
+      }
+    });
+    return () => channel.close();
+  }, [channel]);
+
   return (
     <div>
-      <Navbar
-        item1="EMPLEADOS"
-        item2="PRODUCTOS"
-        link1={routes.admin}
-        link2={routes.adminProducts}
-      />
+      <Navbar items={NAVBAR_ITEMS} />
       <div className="workers">
-      <div className="container-worker">
-        <div className="admin-workers">
-          <AdminFormWorkers />
-        </div>
+        <div className="container-worker">
+          <div className="admin-workers">
+            <AdminFormWorkers />
+          </div>
         </div>
         {users.map((user) => {
           return (
@@ -70,7 +64,6 @@ const fetchUsers =() => {
               editUser={editUser}
               deleteUsers={deleteUsers}
             />
-          
           );
         })}
       </div>

@@ -27,7 +27,6 @@ const OrderSummary = () => {
   };
 
   const totalPrice = getTotalPrice(products);
-  console.log(totalPrice);
 
   return (
     <form id="form" className="form-client" onSubmit={handleSubmit}>

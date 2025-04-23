@@ -1,25 +1,20 @@
+import React from "react";
 import { render, screen } from "@testing-library/react";
-import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
 import Ordercontainer from ".";
 
 jest.mock("@/providers/UserProvider.js");
 
-window.BroadcastChannel = function () {
-  this.name = "";
-  this.close = jest.fn();
-  this.postMessage = jest.fn();
-  this.addEventListener = jest.fn();
-};
+jest.mock("@/components/navBar", () => () => <nav>Navbar Mock</nav>);
+jest.mock("@/components/waiter/order/order", () => () => <div>Order Mock</div>);
+jest.mock("@/components/waiter/order/summary", () => () => <div>Summary Mock</div>);
 
-describe("Order", () => {
-  test("order content should have rendered", () => {
-    const history = createMemoryHistory();
-    render(
-      <Router location={history.location} navigator={history}>
-        <Ordercontainer />
-      </Router>
-    );
+describe("Ordercontainer", () => {
+  test("render default", () => {
+    render(<Ordercontainer />);
     expect(screen.getByTestId("order-view")).toBeInTheDocument();
+    expect(screen.getByTestId("order-container")).toBeInTheDocument();
+    expect(screen.getByText("Navbar Mock")).toBeInTheDocument();
+    expect(screen.getByText("Order Mock")).toBeInTheDocument();
+    expect(screen.getByText("Summary Mock")).toBeInTheDocument();
   });
 });

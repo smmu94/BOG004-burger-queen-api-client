@@ -2,7 +2,7 @@ import Navbar from "@/components/navBar";
 import DeliveredOrder from "@/components/waiter/readyOrder/deliveredOrder/index.jsx";
 import ReadyOrder from "@/components/waiter/readyOrder/readyOrder/index.jsx";
 import { getOrder, updateOrder } from "@/providers/OrderProducts.js";
-import { routes } from "@/utils/constants.js";
+import { NAVBAR_ITEMS } from "@/views/order/constants.js";
 import { useEffect, useMemo, useState } from "react";
 import Table from "react-bootstrap/Table";
 import "./Readyorders.scss";
@@ -57,12 +57,7 @@ const Readyorders = () => {
 
   return (
     <section>
-      <Navbar
-        item1="ÓRDENES"
-        item2="PEDIDOS LISTOS"
-        link1={routes.order}
-        link2={routes.readyOrder}
-      />
+      <Navbar items={NAVBAR_ITEMS} />
       <section className="containerReady">
         <section className="readyOrders">
           {rdOrder

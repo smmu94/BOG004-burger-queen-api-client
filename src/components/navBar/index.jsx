@@ -6,32 +6,25 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import MenuNavBar from "./menuNavbar";
 import "./navBar.scss";
 
-const Navbar = ({item1, item2, link1, link2}) => {
+const Navbar = ({ items }) => {
   const [menu, setMenu] = useState(false);
- 
 
-  const handleMenu = () => {
-    setMenu(!menu);
-  };
+  const handleMenu = () => setMenu(!menu);
 
   return (
-    <div>
-      <Nav className="NavbarItems">
-        <img
-          className="logo-navBar-mobile"
-          src={logo_navBar_mobile}
-          alt="logo-navBar"
-        />
-        <img className="logo-navBar" src={logo_navBar} alt="logo-navBar" />
-        <GiHamburgerMenu className="menu-mobile" onClick={handleMenu} />
-        {menu ? (
-          <>
-           <div className="menu-content-mobile"><MenuNavBar item1={item1} item2={item2} link1={link1} link2={link2}/></div> 
-          </>
-        ) : null}
-        <div className="menu-content"><MenuNavBar item1={item1} item2={item2} link1={link1} link2={link2}/> </div>
-      </Nav>
-    </div>
+    <Nav className="NavbarItems">
+      <img
+        className="logo-navBar-mobile"
+        data-testid="logo-mobile"
+        src={logo_navBar_mobile}
+        alt="logo-navBar"
+      />
+      <img className="logo-navBar" data-testid="logo-desktop" src={logo_navBar} alt="logo-navBar" />
+      <GiHamburgerMenu className="menu-mobile" data-testid="hamburger-menu" onClick={handleMenu} />
+      <div className={`menu-content${menu ? "-mobile" : ""}`}>
+        <MenuNavBar items={items} />
+      </div>
+    </Nav>
   );
 };
 

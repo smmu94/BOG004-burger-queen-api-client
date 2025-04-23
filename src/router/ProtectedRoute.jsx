@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { getUserData } from "@/providers/UserProvider";
 import { roles, routes } from "@/utils/constants";
 import { Navigate } from "react-router-dom";
@@ -12,10 +11,8 @@ const accessMap = {
 };
 
 const ProtectedRoute = ({ target, children }) => {
-  const role = useMemo(() => {
-    const userData = getUserData();
-    return Object.keys(userData?.user?.roles || {})[0];
-  }, []);
+  const userData = getUserData();
+  const role = Object.keys(userData?.user?.roles || {})[0];
 
   if (target === routes.home && role) {
     const redirect =

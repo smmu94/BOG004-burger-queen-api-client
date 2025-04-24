@@ -1,4 +1,4 @@
 export const FOODTYPE = {
-  breakFast: "Breakfast",
-  lunch: "Lunch",
+  breakFast: "Desayuno",
+  lunch: "Almuerzo",
 };

@@ -1,3 +1,4 @@
+import React from 'react';
 import Navbar from "@/components/navBar";
 import Order from "@/components/waiter/order/order";
 import Ordersummary from "@/components/waiter/order/summary";

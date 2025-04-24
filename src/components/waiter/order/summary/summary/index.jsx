@@ -36,7 +36,7 @@ const ProductSummary = () => {
                 <AiOutlineMinusCircle
                   data-testid="subtract"
                   className={`subtract ${isEmpty ? "disabled" : ""}`}
-                  onClick={handleRemove(id)}
+                  onClick={() => handleRemove(id)}
                 />
               </td>
             </tr>

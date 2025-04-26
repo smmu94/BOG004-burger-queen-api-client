@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Alert } from "reactstrap";
 import "./orderSummary.scss";
 import ProductSummary from "./summary";
-import { getCurrentDate, getTotalPrice } from "./utils";
+import { getTotalPrice } from "./utils";
+import { getCurrentDate } from "@/utils/dateTime";
 
 const OrderSummary = () => {
   const { products, resetProduct } = useCurrentOrderStore();

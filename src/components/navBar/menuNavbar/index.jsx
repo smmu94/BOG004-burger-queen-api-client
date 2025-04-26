@@ -1,15 +1,12 @@
 import React from "react";
 import { BiLogOut } from "react-icons/bi";
 import { NavLink, useNavigate } from "react-router-dom";
-import { routes } from "@/utils/constants";
+import { logout } from "@/components/navBar/utils.js";
 import "@/components/navBar/navBar.scss";
 
 const MenuNavBar = ({ items }) => {
   const navigate = useNavigate();
-  const logout = () => {
-    sessionStorage.clear();
-    navigate(routes.home);
-  };
+  const handleLogout = () => logout(navigate);
 
   return (
     <>
@@ -18,7 +15,7 @@ const MenuNavBar = ({ items }) => {
           {label}
         </NavLink>
       ))}
-      <BiLogOut className="logout" data-testid="logout" onClick={logout} />
+      <BiLogOut className="logout" data-testid="logout" onClick={handleLogout} />
     </>
   );
 };

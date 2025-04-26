@@ -1,67 +1,44 @@
-import Kitchen from "@/components/kitchen/kitchen";
+import Kitchen from "@/components/kitchen";
 import Navbar from "@/components/navBar";
-import { getOrder } from "@/providers/OrderProducts.js";
-import { useEffect, useMemo, useState } from "react";
+import { useOrderStore } from "@/store/useOrderStore";
+import React, { useEffect } from "react";
 import "./Kitchencontainer.scss";
 
-
 const Kitchencontainer = () => {
-  const channel = useMemo(()=> new BroadcastChannel('orders'), []);
-  const [order, setOrder] = useState([]); //array de objetos
-
-
-  const resetKitchen = (id) => {
-    const resetKitchenOrder = [...order]; //copia el array}
-    if (resetKitchenOrder.find((p) => p.id === id)) {
-      resetKitchenOrder.splice(
-        resetKitchenOrder.findIndex((p) => p.id === id),
-        1
-      );
-    }
-
-    setOrder(resetKitchenOrder); // actualiza el estado
-  };
-  const fetchOrder =() => {
-    getOrder() // llamamos a la función products() que está en el provider
-      .then((response) => {
-        // cuando la función products() se ejecuta, se ejecuta la función then()
-        setOrder(response.data); // guardamos los datos en el estado
-      })
-      .catch(() => {});
-  }
+  const { orders, getOrders } = useOrderStore();
 
   useEffect(() => {
-    fetchOrder();
+    getOrders();
   }, []);
 
-  useEffect(()=>{
-    channel.addEventListener("message",(event) => {
-      if (event.data === "createOrder"){
-        fetchOrder();
-      }
-    });
-    return ()=> channel.close();
-  }, [channel])
-
+  const sortedOrders = [...orders].sort((a, b) => {
+    if (a.status === b.status) return 0;
+    if (a.status === "pending") return -1;
+    return 1;
+  });
 
   return (
-    <div>
-      <Navbar item1="" item2="" link1="" link2="" />
-      <div className="order-container">
-        {order
-          .filter((o) => o.status === "pending")
-          .map((ord) => {
-            return (
-              <Kitchen
-                key={"order-" + ord.id}
-                id={ord.id}
-                client={ord.client}
-                product={ord.products}
-                dataEntry={ord.dataEntry}
-                resetKitchen={resetKitchen}
-              />
-            );
-          })}
+    <div className="kitchen-view" data-testid="kitchen-view">
+      <Navbar items={[]} />
+      <div className="kitchen-container" data-testid="kitchen-container">
+        {!sortedOrders.length && (
+          <h2 className="no-orders" data-testid="no-orders">
+            There are no orders at the moment. Please wait for new orders to appear.
+          </h2>
+        )}
+        {sortedOrders.map((ord) => {
+          return (
+            <Kitchen
+              key={"order-" + ord.id}
+              id={ord.id}
+              client={ord.client}
+              product={ord.products}
+              status={ord.status}
+              dataEntry={ord.dataEntry}
+              timeOrd={ord.timeOrd}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -20,7 +20,7 @@
     border-radius: 0.5rem;
     border: none;
     font-weight: bold;
-    font-size: x-large;
+    font-size: large;
     &.selected {
       background-color: #CB3234;
       color: white;
@@ -41,7 +41,7 @@
   }
   .products{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
  }

@@ -1,7 +1,7 @@
 .product {
     display: grid;
     grid-template-rows: 70% 30%;
-    height: 50vh;
+    height: 25rem;
     width: 100%;
     overflow: hidden;
     background-color: white;
@@ -25,7 +25,7 @@
         flex-direction: column;
         background-color: white;
         justify-content: center;
-        font-size: x-large;
+        font-size: large;
         font-weight: 600;
     }
   }
@@ -34,9 +34,7 @@
 @media (min-width: 768px) {
     .product {
         grid-template-rows: 60% 40%;
-        .product-info{
-            font-size: x-large;
-        }
+        height: 20rem;
     }
 }
      
@@ -44,8 +42,5 @@
 @media (min-width: 1024px) {
   .product {
     grid-template-rows: 60% 40%;
-    .product-info{
-        font-size: large;
-    }
 }
 }

@@ -1,8 +1,6 @@
 .form-client {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
   background: white;
   border-radius: 1rem;
   padding: 1.5rem;
@@ -16,7 +14,7 @@
   gap: 0.5rem;
   .nameClient {
     text-align: left;
-    font-size: x-large;
+    font-size: large;
     font-weight: 600;
     color:#cb3234
   }
@@ -24,7 +22,7 @@
     border: none;
     border-bottom: #cb3234 solid 0.2rem;
     outline: none;
-    font-size: x-large;
+    font-size: large;
     font-weight: 400;
     text-align: left;
   }
@@ -35,7 +33,7 @@
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
-  font-size: x-large;
+  font-size: large;
   width: 100%;
   .btn-client {
     border-radius: 0.5rem;
@@ -43,8 +41,9 @@
     background: #cb3234;
     padding: 1rem 2rem;
     color: white;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
+    cursor: pointer;
   }
 }
 
@@ -52,6 +51,7 @@
 @media (min-width: 768px){
   .form-client {
     padding: 2rem;
+    height: 30rem;
   }
   .client{
     gap: 0.5rem;
@@ -60,9 +60,6 @@
    
  /* Versión de escritorio */
 @media (min-width: 1024px) {
-  .form-client {
-    max-height: 60vh;
-  }
   .client{
     .nameClient{
       font-size: large;

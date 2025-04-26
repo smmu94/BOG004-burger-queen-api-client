@@ -1,28 +1,50 @@
+import { getOrder as orders } from "@/providers/__mocks__/OrderProducts.js";
+import { useOrderStore } from "@/store/useOrderStore";
 import { render, screen, waitFor } from "@testing-library/react";
-import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
+import React from "react";
 import Kitchen from ".";
 
-jest.mock("@/providers/OrderProducts.js");
+const mockOrders = orders.data;
 
-window.BroadcastChannel = function () {
-  this.name = "";
-  this.close = jest.fn();
-  this.postMessage = jest.fn();
-  this.addEventListener = jest.fn();
-};
+jest.mock("@/store/useOrderStore", () => ({
+  useOrderStore: jest.fn(),
+}));
 
-describe("Kitchen", () => {
-  test("Debería mostrar las órdenes pendientes", async () => {
-    const history = createMemoryHistory();
-    render(
-      <Router location={history.location} navigator={history}>
-        <Kitchen />
-      </Router>
-    );
+jest.mock("@/components/navBar", () => () => <nav>Navbar Mock</nav>);
+
+describe("Kitchencontainer", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useOrderStore.mockReturnValue({
+      getOrders: jest.fn(),
+      orders: mockOrders,
+    });
+  });
+
+  test("render default", () => {
+    render(<Kitchen />);
+    expect(screen.getByTestId("kitchen-view")).toBeInTheDocument();
+    expect(screen.getByText("Navbar Mock")).toBeInTheDocument();
+    expect(screen.getByTestId("kitchen-container")).toBeInTheDocument();
+  });
+
+  test("it renders the orders in the kitchen", async () => {
+    render(<Kitchen />);
     await waitFor(() => {
-      const cards = screen.getAllByTestId("container-order");
-      expect(cards.length).toBe(2);
+      const orders = screen.getAllByTestId("container-order");
+      expect(orders.length).toBe(mockOrders.length);
+    });
+  });
+
+  test("it renders the no orders message", async () => {
+    useOrderStore.mockReturnValue({
+      getOrders: jest.fn(),
+      orders: [],
+    });
+    render(<Kitchen />);
+    await waitFor(() => {
+      expect(screen.getByTestId("no-orders")).toBeInTheDocument();
+      expect(screen.getByText(/There are no orders at the moment/i)).toBeInTheDocument();
     });
   });
 });

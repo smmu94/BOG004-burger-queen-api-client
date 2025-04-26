@@ -1,39 +1,57 @@
-import "@testing-library/jest-dom";
+import { getOrder as orders } from "@/providers/__mocks__/OrderProducts";
+import { useOrderStore } from "@/store/useOrderStore";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import Kitchen from "./kitchen";
+import React from "react";
+import Kitchen from ".";
 
-jest.mock("@/providers/OrderProducts.js");
-window.BroadcastChannel = function () {
-  this.close = jest.fn();
-  this.postMessage = jest.fn();
+const mockOrder = orders.data[0];
+const props = {
+  id: mockOrder.id,
+  client: mockOrder.client,
+  product: mockOrder.products,
+  status: mockOrder.status,
+  dataEntry: mockOrder.dateEntry,
+  timeOrd: mockOrder.timeOrd,
 };
+const mockUpdateOrder = jest.fn();
+jest.mock("@/store/useOrderStore", () => ({
+  useOrderStore: jest.fn(),
+}));
 
-const dataEntry = "2022-6-6 11:1";
-
-const product = [
-  {
-    id: 2,
-    name: "Café americano",
-    price: 500,
-    quantity: 1,
-    type: "Desayuno",
-  },
-];
-const id = 5;
-
-describe("Kitchen test", () => {
-  test("deberia mostrar un mensaje con el tiempo de preparación del pedido", async () => {
-    render(<Kitchen id={id} product={[product]} dataEntry={dataEntry} />);
-
-    const button = screen.getByText("ENVIAR");
-    fireEvent.click(button);
-
-    await waitFor(() => {
-      const message = screen.queryByTestId("delivered-order");
-
-      expect(message.textContent).toBe(
-        "La preparación del pedido tomó 04:27:00 horas"
-      );
+describe("Kitchen", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useOrderStore.mockReturnValue({
+      updateOrder: mockUpdateOrder,
     });
+  });
+
+  test("it renders the order", () => {
+    render(<Kitchen {...props} />);
+    expect(screen.getByTestId("container-order")).toBeInTheDocument();
+  });
+
+  test("it renders the order with delivered status", () => {
+    const timeOrd = "00:10";
+    render(<Kitchen {...props} status="delivered" timeOrd={timeOrd} />);
+    expect(screen.getByTestId("status")).toHaveTextContent("delivered");
+    expect(screen.getByTestId("status")).toHaveClass("bg-success");
+    expect(screen.getByTestId("delivered-order")).toBeInTheDocument();
+    expect(screen.getByText(`The order preparation took ${timeOrd}`)).toBeInTheDocument();
+  });
+
+  test("it renders the order with pending status", () => {
+    render(<Kitchen {...props} status="pending" />);
+    expect(screen.getByTestId("status")).toHaveTextContent("pending");
+    expect(screen.getByTestId("status")).toHaveClass("bg-warning");
+    expect(screen.queryByTestId("delivered-order")).not.toBeInTheDocument();
+    expect(screen.getByTestId("btn-delivered")).toBeInTheDocument();
+  });
+
+  test("it should call updateOrder when clicking on button", async () => {
+    render(<Kitchen {...props} status="pending" />);
+    const btn = screen.getByTestId("btn-delivered");
+    fireEvent.click(btn);
+    await waitFor(() => expect(mockUpdateOrder).toHaveBeenCalledTimes(1));
   });
 });

@@ -56,25 +56,11 @@ th {
 
 /* Versión de tablet */
 @media (min-width: 768px){
-  th {
-    font-size: x-large;
-  }
-  .product-summary {
-    td {
-      font-size: x-large;
-    }
-  }  
+
 }
 
 /* Versión de escritorio */
 @media (min-width: 1024px) {
-  th {
-    font-size: large;
-  }
-  .product-summary {
-    td {
-      font-size: large;
-    }
-  }  
+
 }   
   

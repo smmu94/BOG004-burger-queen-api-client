@@ -14,7 +14,7 @@ const Logincontainer = () => {
           src={burgerCollage}
           alt="burger-collage"
         />
-        <h3 class="slogan">
+        <h3 className="slogan">
           {LOGIN.slogan}
         </h3>
       </div>

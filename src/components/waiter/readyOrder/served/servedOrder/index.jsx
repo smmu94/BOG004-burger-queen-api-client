@@ -1,7 +1,7 @@
-import "./deliveredOrder.scss";
+import "./servedOrder.scss";
 
 
-const DeliveredOrder = ({ client, timeOrd }) => {
+const ServedOrder = ({ client, timeOrd }) => {
   return (
     <tr className="deliveredOrder" data-testid="deliveredOrder">
       <td> <p>{client}</p></td>
@@ -10,4 +10,4 @@ const DeliveredOrder = ({ client, timeOrd }) => {
   );
 };
 
-export default DeliveredOrder;
+export default ServedOrder;

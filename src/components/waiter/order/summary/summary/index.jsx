@@ -15,7 +15,7 @@ const ProductSummary = () => {
 
   return (
     <div className="product-summary-wrapper" data-testid="product-summary">
-      <Table striped bordered hover responsive className="summary-table">
+      <Table className="summary-table">
         <thead>
           <tr>
             <th>Quantity</th>

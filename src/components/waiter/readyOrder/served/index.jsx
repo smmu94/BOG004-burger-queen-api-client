@@ -31,7 +31,7 @@ const Served = () => {
               </button>
             </div>
             <div className="servedOrders-overlay-table">
-              <Table striped bordered responsive>
+              <Table>
                 <thead>
                   <tr className="subtitles-served">
                     <th>Customer</th>

@@ -3,6 +3,7 @@ import Navbar from "@/components/navBar";
 import { useOrderStore } from "@/store/useOrderStore";
 import React, { useEffect } from "react";
 import "./Kitchencontainer.scss";
+import { emptyOrdersMessage } from "./constants";
 
 const Kitchencontainer = () => {
   const { orders, getOrders } = useOrderStore();
@@ -11,7 +12,11 @@ const Kitchencontainer = () => {
     getOrders();
   }, []);
 
-  const sortedOrders = [...orders].sort((a, b) => {
+  const pendingAndDeliveredOrders = orders.filter(
+    (order) => order.status === "pending" || order.status === "delivered"
+  );
+
+  const sortedOrders = [...pendingAndDeliveredOrders].sort((a, b) => {
     if (a.status === b.status) return 0;
     if (a.status === "pending") return -1;
     return 1;
@@ -23,7 +28,7 @@ const Kitchencontainer = () => {
       <div className="kitchen-container" data-testid="kitchen-container">
         {!sortedOrders.length && (
           <h2 className="no-orders" data-testid="no-orders">
-            There are no orders at the moment. Please wait for new orders to appear.
+            {emptyOrdersMessage}
           </h2>
         )}
         {sortedOrders.map((ord) => {

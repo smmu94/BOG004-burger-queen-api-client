@@ -1,9 +1,9 @@
+import React, { useEffect } from "react";
 import Navbar from "@/components/navBar";
 import DeliveredOrders from "@/components/waiter/readyOrder/delivered";
 import ServedOrders from "@/components/waiter/readyOrder/served";
 import { useOrderStore } from "@/store/useOrderStore";
 import { NAVBAR_ITEMS } from "@/views/order/constants.js";
-import React, { useEffect } from "react";
 import "./Readyorders.scss";
 
 const Readyorders = () => {

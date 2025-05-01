@@ -30,7 +30,7 @@ const OrderSummary = () => {
   const totalPrice = getTotalPrice(products);
 
   return (
-    <form id="form" className="form-client" onSubmit={handleSubmit}>
+    <form id="form" className="form-client" onSubmit={handleSubmit} data-testid="order-summary">
       <div className="client">
         <p className="nameClient">Customer Name</p>
         <input

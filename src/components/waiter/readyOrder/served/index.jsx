@@ -15,7 +15,7 @@ const Served = () => {
     <>
       {isMobile && (
         <section className="servedOrders">
-          <div className="servedOrders-header" onClick={() => setExpanded(true)}>
+          <div className="servedOrders-header" onClick={() => setExpanded(true)} data-testid="servedOrders-header">
             <span>Order History</span>
             <span className="toggle-icon">▼</span>
           </div>
@@ -23,7 +23,7 @@ const Served = () => {
       )}
       {(expanded || !isMobile)
         && (
-          <div className="servedOrders-overlay">
+          <div className="servedOrders-overlay" data-testid="servedOrders">
             <div className="servedOrders-overlay-header">
               <span>Order History</span>
               <button className="close-button" onClick={() => setExpanded(false)}>

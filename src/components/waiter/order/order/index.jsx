@@ -18,7 +18,7 @@ export default function Order() {
   }, [foodType, products]);
 
   return (
-    <section className="order">
+    <section className="order" data-testid="order-products">
       <div className="type-order">
         {Object.values(FOODTYPE).map((type) => (
           <button

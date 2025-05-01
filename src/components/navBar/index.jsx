@@ -18,7 +18,6 @@ const Navbar = ({ items }) => {
   const handleLogout = () => logout(navigate);
 
   const user = getUserData();
-  console.log("user", user);
 
   return (
     <Nav className="NavbarItems">

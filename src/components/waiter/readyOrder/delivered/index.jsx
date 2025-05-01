@@ -9,7 +9,7 @@ const Delivered = () => {
   const deliveredOrders = orders.filter((o) => o.status === "delivered");
 
   return (
-    <section className="deliveredOrders">
+    <section className="deliveredOrders" data-testid="deliveredOrders">
       {deliveredOrders.map((ord) => (
         <DeliveredOrder
           key={"dvOrder" + ord.id}

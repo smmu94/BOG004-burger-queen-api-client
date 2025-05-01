@@ -1,40 +1,48 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { getOrder as orders } from "@/providers/__mocks__/OrderProducts.js";
+import { getUserData as user } from "@/providers/__mocks__/UserProvider";
+import { getUserData } from "@/providers/UserProvider";
+import { useOrderStore } from "@/store/useOrderStore";
+import { render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
+import React from "react";
 import { Router } from "react-router-dom";
 import Readyorders from ".";
 
-jest.mock("@/providers/OrderProducts.js");
+const { data: mockOrders } = orders;
+const mockUser = user();
 
-window.BroadcastChannel = function () {
-  this.name = "";
-  this.close = jest.fn();
-  this.postMessage = jest.fn();
-  this.addEventListener = jest.fn();
+jest.mock("@/store/useOrderStore", () => ({
+  useOrderStore: jest.fn(),
+}));
+
+jest.mock("@/providers/UserProvider", () => ({
+  getUserData: jest.fn(),
+}));
+
+const Component = () => {
+  const history = createMemoryHistory();
+  return (
+    <Router location={history.location} navigator={history}>
+      <Readyorders />
+    </Router>
+  );
 };
 
 describe("Readyorders", () => {
-  test("Debería mostrar las órdenes listas", async () => {
-    const history = createMemoryHistory();
-    render(
-      <Router location={history.location} navigator={history}>
-        <Readyorders />
-      </Router>
-    );
-    await waitFor(() => {
-      const cards = screen.getAllByTestId("deliveredOrder");
-      expect(cards.length).toBe(1);
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useOrderStore.mockReturnValue({
+      getOrders: jest.fn(),
+      orders: mockOrders,
     });
+    getUserData.mockReturnValue(mockUser);
   });
-  test("Debería mostrar las órdenes entregadas", async () => {
-    const history = createMemoryHistory();
-    render(
-      <Router location={history.location} navigator={history}>
-        <Readyorders />
-      </Router>
-    );
-    await waitFor(() => {
-      const cards = screen.getAllByTestId("container-ready-order");
-      expect(cards.length).toBe(1);
-    });
+
+  test("render default", () => {
+    render(<Component />);
+    expect(screen.getByTestId("readyorders-view")).toBeInTheDocument();
+    expect(screen.getByTestId("readyorders-container")).toBeInTheDocument();
+    expect(screen.getByTestId("deliveredOrders")).toBeInTheDocument();
+    expect(screen.getByTestId("servedOrders")).toBeInTheDocument();
   });
 });

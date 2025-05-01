@@ -1,4 +1,4 @@
-const products = {
+export const products = {
   data: [
     {
       id: 1,
@@ -27,7 +27,7 @@ const products = {
   ],
 };
 
-const createOrder = {
+export const createOrder = {
   data: [
     {
       client: "Pepe Gonzalez",
@@ -47,7 +47,7 @@ const createOrder = {
   ],
 };
 
-const createProduct = {
+export const createProduct = {
   data: [
     {
       id: 1,
@@ -60,7 +60,7 @@ const createProduct = {
   ],
 };
 
-const updateOrder = {
+export const updateOrder = {
   data: {
     userId: 3,
     client: "Pepe Gonzalez",
@@ -88,7 +88,7 @@ const updateOrder = {
   },
 };
 
-const getOrder = {
+export const getOrder = {
   data: [
     {
       client: "Juana Cruz",
@@ -190,4 +190,3 @@ const getOrder = {
   ],
 };
 
-export { products, createOrder, createProduct, updateOrder, getOrder };

@@ -1,20 +1,45 @@
-import React from 'react';
+import { getUserData } from "@/providers/UserProvider";
+import { products } from "@/providers/__mocks__/OrderProducts.js";
+import { getUserData as user } from "@/providers/__mocks__/UserProvider.js";
 import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from "history";
+import React from "react";
+import { Router } from "react-router-dom";
 import Ordercontainer from ".";
+import { useProductStore } from "@/store/useProductStore";
 
-jest.mock("@/providers/UserProvider.js");
+const mockUser = user();
+jest.mock("@/providers/UserProvider", () => ({
+  getUserData: jest.fn(),
+}));
+const mockProducts = products.data;
+jest.mock("@/store/useProductStore", () => ({
+  useProductStore: jest.fn(),
+}));
 
-jest.mock("@/components/navBar", () => () => <nav>Navbar Mock</nav>);
-jest.mock("@/components/waiter/order/order", () => () => <div>Order Mock</div>);
-jest.mock("@/components/waiter/order/summary", () => () => <div>Summary Mock</div>);
+const Component = () => {
+  const history = createMemoryHistory();
+  return (
+    <Router location={history.location} navigator={history}>
+      <Ordercontainer />
+    </Router>
+  );
+};
 
 describe("Ordercontainer", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    getUserData.mockReturnValue(mockUser);
+    useProductStore.mockReturnValue({
+      getProducts: jest.fn(),
+      products: mockProducts,
+    });
+  });
   test("render default", () => {
-    render(<Ordercontainer />);
+    render(<Component />);
     expect(screen.getByTestId("order-view")).toBeInTheDocument();
     expect(screen.getByTestId("order-container")).toBeInTheDocument();
-    expect(screen.getByText("Navbar Mock")).toBeInTheDocument();
-    expect(screen.getByText("Order Mock")).toBeInTheDocument();
-    expect(screen.getByText("Summary Mock")).toBeInTheDocument();
+    expect(screen.getByTestId("order-products")).toBeInTheDocument();
+    expect(screen.getByTestId("order-summary")).toBeInTheDocument();
   });
 });

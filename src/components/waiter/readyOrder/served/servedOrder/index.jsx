@@ -1,3 +1,4 @@
+import React from "react";
 import "./servedOrder.scss";
 
 const ServedOrder = ({ client, timeOrd }) => {

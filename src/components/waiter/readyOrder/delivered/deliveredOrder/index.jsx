@@ -1,3 +1,4 @@
+import React from "react";
 import { Badge } from "reactstrap";
 import { useOrderStore } from "@/store/useOrderStore";
 import "./deliveredOrder.scss";
@@ -25,14 +26,14 @@ const DeliveredOrder = ({ id, client, product }) => {
       <div className="description-order">
         {product.map((product) => {
           return (
-            <section className="amount-product" key={"order-product-" + product.id}>
+            <section className="amount-product" key={"order-product-" + product.id} data-testid="order-product">
               <div className="amount">{product.quantity}</div>
               <div className="product-name">{product.name}</div>
             </section>
           );
         })}
       </div>
-      <button type="button" className="btn-served" data-testid="btn-served" onClick={handleClick}>
+      <button type="button" className="btn-serve" data-testid="btn-serve" onClick={handleClick}>
         Serve Order
       </button>
     </section>

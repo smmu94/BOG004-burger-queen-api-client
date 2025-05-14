@@ -1,8 +1,8 @@
 .product {
     display: grid;
     grid-template-rows: 70% 30%;
-    height: 25rem;
-    width: 100%;
+    height: auto;
+    width: 22rem;
     overflow: hidden;
     background-color: white;
     border-radius: 1rem;
@@ -25,7 +25,7 @@
         flex-direction: column;
         background-color: white;
         justify-content: center;
-        font-size: large;
+        font-size: medium;
         font-weight: 600;
     }
   }

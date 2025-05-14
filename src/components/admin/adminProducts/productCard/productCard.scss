@@ -1,0 +1,26 @@
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: white;
+    border-radius: 1rem;
+}
+.product-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    gap: 1rem;
+}
+
+.btn-edit, .btn-delete {
+    border-radius: 0.5rem;
+    border: none;
+    background: #cb3234;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    width: fit-content;
+  }

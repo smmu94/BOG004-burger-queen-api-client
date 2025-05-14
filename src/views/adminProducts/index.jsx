@@ -1,72 +1,59 @@
-import AdminProducts from "@/components/admin/adminProducts";
-import AdminFormProducts from "@/components/admin/adminProducts/form";
+import CreateProduct from "@/components/admin/adminProducts/createProduct";
+import ProductCard from "@/components/admin/adminProducts/productCard";
+import DeleteModal from "@/components/admin/deleteModal";
 import Navbar from "@/components/navBar";
-import { deleteProduct, products, updateProduct } from "@/providers/OrderProducts.js";
-import { useEffect, useMemo, useState } from "react";
+import { useProductStore } from "@/store/useProductStore";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import "./Adminproducts.scss";
 import { NAVBAR_ITEMS } from "./constants";
 
 const AdminproductsView = () => {
-  const [product, setProduct] = useState([]);
-  const channel = useMemo(() => new BroadcastChannel("product"), []);
-
-  const fetchProducts = () => {
-    products()
-      .then((response) => {
-        setProduct(response.data); // actualizamos el estado
-      })
-      .catch(() => {});
-  };
-  const deleteProducts = (id) => {
-    return deleteProduct(id).then(() => {
-      fetchProducts();
-    });
-  };
-
-  const editProducts = (id, product) => {
-    return updateProduct(id, product).then(() => {
-      fetchProducts();
-    });
-  };
+  const { products, getProducts, deleteProduct } = useProductStore();
+  const [openModal, setOpenModal] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
 
   useEffect(() => {
-    fetchProducts();
+    getProducts();
   }, []);
-  useEffect(() => {
-    channel.addEventListener("message", (event) => {
-      if (event.data === "registerProduct") {
-        fetchProducts();
-      }
-    });
-    return () => channel.close();
-  }, [channel]);
+
+  const handleDelete = async (product) => {
+    setProductToDelete(product);
+    setOpenModal(true);
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+    setProductToDelete(null);
+  };
+
+  const handleConfirm = () => {
+    deleteProduct(productToDelete.id);
+    setOpenModal(false);
+    setProductToDelete(null);
+  };
 
   return (
-    <div>
+    <section className="admin-products-view" data-testid="admin-products-view">
       <Navbar items={NAVBAR_ITEMS} />
-      <div className="products">
-        <div className="container-form">
-          <div className="admin-products">
-            <AdminFormProducts />
-          </div>
-        </div>
-        {product.map((product) => {
-          return (
-            <AdminProducts
-              key={"products" + product.id}
-              id={product.id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              type={product.type}
-              deleteProducts={deleteProducts}
-              editProducts={editProducts}
-              data-testid="products-product"
+      <div className="admin-products-container" data-testid="admin-products-container">
+        <CreateProduct />
+        <div className="products-inventory" data-testid="products">
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              handleDelete={() => handleDelete(product)}
             />
-          );
-        })}
+          ))}
+        </div>
       </div>
-    </div>
+      {openModal &&
+        createPortal(
+          <DeleteModal onCancel={handleCancel} onConfirm={handleConfirm} />,
+          document.body
+        )}
+    </section>
   );
 };
 

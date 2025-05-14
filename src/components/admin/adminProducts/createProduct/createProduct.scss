@@ -1,0 +1,97 @@
+.create-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: #090e47;
+  border-radius: 1rem;
+  height: auto;
+  width: 22rem;
+  min-width: 22rem
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #090e47;
+
+  input,
+  select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: medium;
+    font-weight: bold;
+    outline: none;
+
+    &.input-error {
+      border: 2px solid #cb3234;
+    }
+    & .options {
+      font-size: medium;
+    }
+  }
+
+  & .defaultValue {
+    color: #808080;
+    font-size: medium;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.with-cancel {
+    gap: 1rem;
+  }
+}
+
+
+.btn-add, .btn-cancel, .btn-update {
+  border-radius: 0.5rem;
+  border: none;
+  background: #cb3234;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  width: fit-content;
+}
+
+.error {
+  font-size: small;
+  color: #cb3234;
+  height: 1rem;
+}
+
+.alerts {
+  min-height: 4rem;
+  & .alert {
+    max-height: fit-content;
+    margin: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .input {
+    input, select {
+      font-size: large;
+    }
+    & .defaultValue {
+      font-size: large;
+    }
+    & .options {
+      font-size: large;
+    }
+  }
+}

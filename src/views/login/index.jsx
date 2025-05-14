@@ -1,3 +1,4 @@
+import React from "react";
 import Login from "@/components/login/login.jsx";
 import logoburger from "@/images/LogoSample4.png";
 import burgerCollage from "@/images/burger_collage.png";

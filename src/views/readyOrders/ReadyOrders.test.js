@@ -1,10 +1,10 @@
+import React from "react";
 import { getOrder as orders } from "@/providers/__mocks__/OrderProducts.js";
 import { getUserData as user } from "@/providers/__mocks__/UserProvider";
 import { getUserData } from "@/providers/UserProvider";
 import { useOrderStore } from "@/store/useOrderStore";
 import { render, screen } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import React from "react";
 import { Router } from "react-router-dom";
 import Readyorders from ".";
 

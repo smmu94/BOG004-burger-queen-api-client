@@ -36,16 +36,6 @@
   font-weight: 600;
   font-size: large;
   width: 100%;
-  .btn-client {
-    border-radius: 0.5rem;
-    border: none;
-    background: #cb3234;
-    padding: 1rem 2rem;
-    color: white;
-    font-size: large;
-    font-weight: bold;
-    cursor: pointer;
-  }
 }
 
 /* Versión de tablet */
@@ -70,9 +60,6 @@
   }
   .final-summary{
     font-size: large;
-    .btn-client{
-      font-size: large;
-    }
   }
 }
 

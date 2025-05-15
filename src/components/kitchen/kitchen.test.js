@@ -1,7 +1,7 @@
+import React from "react";
 import { getOrder as orders } from "@/providers/__mocks__/OrderProducts";
 import { useOrderStore } from "@/store/useOrderStore";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import React from "react";
 import Kitchen from ".";
 
 const mockOrder = orders.data[0];
@@ -45,12 +45,18 @@ describe("Kitchen", () => {
     expect(screen.getByTestId("status")).toHaveTextContent("pending");
     expect(screen.getByTestId("status")).toHaveClass("bg-warning");
     expect(screen.queryByTestId("delivered-order")).not.toBeInTheDocument();
-    expect(screen.getByTestId("btn-delivered")).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", {
+        name: "Send",
+      })
+    ).toBeInTheDocument();
   });
 
   test("it should call updateOrder when clicking on button", async () => {
     render(<Kitchen {...props} status="pending" />);
-    const btn = screen.getByTestId("btn-delivered");
+    const btn = screen.getByRole("button", {
+      name: "Send",
+    });
     fireEvent.click(btn);
     await waitFor(() => expect(mockUpdateOrder).toHaveBeenCalledTimes(1));
   });

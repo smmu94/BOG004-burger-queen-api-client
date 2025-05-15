@@ -1,3 +1,5 @@
+import React from "react";
+import Button from "@/components/button";
 import { useProductStore } from "@/store/useProductStore";
 import { useEffect, useState } from "react";
 import { FOODTYPE } from "./constants";
@@ -21,13 +23,13 @@ export default function Order() {
     <section className="order" data-testid="order-products">
       <div className="type-order">
         {Object.values(FOODTYPE).map((type) => (
-          <button
+          <Button
             key={type}
-            className={`foodType ${foodType === type ? "selected" : ""}`}
+            variant={foodType === type ? "primary" : "secondary"}
             onClick={() => setFoodType(type)}
           >
             {type}
-          </button>
+          </Button>
         ))}
       </div>
       <div data-testid="products" className="products">

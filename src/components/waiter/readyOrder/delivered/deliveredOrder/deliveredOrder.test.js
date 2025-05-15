@@ -1,7 +1,7 @@
-import { render, screen } from "@testing-library/react";
 import React from "react";
-import DeliveredOrder from ".";
 import { useOrderStore } from "@/store/useOrderStore";
+import { render, screen } from "@testing-library/react";
+import DeliveredOrder from ".";
 
 const summaryProducts = [
   {
@@ -24,25 +24,25 @@ jest.mock("@/store/useOrderStore", () => ({
 }));
 
 describe("DeliveredOrder", () => {
-   beforeEach(() => {
-      jest.clearAllMocks();
-      useOrderStore.mockReturnValue({
-        updateOrder: jest.fn(),
-      });
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useOrderStore.mockReturnValue({
+      updateOrder: jest.fn(),
     });
+  });
   test("render default", () => {
     render(<DeliveredOrder {...props} />);
     expect(screen.getByTestId("delivered-order")).toBeInTheDocument();
     expect(screen.getByTestId("status")).toBeInTheDocument();
     expect(screen.getByTestId("status")).toHaveTextContent("delivered");
     expect(screen.getByTestId("order-product")).toBeInTheDocument();
-    expect(screen.getByTestId("order-product")).toHaveTextContent(
-      summaryProducts[0].name
-    );
-    expect(screen.getByTestId("order-product")).toHaveTextContent(
-      summaryProducts[0].quantity
-    );
-    expect(screen.getByTestId("btn-serve")).toBeInTheDocument();
+    expect(screen.getByTestId("order-product")).toHaveTextContent(summaryProducts[0].name);
+    expect(screen.getByTestId("order-product")).toHaveTextContent(summaryProducts[0].quantity);
+    expect(
+      screen.getByRole("button", {
+        name: "Serve Order",
+      })
+    ).toBeInTheDocument();
   });
   test("should call updateOrder when button is clicked", () => {
     const updateOrderMock = jest.fn();
@@ -50,7 +50,9 @@ describe("DeliveredOrder", () => {
       updateOrder: updateOrderMock,
     });
     render(<DeliveredOrder {...props} />);
-    const button = screen.getByTestId("btn-serve");
+    const button = screen.getByRole("button", {
+      name: "Serve Order",
+    });
     button.click();
     expect(updateOrderMock).toHaveBeenCalledWith(props.id, {
       status: "served",

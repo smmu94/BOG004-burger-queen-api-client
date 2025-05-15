@@ -42,13 +42,13 @@ describe("ProductCard", () => {
       setProductToEdit: mockSetProductToEdit,
     });
     render(<ProductCard {...props} />);
-    fireEvent.click(screen.getByTestId("edit-product"));
+    fireEvent.click(screen.getAllByTestId("button")[0]);
     expect(mockSetProductToEdit).toHaveBeenCalledWith(props.product);
   });
   test("calls handleDelete when delete button is clicked", () => {
     const mockHandleDelete = jest.fn();
     render(<ProductCard {...props} handleDelete={mockHandleDelete} />);
-    fireEvent.click(screen.getByTestId("delete-product"));
+    fireEvent.click(screen.getAllByTestId("button")[1]);
     expect(mockHandleDelete).toHaveBeenCalledTimes(1);
   });
 });

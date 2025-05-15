@@ -1,0 +1,80 @@
+.button {
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.size-x-small {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.7rem;
+}
+
+.size-small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.size-medium {
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+}
+
+.size-large {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.3rem;
+}
+
+.variant-primary {
+  background-color: #CB3234;
+  color: white;
+}
+
+.variant-primary:hover {
+  background-color: #B22222;
+}
+
+.variant-primary:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.variant-secondary {
+  background-color: #090E47;
+  color: white;
+}
+
+.variant-secondary:hover {
+  background-color: #070A33;
+}
+
+.variant-secondary:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.variant-transparent {
+  background: transparent;
+  color: inherit;
+}
+
+.variant-transparent:hover {
+  opacity: 0.8;
+}
+
+.variant-transparent:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
 }
-  
+
 .servedOrders-overlay-header {
   display: flex;
   justify-content: space-between;
@@ -39,15 +39,6 @@
   padding: 1rem;
   font-size: larger;
   font-weight: bold;
-
-  .close-button {
-      background: none;
-      color: white;
-      border: none;
-      font-size: larger;
-      cursor: pointer;
-      font-weight: bold;
-  }
 }
   
 .servedOrders-overlay-table {

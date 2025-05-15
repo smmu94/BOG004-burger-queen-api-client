@@ -2,6 +2,7 @@ import React from "react";
 import { Badge } from "reactstrap";
 import { useOrderStore } from "@/store/useOrderStore";
 import "./deliveredOrder.scss";
+import Button from "@/components/button";
 
 const DeliveredOrder = ({ id, client, product }) => {
   const { updateOrder } = useOrderStore();
@@ -33,9 +34,7 @@ const DeliveredOrder = ({ id, client, product }) => {
           );
         })}
       </div>
-      <button type="button" className="btn-serve" data-testid="btn-serve" onClick={handleClick}>
-        Serve Order
-      </button>
+      <Button onClick={handleClick}>Serve Order</Button>
     </section>
   );
 };

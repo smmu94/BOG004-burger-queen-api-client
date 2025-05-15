@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
+import Button from "@/components/button";
 import { useProductStore } from "@/store/useProductStore";
 import { getCurrentDate } from "@/utils/dateTime";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Alert } from "reactstrap";
 import { formValidation } from "./constants";
@@ -111,12 +113,13 @@ const CreateProduct = () => {
               watch("type") === "" ? "defaultValue" : ""
             }`}
             data-testid="product-type"
-            
           >
             <option value="" disabled hidden>
               Select Product Type
             </option>
-            <option className="options" value="Desayuno">Desayuno</option>
+            <option className="options" value="Desayuno">
+              Desayuno
+            </option>
             <option value="Almuerzo">Almuerzo</option>
           </select>
           <span className="error">{errors.type?.message || "\u00A0"}</span>
@@ -135,17 +138,13 @@ const CreateProduct = () => {
         )}
       </div>
       <div className={`actions ${productToEdit ? "with-cancel" : ""}`}>
-        <button
-          type="submit"
-          className={productToEdit ? "btn-update" : "btn-add"}
-          data-testid="submit-button"
-        >
+        <Button type="submit" data-testid="submit-button">
           {productToEdit ? "Update" : "Add"}
-        </button>
+        </Button>
         {productToEdit && (
-          <button type="button" className="btn-cancel" data-testid="cancel-button" onClick={handleCancel}>
+          <Button type="button" data-testid="cancel-button" onClick={handleCancel}>
             Cancel
-          </button>
+          </Button>
         )}
       </div>
     </form>

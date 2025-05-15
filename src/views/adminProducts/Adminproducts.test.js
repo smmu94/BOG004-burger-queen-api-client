@@ -3,7 +3,7 @@ import { products } from "@/providers/__mocks__/OrderProducts.js";
 import { getUserData as user } from "@/providers/__mocks__/UserProvider.js";
 import { getUserData } from "@/providers/UserProvider";
 import { initialStatus, useProductStore } from "@/store/useProductStore";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import AdminproductsView from ".";
@@ -69,13 +69,11 @@ describe("Adminproducts", () => {
       deleteProduct: jest.fn(),
     });
     render(<Component />);
-    await waitFor(() => {
-      const deleteButtons = screen.getAllByTestId("delete-product");
-      expect(deleteButtons.length).toBe(mockProducts.length);
-    });
-    const deleteButtons = screen.getAllByTestId("delete-product");
+    const deleteButton = within(screen.getAllByTestId("product-card")[0]).getAllByTestId(
+      "button"
+    )[1];
     await act(async () => {
-      deleteButtons[0].click();
+      deleteButton.click();
     });
     await waitFor(() => {
       expect(screen.getByTestId("delete-modal")).toBeInTheDocument();
@@ -89,14 +87,18 @@ describe("Adminproducts", () => {
       deleteProduct: jest.fn(),
     });
     render(<Component />);
-    const deleteButtons = screen.getAllByTestId("delete-product");
+    const deleteButton = within(screen.getAllByTestId("product-card")[0]).getAllByTestId(
+      "button"
+    )[1];
     await act(async () => {
-      deleteButtons[0].click();
+      deleteButton.click();
     });
     await waitFor(() => {
       expect(screen.getByTestId("delete-modal")).toBeInTheDocument();
     });
-    const cancelButton = screen.getByTestId("cancel-delete");
+    const cancelButton = within(screen.getByTestId("delete-modal")).getByRole("button", {
+      name: "Cancel",
+    });
     await act(async () => {
       cancelButton.click();
     });
@@ -110,14 +112,18 @@ describe("Adminproducts", () => {
       deleteProduct: jest.fn(),
     });
     render(<Component />);
-    const deleteButtons = screen.getAllByTestId("delete-product");
+    const deleteButton = within(screen.getAllByTestId("product-card")[0]).getAllByTestId(
+      "button"
+    )[1];
     await act(async () => {
-      deleteButtons[0].click();
+      deleteButton.click();
     });
     await waitFor(() => {
       expect(screen.getByTestId("delete-modal")).toBeInTheDocument();
     });
-    const confirmButton = screen.getByTestId("confirm-delete");
+    const confirmButton = within(screen.getByTestId("delete-modal")).getByRole("button", {
+      name: "Confirm",
+    });
     await act(async () => {
       confirmButton.click();
     });

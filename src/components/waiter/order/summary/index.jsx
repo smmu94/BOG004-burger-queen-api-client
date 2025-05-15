@@ -1,11 +1,13 @@
+import React from "react";
+import Button from "@/components/button";
 import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
 import { useOrderStore } from "@/store/useOrderStore";
+import { getCurrentDate } from "@/utils/dateTime";
 import { useState } from "react";
 import { Alert } from "reactstrap";
 import "./orderSummary.scss";
 import ProductSummary from "./summary";
 import { getTotalPrice } from "./utils";
-import { getCurrentDate } from "@/utils/dateTime";
 
 const OrderSummary = () => {
   const { products, resetProduct } = useCurrentOrderStore();
@@ -53,9 +55,9 @@ const OrderSummary = () => {
         >
           {message || error}
         </Alert>
-        <button type="submit" data-testid="btn-client" className="btn-client">
+        <Button type="submit" size="medium">
           Send
-        </button>
+        </Button>
       </div>
     </form>
   );

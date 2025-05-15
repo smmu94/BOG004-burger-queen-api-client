@@ -1,6 +1,8 @@
+import React from "react";
+import Button from "@/components/button";
 import { getUser, login, saveUser } from "@/providers/UserProvider";
 import { roles, routes } from "@/utils/constants";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -67,7 +69,7 @@ const Login = () => {
             {...register("email", {
               required: {
                 value: true,
-                message: formValidation.email.required,  
+                message: formValidation.email.required,
               },
               pattern: {
                 value: formValidation.email.pattern.value,
@@ -101,9 +103,7 @@ const Login = () => {
           <span className="error">{errors.password?.message || "\u00A0"}</span>
         </div>
       </div>
-      <button type="submit" className="btn-login">
-        {tags.loginBtn}
-      </button>
+      <Button type="submit" size="large">{tags.loginBtn}</Button>
       <div className="alert-error">
         <Alert
           color="danger"

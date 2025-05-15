@@ -29,7 +29,9 @@ describe("CreateProduct", () => {
     expect(screen.getByTestId("product-price")).toBeInTheDocument();
     expect(screen.getByTestId("product-type")).toBeInTheDocument();
     expect(screen.getByTestId("product-image")).toBeInTheDocument();
-    expect(screen.getByTestId("submit-button")).toBeInTheDocument();
+    expect(screen.getByRole("button", {
+      name: "Add"
+    })).toBeInTheDocument();
   });
   test("should submit form with valid data", async () => {
     const mockAddProduct = jest.fn();
@@ -59,7 +61,9 @@ describe("CreateProduct", () => {
     fireEvent.change(productTypeInput, { target: { name: "type", value: product.type } });
     const productImageInput = screen.getByTestId("product-image");
     fireEvent.change(productImageInput, { target: { name: "imageUrl", value: product.image } });
-    const submitButton = screen.getByTestId("submit-button");
+    const submitButton = screen.getByRole("button", {
+      name: "Add"
+    });
     fireEvent.submit(submitButton);
     await waitFor(() => {
       expect(mockAddProduct).toHaveBeenCalledWith({
@@ -82,7 +86,9 @@ describe("CreateProduct", () => {
       setProductToEdit: jest.fn(),
     });
     render(<CreateProduct />);
-    const submitButton = screen.getByTestId("submit-button");
+    const submitButton = screen.getByRole("button", {
+      name: "Add"
+    });
     fireEvent.click(submitButton);
     await waitFor(() => {
       expect(screen.getByText(formValidation.productName.required)).toBeInTheDocument();
@@ -105,7 +111,9 @@ describe("CreateProduct", () => {
     fireEvent.change(productPriceInput, { target: { name: "productPrice", value: 0 } });
     const productImageInput = screen.getByTestId("product-image");
     fireEvent.change(productImageInput, { target: { name: "imageUrl", value: "invalid-url" } });
-    const submitButton = screen.getByTestId("submit-button");
+    const submitButton = screen.getByRole("button", {
+      name: "Add"
+    });
     fireEvent.submit(submitButton);
     await waitFor(() => {
       expect(screen.getByText(formValidation.productName.minLength.message)).toBeInTheDocument();
@@ -156,7 +164,9 @@ describe("CreateProduct", () => {
     fireEvent.change(productTypeInput, { target: { name: "type", value: productToEdit.type } });
     const productImageInput = screen.getByTestId("product-image");
     fireEvent.change(productImageInput, { target: { name: "imageUrl", value: productToEdit.image } });
-    const submitButton = screen.getByTestId("submit-button");
+    const submitButton = screen.getByRole("button", {
+      name: "Update"
+    });
     fireEvent.submit(submitButton);
     await waitFor(() => {
       expect(mockUpdateProduct).toHaveBeenCalledWith(1, {
@@ -207,7 +217,9 @@ describe("CreateProduct", () => {
       setStatus: jest.fn(),
     });
     render(<CreateProduct />);
-    const cancelButton = screen.getByTestId("cancel-button");
+    const cancelButton = screen.getByRole("button", {
+      name: "Cancel"
+    });
     fireEvent.click(cancelButton);
     await waitFor(() => {
       expect(mockSetProductToEdit).toHaveBeenCalledWith(null);

@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Button from "@/components/button";
 import { useOrderStore } from "@/store/useOrderStore";
 import { calculatePreparationTime } from "@/utils/dateTime";
+import { useEffect, useState } from "react";
 import { Alert, Badge } from "reactstrap";
 import "./kitchen.scss";
 
@@ -52,9 +54,9 @@ const Kitchen = ({ id, client, product, status, dataEntry, timeOrd }) => {
         </Alert>
       )}
       {!prepTimeMsg && (
-        <button className="btn-kitchen" onClick={handleClick} data-testid="btn-delivered">
+        <Button onClick={handleClick}>
           Send
-        </button>
+        </Button>
       )}
     </section>
   );

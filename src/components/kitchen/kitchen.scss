@@ -1,11 +1,12 @@
 .kitchen-order {
   display: grid;
   grid-template-rows: 0.5fr 0.5fr 4fr 1fr;
+  justify-items: center;
   background: white;
   border-radius: 1rem;
   height: 25rem;
   width: 20rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   gap: 1rem;
 }
 
@@ -14,6 +15,7 @@
   justify-content: space-between;
   align-items: center;
   height: auto;
+  width: 100%;
 }
 
 .status {
@@ -27,6 +29,10 @@
   color:#cb3234
 }
 
+.orderNum {
+  margin: 0;
+}
+
 .description-order {
   display: flex;
   flex-direction: column;
@@ -36,6 +42,7 @@
   border-radius: 0.5rem;
   max-height: 15rem;
   overflow-y: auto;
+  width: 100%;
 }
 
 .amount-product {
@@ -56,19 +63,6 @@
   
 }
 
-.btn-kitchen {
-  border-radius: 0.5rem;
-  border: none;
-  background: #cb3234;
-  color: white;
-  font-size: large;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 0.5rem 2rem;
-  width: fit-content;
-  margin: 0 auto;
-}
-
 /* Versión de tablet */
 @media (min-width: 768px){
   .kitchen-order {
@@ -83,11 +77,6 @@
   .clientName, .orderNum {
     font-size: x-large;
   }
-
-  .btn-kitchen {
-    font-size: x-large;
-  }
-
 }
    
  /* Versión de escritorio */

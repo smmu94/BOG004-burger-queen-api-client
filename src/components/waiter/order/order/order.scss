@@ -14,18 +14,6 @@
   width: 100%;
   border-radius: 0.5rem;
   padding: 0.5rem 0;
-  .foodType {
-    background-color: #F3D3C1;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    border: none;
-    font-weight: bold;
-    font-size: large;
-    &.selected {
-      background-color: #CB3234;
-      color: white;
-    }
-  }
 }
 
 .products {
@@ -48,11 +36,6 @@
    
  /* Versión de escritorio */
  @media (min-width: 1024px) {
-  .type-order {
-    .foodType {
-      font-size: large;
-    }
-  }
   .products{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

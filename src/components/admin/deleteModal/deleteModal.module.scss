@@ -11,6 +11,11 @@
     z-index: 1000;
     padding: 1rem;
   }
+
+  .modal-button {
+    display: flex;
+    justify-content: flex-end;
+  }
   
   .modal-content {
     background-color: white;
@@ -50,33 +55,6 @@
     gap: 0.5rem;
   }
   
-  .btn-confirm,
-  .btn-cancel {
-    padding: 0.5rem 0.8rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: x-larger;
-    font-weight: bold;
-    border: none;
-    color: white;
-  }
-  
-  .btn-confirm {
-    background-color: #CB3234;
-  }
-  
-  .btn-confirm:hover {
-    background-color: #B22222;
-  }
-  
-  .btn-cancel {
-    background-color: #090E47;
-  }
-  
-  .btn-cancel:hover {
-    background-color: #070A33;
-  }
-  
   @media (min-width: 768px) {
     .modal-content {
       padding: 1.5rem;
@@ -93,12 +71,6 @@
     .modal-actions {
       margin-top: 1.5rem;
       gap: 1rem;
-    }
-  
-    .btn-confirm,
-    .btn-cancel {
-      padding: 0.5rem 1rem;
-      font-size: large;
     }
   }
   

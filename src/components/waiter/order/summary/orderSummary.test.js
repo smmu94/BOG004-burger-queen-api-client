@@ -1,7 +1,7 @@
+import React from "react";
 import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
 import { useOrderStore } from "@/store/useOrderStore";
-import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
+import { render, screen } from "@testing-library/react";
 import OrderSummary from ".";
 import { getTotalPrice } from "./utils";
 
@@ -40,14 +40,16 @@ describe("OrderSummary", () => {
     render(<OrderSummary />);
     const inputClient = screen.getByTestId("input-client");
     expect(inputClient).toBeInTheDocument();
-    const btnClient = screen.getByTestId("btn-client");
+    const btnClient = screen.getByRole("button", {
+      name: "Send",
+    });
     expect(btnClient).toBeInTheDocument();
     const productSummary = screen.getByTestId("product-summary");
     expect(productSummary).toBeInTheDocument();
     const finalSummary = screen.getByTestId("final-summary");
     expect(finalSummary).toBeInTheDocument();
   });
-  test("should display total price correctly", () => {  
+  test("should display total price correctly", () => {
     useCurrentOrderStore.mockReturnValue({
       products: mockProductsSummary,
       resetProduct: jest.fn(),

@@ -1,8 +1,8 @@
+import React from "react";
 import * as UserProvider from "@/providers/UserProvider";
 import { routes } from "@/utils/constants";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import React from "react";
 import { Router } from "react-router-dom";
 import { loginError, tags } from "./constants";
 import Login from "./login";
@@ -13,91 +13,109 @@ jest.mock("@/providers/UserProvider", () => ({
   saveUser: jest.fn(),
 }));
 
-test("it does not allow the user to login successfully", async () => {
-  const history = createMemoryHistory();
-  const mockLogin = UserProvider.login;
-  mockLogin.mockRejectedValueOnce({ data: null });
-
-  render(
-    <Router location={history.location} navigator={history}>
-      <Login />
-    </Router>
-  );
-
-  fireEvent.change(screen.getByPlaceholderText("User"), {
-    target: { value: "pepe@foodelicious.com" },
-  });
-  fireEvent.change(screen.getByPlaceholderText("Password"), {
-    target: { value: "123456" },
+describe("Login", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  const button = screen.getByText(tags.loginBtn);
-  fireEvent.click(button);
-
-  await waitFor(() => {
-    const errMessage = screen.queryByTestId("login-error-message");
-    expect(errMessage).toHaveTextContent(loginError);
-  });
-});
-
-test("allows the user to login as waiter successfully", async () => {
-  const history = createMemoryHistory();
-  const mockLogin = UserProvider.login;
-  mockLogin.mockResolvedValueOnce({ data: {} });
-
-  const mockGetUser = UserProvider.getUser;
-  mockGetUser.mockResolvedValueOnce({
-    data: [{ email: "waiter@foodelicious.com", roles: { waiter: true } }],
+  test("renders default", () => {
+    const history = createMemoryHistory();
+    render(
+      <Router location={history.location} navigator={history}>
+        <Login />
+      </Router>
+    );
+    const loginComponent = screen.getByTestId("login-component");
+    expect(loginComponent).toBeInTheDocument();
+    expect(screen.getAllByTestId("input")).toHaveLength(2);
+    expect(screen.getByTestId("button")).toBeInTheDocument();
   });
 
-  render(
-    <Router location={history.location} navigator={history}>
-      <Login />
-    </Router>
-  );
+  test("it does not allow the user to login successfully", async () => {
+    const history = createMemoryHistory();
+    const mockLogin = UserProvider.login;
+    mockLogin.mockRejectedValueOnce({ data: null });
 
-  fireEvent.change(screen.getByPlaceholderText("User"), {
-    target: { value: "waiter@foodelicious.com" },
-  });
-  fireEvent.change(screen.getByPlaceholderText("Password"), {
-    target: { value: "123456" },
-  });
+    render(
+      <Router location={history.location} navigator={history}>
+        <Login />
+      </Router>
+    );
 
-  const button = screen.getByText(tags.loginBtn);
-  fireEvent.click(button);
+    fireEvent.change(screen.getByPlaceholderText("user@gmail.com"), {
+      target: { value: "pepe@foodelicious.com" },
+    });
+    fireEvent.change(screen.getByPlaceholderText("password"), {
+      target: { value: "123456" },
+    });
 
-  await waitFor(() => {
-    expect(history.location.pathname).toBe(routes.order);
-  });
-});
+    const button = screen.getByText(tags.loginBtn);
+    fireEvent.click(button);
 
-test("allows the user to login as admin successfully", async () => {
-  const history = createMemoryHistory();
-  const mockLogin = UserProvider.login;
-  mockLogin.mockResolvedValueOnce({ data: {} });
-
-  const mockGetUser = UserProvider.getUser;
-  mockGetUser.mockResolvedValueOnce({
-    data: [{ email: "anita.borg@systers.xyz", roles: { admin: true } }],
+    await waitFor(() => {
+      const errMessage = screen.queryByTestId("login-error-message");
+      expect(errMessage).toHaveTextContent(loginError);
+    });
   });
 
-  render(
-    <Router location={history.location} navigator={history}>
-      <Login />
-    </Router>
-  );
+  test("allows the user to login as waiter successfully", async () => {
+    const history = createMemoryHistory();
+    const mockLogin = UserProvider.login;
+    mockLogin.mockResolvedValueOnce({ data: {} });
 
-  fireEvent.change(screen.getByPlaceholderText("User"), {
-    target: { value: "anita.borg@systers.xyz" },
+    const mockGetUser = UserProvider.getUser;
+    mockGetUser.mockResolvedValueOnce({
+      data: [{ email: "waiter@foodelicious.com", roles: { waiter: true } }],
+    });
+
+    render(
+      <Router location={history.location} navigator={history}>
+        <Login />
+      </Router>
+    );
+
+    fireEvent.change(screen.getByPlaceholderText("user@gmail.com"), {
+      target: { value: "waiter@foodelicious.com" },
+    });
+    fireEvent.change(screen.getByPlaceholderText("password"), {
+      target: { value: "123456" },
+    });
+
+    const button = screen.getByText(tags.loginBtn);
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(history.location.pathname).toBe(routes.order);
+    });
   });
-  fireEvent.change(screen.getByPlaceholderText("Password"), {
-    target: { value: "123456" },
-  });
+  test("allows the user to login as admin successfully", async () => {
+    const history = createMemoryHistory();
+    const mockLogin = UserProvider.login;
+    mockLogin.mockResolvedValueOnce({ data: {} });
 
-  const button = screen.getByText(tags.loginBtn);
-  fireEvent.click(button);
+    const mockGetUser = UserProvider.getUser;
+    mockGetUser.mockResolvedValueOnce({
+      data: [{ email: "anita.borg@systers.xyz", roles: { admin: true } }],
+    });
 
-  await waitFor(() => {
-    expect(history.location.pathname).toBe(routes.admin);
+    render(
+      <Router location={history.location} navigator={history}>
+        <Login />
+      </Router>
+    );
+
+    fireEvent.change(screen.getByPlaceholderText("user@gmail.com"), {
+      target: { value: "anita.borg@systers.xyz" },
+    });
+    fireEvent.change(screen.getByPlaceholderText("password"), {
+      target: { value: "123456" },
+    });
+
+    const button = screen.getByText(tags.loginBtn);
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(history.location.pathname).toBe(routes.admin);
+    });
   });
 });

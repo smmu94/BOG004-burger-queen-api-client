@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "@/components/button";
+import Input from "@/components/input";
 import { useProductStore } from "@/store/useProductStore";
 import { getCurrentDate } from "@/utils/dateTime";
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Alert } from "reactstrap";
 import { formValidation } from "./constants";
 import "./createProduct.scss";
@@ -12,11 +13,10 @@ const CreateProduct = () => {
   const { addProduct, updateProduct, productToEdit, setProductToEdit, status, clearStatus } =
     useProductStore();
   const {
-    register,
+    control,
     formState: { errors },
     handleSubmit,
     reset,
-    watch,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -77,53 +77,77 @@ const CreateProduct = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="create-product" data-testid="create-product">
       <div className="inputs">
-        <div className="input">
-          <input
-            {...register("productName", formValidation.productName)}
-            placeholder="Product Name"
-            className={errors.productName ? "input-error" : ""}
-            data-testid="product-name"
-          />
-          <span className="error">{errors.productName?.message || "\u00A0"}</span>
-        </div>
-        <div className="input">
-          <input
-            type="number"
-            {...register("productPrice", formValidation.productPrice)}
-            placeholder="Product Price"
-            className={errors.productPrice ? "input-error" : ""}
-            data-testid="product-price"
-          />
-          <span className="error">{errors.productPrice?.message || "\u00A0"}</span>
-        </div>
-        <div className="input">
-          <input
-            type="url"
-            {...register("imageUrl", formValidation.imageUrl)}
-            placeholder="Image URL"
-            className={errors.imageUrl ? "input-error" : ""}
-            data-testid="product-image"
-          />
-          <span className="error">{errors.imageUrl?.message || "\u00A0"}</span>
-        </div>
-        <div className="input">
-          <select
-            {...register("type", formValidation.type)}
-            className={`${errors.type ? "input-error" : ""} ${
-              watch("type") === "" ? "defaultValue" : ""
-            }`}
-            data-testid="product-type"
-          >
-            <option value="" disabled hidden>
-              Select Product Type
-            </option>
-            <option className="options" value="Desayuno">
-              Desayuno
-            </option>
-            <option value="Almuerzo">Almuerzo</option>
-          </select>
-          <span className="error">{errors.type?.message || "\u00A0"}</span>
-        </div>
+        <Controller
+          name="productName"
+          control={control}
+          rules={formValidation.productName}
+          render={({ field }) => (
+            <Input
+              id="productName"
+              label="Product Name"
+              placeholder="Product Name"
+              field={field}
+              error={!!errors.productName}
+              message={errors.productName?.message}
+              data-testid="product-name"
+            />
+          )}
+        />
+        <Controller
+          name="productPrice"
+          control={control}
+          rules={formValidation.productPrice}
+          render={({ field }) => (
+            <Input
+              id="productPrice"
+              type="number"
+              label="Product Price"
+              placeholder="Product Price"
+              field={field}
+              error={!!errors.productPrice}
+              message={errors.productPrice?.message}
+              data-testid="product-price"
+            />
+          )}
+        />
+        <Controller
+          name="imageUrl"
+          control={control}
+          rules={formValidation.imageUrl}
+          render={({ field }) => (
+            <Input
+              id="imageUrl"
+              type="url"
+              label="Image URL"
+              placeholder="Image URL"
+              field={field}
+              error={!!errors.imageUrl}
+              message={errors.imageUrl?.message}
+              data-testid="product-image"
+            />
+          )}
+        />
+        <Controller
+          name="type"
+          control={control}
+          rules={formValidation.type}
+          render={({ field }) => (
+            <Input
+              id="type"
+              type="select"
+              field={field}
+              label="Product Type"
+              error={!!errors.type}
+              message={errors.type?.message}
+              data-testid="product-type"
+              options={[
+                { value: "", label: "Select Product Type", disabled: true },
+                { value: "Desayuno", label: "Desayuno" },
+                { value: "Almuerzo", label: "Almuerzo" },
+              ]}
+            />
+          )}
+        />
       </div>
       <div className="alerts">
         {(errorAdding || errorUpdating) && (

@@ -3,46 +3,18 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1.5rem;
-  background-color: #090e47;
+  background-color: transparent;
   border-radius: 1rem;
   height: auto;
   width: 22rem;
-  min-width: 22rem
+  min-width: 22rem;
+  border: 0.5rem solid #090E47;
 }
 
 .inputs {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.input {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  color: #090e47;
-
-  input,
-  select {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: medium;
-    font-weight: bold;
-    outline: none;
-
-    &.input-error {
-      border: 2px solid #cb3234;
-    }
-    & .options {
-      font-size: medium;
-    }
-  }
-
-  & .defaultValue {
-    color: #808080;
-    font-size: medium;
-  }
 }
 
 .actions {
@@ -55,30 +27,10 @@
   }
 }
 
-.error {
-  font-size: small;
-  color: #cb3234;
-  height: 1rem;
-}
-
 .alerts {
   min-height: 4rem;
   & .alert {
     max-height: fit-content;
     margin: 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .input {
-    input, select {
-      font-size: large;
-    }
-    & .defaultValue {
-      font-size: large;
-    }
-    & .options {
-      font-size: large;
-    }
   }
 }

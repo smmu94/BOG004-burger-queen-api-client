@@ -14,7 +14,7 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
   } = useForm({ mode: "onBlur", reValidateMode: "onChange" }); // librería validacion form
 
   const [hasError, setHasError] = useState("");
- 
+
   const [values, setValues] = useState(
     userData || {
       //estado para guardar los datos del formgitulario
@@ -23,7 +23,6 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
       password: "",
       roles: {},
     }
-
   );
   const [message, setMessage] = useState("");
 
@@ -57,7 +56,7 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
       name: "",
       email: "",
       password: "",
-      roles: {}
+      roles: {},
     });
   };
 
@@ -73,18 +72,18 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
       ...values, // estado anterior
       [name]: value, // nuevo valor
     };
-    
+
     setValues(newValue); // actualizar el estado
   };
 
   const handleChange = (e) => {
     const newValue = {
-    ...values,
-   roles: { },
+      ...values,
+      roles: {},
     };
     newValue.roles[e.target.value] = true;
     setValues(newValue);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -147,7 +146,7 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
             password
           </Form.Label>
           <input
-            id="password" // input para el password
+            id="password" //  para el password
             type="password"
             name="password"
             placeholder="Contraseña"
@@ -173,9 +172,7 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
             onChange={handleInput} // cuando se cambia el valor del input
             data-testid="password-worker"
           />
-          {errors.password && (
-            <span style={style}>{errors.password.message}</span>
-          )}
+          {errors.password && <span style={style}>{errors.password.message}</span>}
         </div>
 
         <div>
@@ -209,17 +206,11 @@ const AdminFormWorkers = ({ id, edit, editUser, userData }) => {
             GUARDAR
           </button>
         ) : (
-          <button
-            type="submit"
-            className="btn-register"
-            onClick={startRegister}
-          >
+          <button type="submit" className="btn-register" onClick={startRegister}>
             REGISTRAR
           </button>
         )}
-        {hasError && (
-          <Alert data-testid="register-error-message">{hasError}</Alert>
-        )}
+        {hasError && <Alert data-testid="register-error-message">{hasError}</Alert>}
       </form>
       {message && (
         <Alert color="success" data-testid="created-order">

@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# Burger Queen API Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo de Burger Queen](src/assets/png/LogoSample4.png)
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+Burger Queen is a web application designed to streamline the order-taking process in a burger restaurant. The application enables waiters to efficiently record customer orders, send them to the kitchen, and manage the entire workflow through to delivery. The application is designed for use on tablets and is also accessible on desktop and mobile devices.
 
-### `npm start`
+## Project Objectives
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Build a web interface using React.
+* Familiarize oneself with the concept of screen state and how changes in state are reflected in the interface.
+* Implement an application that allows waiters to take orders, send them to the kitchen, and manage the restaurant's workflow.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## User Stories
 
-### `npm test`
+* **HU1: System Login:** Waiters can log in to the order system with their credentials.
+* **HU2: Order Taking:** Waiters can record customer orders, including product selection, quantities, and customer details.
+* **HU3: Kitchen Order Management:** Kitchen staff can view orders in the order they are received and mark orders as ready to serve.
+* **HU4: Ready Order Display:** Waiters can view the orders that are ready to be delivered quickly to the customers who made them.
+* **HU5: User Management:** Administrators can manage the platform's users to keep their workers' information up to date.
+* **HU6: Product Management:** Administrators can manage the menu to keep the products updated.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
+* React
+* CSS Modules
+* JavaScript (ES6+)
+* npm
+* Unit Testing (Jest)
+* REST API Integration
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Devices
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Desktop
 
-### `npm run eject`
+* Login:  
+![Login](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597167/Captura_de_pantalla_2025-05-18_213433_ssw7he.png)
+![Login validations](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597355/Captura_de_pantalla_2025-05-18_214131_vsa14g.png)
+![Login In](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597451/Captura_de_pantalla_2025-05-18_214340_nzky7j.png)
+![Login In Error Server](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597572/Captura_de_pantalla_2025-05-18_214534_wvufg1.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Waiter:
+![Waiter take orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598003/Captura_de_pantalla_2025-05-18_215242_ixtk20.png)
+![Waiter take orders tab](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597692/Captura_de_pantalla_2025-05-18_214742_ylneln.png)
+![Waiter take orders summary](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597820/Captura_de_pantalla_2025-05-18_214952_pjerqu.png)
+![Waiter take orders summary send](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597911/Captura_de_pantalla_2025-05-18_215113_w0wibr.png)
+![Waiter ready orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598079/Captura_de_pantalla_2025-05-18_215409_upcuc2.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Kitchen:  
+![kitchen](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603560/Captura_de_pantalla_2025-05-18_221216_aucdgl.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Administrator:  
+![users](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603568/Captura_de_pantalla_2025-05-18_222347_nyrghe.png)
+![products](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603570/Captura_de_pantalla_2025-05-18_222430_hzfvl4.png)
+![delete](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603571/Captura_de_pantalla_2025-05-18_222504_jzrxtd.png)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Tablet
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Login:
+![Login](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598925/Captura_de_pantalla_2025-05-18_220646_yrkpt0.png)
 
-### Code Splitting
+* Waiter:
+![take orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598926/Captura_de_pantalla_2025-05-18_220755_j0zcjj.png)
+![ready orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598926/Captura_de_pantalla_2025-05-18_220812_z9nzj8.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Kitchen:  
+![kitchen](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603561/Captura_de_pantalla_2025-05-18_221347_fvzbrk.png)
+* Administrator: 
+![users](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603567/Captura_de_pantalla_2025-05-18_222218_leyybp.png)
+![products](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603566/Captura_de_pantalla_2025-05-18_222138_po6pwq.png)
 
-### Analyzing the Bundle Size
+#### Mobile
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Login:  
+![Login](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598490/Captura_de_pantalla_2025-05-18_220018_jhkd8p.png)
 
-### Making a Progressive Web App
+* Waiter: 
+![take orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598495/Captura_de_pantalla_2025-05-18_215648_foby46.png)
+![take orders summary](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598488/Captura_de_pantalla_2025-05-18_215812_oyqxgj.png)
+![nabvar](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598488/Captura_de_pantalla_2025-05-18_215829_ojpfbk.png)
+![ready orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598488/Captura_de_pantalla_2025-05-18_215901_ywj1ue.png)
+![ready orders served](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598489/Captura_de_pantalla_2025-05-18_215933_xfetim.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Kitchen: 
+![kitchen](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603562/Captura_de_pantalla_2025-05-18_221414_y0my8k.png)
 
-### Advanced Configuration
+* Administrator: 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![users](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603563/Captura_de_pantalla_2025-05-18_221650_qi63va.png)
+![nabvar](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603565/Captura_de_pantalla_2025-05-18_221752_jljgav.png)
 
-### Deployment
+## Test Users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Administrator
 
-### `npm run build` fails to minify
+* Email: anita.borg@systers.xyz
+* Password: 123456
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Waiter
+
+* Email: waiter@foodelicious.com
+* Password: 123456
+
+### Chef
+
+* Email: chef@foodelicious.com
+* Password: 123456

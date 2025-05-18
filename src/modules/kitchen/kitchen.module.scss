@@ -36,12 +36,16 @@
   .kitchen-container {
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
+    max-height: calc(100vh - 6rem);
   }
 }
    
  /* Versión de escritorio */
 @media (min-width: 1024px) {
-
+  .kitchen-container {
+    justify-content: flex-start;
+  }
 }

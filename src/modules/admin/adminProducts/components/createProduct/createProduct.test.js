@@ -100,22 +100,22 @@ describe("CreateProduct", () => {
     const submitButton = screen.getByRole("button", { name: "Add" });
     fireEvent.click(submitButton);
     await waitFor(() => {
-      expect(screen.getByText(formValidation.productName.required)).toBeInTheDocument();
-      expect(screen.getByText(formValidation.productPrice.required)).toBeInTheDocument();
-      expect(screen.getByText(formValidation.imageUrl.required)).toBeInTheDocument();
-      expect(screen.getByText(formValidation.productPrice.required)).toBeInTheDocument();
+      expect(screen.getByText(formValidation.name.required)).toBeInTheDocument();
+      expect(screen.getByText(formValidation.price.required)).toBeInTheDocument();
+      expect(screen.getByText(formValidation.image.required)).toBeInTheDocument();
+      expect(screen.getByText(formValidation.price.required)).toBeInTheDocument();
     });
     const productPriceInput = screen.getByLabelText("Product Price");
     fireEvent.change(productPriceInput, { target: { value: 0 } });
     fireEvent.click(submitButton);
     await waitFor(() => {
-      expect(screen.getByText(formValidation.productPrice.min.message)).toBeInTheDocument();
+      expect(screen.getByText(formValidation.price.min.message)).toBeInTheDocument();
     });
     const productImageInput = screen.getByLabelText("Image URL");
     fireEvent.change(productImageInput, { target: { value: "abc" } });
     fireEvent.click(submitButton);
     await waitFor(() => {
-      expect(screen.getByText(formValidation.imageUrl.pattern.message)).toBeInTheDocument();
+      expect(screen.getByText(formValidation.image.pattern.message)).toBeInTheDocument();
     });
   });
 });

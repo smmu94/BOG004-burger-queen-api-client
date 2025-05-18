@@ -1,5 +1,5 @@
 export const formValidation = {
-  productName: {
+  name: {
     required: "Product name is required",
     minLength: {
       value: 3,
@@ -10,14 +10,14 @@ export const formValidation = {
       message: "Only letters and spaces allowed",
     },
   },
-  productPrice: {
+  price: {
     required: "Product price is required",
     min: {
       value: 0.01,
       message: "Price must be greater than zero",
     },
   },
-  imageUrl: {
+  image: {
     required: "Image URL is required",
     pattern: {
       value: /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i,
@@ -33,19 +33,19 @@ export const productFields = [
   {
     name: "productName",
     label: "Product Name",
-    rules: formValidation.productName,
+    rules: formValidation.name,
   },
   {
     name: "productPrice",
     label: "Product Price",
     type: "number",
-    rules: formValidation.productPrice,
+    rules: formValidation.price,
   },
   {
     name: "imageUrl",
     label: "Image URL",
     type: "url",
-    rules: formValidation.imageUrl,
+    rules: formValidation.image,
   },
   {
     name: "type",
@@ -61,8 +61,8 @@ export const productFields = [
 ];
 
 export const initialValues = {
-  productName: "",
-  productPrice: "",
-  imageUrl: "",
+  name: "",
+  price: "",
+  image: "",
   type: "",
 };

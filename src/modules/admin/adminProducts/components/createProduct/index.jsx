@@ -12,9 +12,9 @@ const CreateProduct = () => {
     () =>
       productToEdit
         ? {
-            productName: productToEdit.name,
-            productPrice: productToEdit.price,
-            imageUrl: productToEdit.image,
+            name: productToEdit.name,
+            price: productToEdit.price,
+            image: productToEdit.image,
             type: productToEdit.type,
           }
         : initialProductValues,

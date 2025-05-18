@@ -1,0 +1,33 @@
+.order-view {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.order-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f3d3c1;
+  padding: 1rem;
+  width: 100%;
+  flex-grow: 1;
+  gap: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 7rem);
+}
+
+/* Versión de tablet */
+@media (min-width: 768px) {
+  .order-container {
+    padding: 2rem;
+    max-height: calc(100vh - 6rem);
+  }
+}
+
+/* Versión de escritorio */
+@media (min-width: 1024px) {
+  .order-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+  }
+}

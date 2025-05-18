@@ -1,8 +1,8 @@
-import { logout } from "@/components/navBar/utils.js";
-import logo_navBar_mobile from "@/images/Logo-mobile-view.png";
-import logo_navBar from "@/images/Logo-Navbar.png";
-import { getUserData } from "@/providers/UserProvider.js";
 import React, { useState } from "react";
+import { logout } from "@/components/navBar/utils.js";
+import logo_navBar_mobile from "@/assets/png/Logo-mobile-view.png";
+import logo_navBar from "@/assets/png/Logo-Navbar.png";
+import { getUserData } from "@/providers/UserProvider.js";
 import { Nav } from "react-bootstrap";
 import { BiLogOut } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";

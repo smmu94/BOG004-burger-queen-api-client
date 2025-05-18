@@ -37,14 +37,12 @@ describe("Navbar", () => {
     window.sessionStorage.setItem("user", JSON.stringify(user.user));
     getUserData.mockReturnValue(user);
   });
-
   test("renders navbar with logos and item", () => {
     renderNavbar();
     expect(screen.getByTestId("logo-mobile")).toBeInTheDocument();
     expect(screen.getByTestId("logo-desktop")).toBeInTheDocument();
     expect(screen.getByText("ORDERS")).toBeInTheDocument();
   });
-
   test("shows mobile menu when clicking hamburger icon", () => {
     renderNavbar();
     const hamburger = screen.getByTestId("hamburger-menu");

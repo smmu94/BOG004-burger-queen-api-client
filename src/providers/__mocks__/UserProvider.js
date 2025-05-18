@@ -1,28 +1,51 @@
-const getUser = () => {
-  return new Promise((resolve) => {
-    resolve({
-      data: [
-        {
-          name: "Ana Pérez",
-          email: "anita.borg@systers.xyz",
-          password: "$2a$10$itZyq8s85.gdN4ynUG567ePfM675smRktiKGgAGSQHwvmXhGNqLSq",
-          roles: {
-            admin: true,
-          },
-          id: 1,
-        },
-        {
-          name: "Grace Hopper",
-          email: "grace.hopper@systers.xyz",
-          password: "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
-          roles: {
-            admin: true,
-          },
-          id: 2,
-        },
-      ],
-    });
-  });
+// const getUser = () => {
+//   return new Promise((resolve) => {
+//     resolve({
+//       data: [
+//         {
+//           name: "Ana Pérez",
+//           email: "anita.borg@systers.xyz",
+//           password: "$2a$10$itZyq8s85.gdN4ynUG567ePfM675smRktiKGgAGSQHwvmXhGNqLSq",
+//           roles: {
+//             admin: true,
+//           },
+//           id: 1,
+//         },
+//         {
+//           name: "Grace Hopper",
+//           email: "grace.hopper@systers.xyz",
+//           password: "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
+//           roles: {
+//             admin: true,
+//           },
+//           id: 2,
+//         },
+//       ],
+//     });
+//   });
+// };
+
+const users = {
+  data: [
+    {
+      name: "Ana Pérez",
+      email: "anita.borg@systers.xyz",
+      password: "$2a$10$itZyq8s85.gdN4ynUG567ePfM675smRktiKGgAGSQHwvmXhGNqLSq",
+      roles: {
+        admin: true,
+      },
+      id: 1,
+    },
+    {
+      name: "Grace Hopper",
+      email: "grace.hopper@systers.xyz",
+      password: "$2a$10$JABwR1UAtJqr2DCJ41ypMOgOqlh8eRXmTBO6DXfKG3ybxhABY4rey",
+      roles: {
+        admin: true,
+      },
+      id: 2,
+    },
+  ],
 };
 
 const createUser = () => {
@@ -53,4 +76,4 @@ const getToken = () => {
   return "tokenx";
 };
 
-export { createUser, getToken, getUser, getUserData };
+export { createUser, getToken, getUserData, users };

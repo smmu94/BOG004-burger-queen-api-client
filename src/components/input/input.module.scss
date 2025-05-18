@@ -1,0 +1,59 @@
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    font-size: medium;
+    color: #333;
+    text-align: left;
+  }
+
+  .inputField {
+    box-sizing: border-box;
+    background-color: #f39808dd;
+    border: 2px solid #f39808dd;
+    outline: none;
+    border-radius: 50px;
+    padding: 0.5rem;
+    font-size: large;
+    font-weight: 600;
+    color: #090E47;
+    width: 100%;
+    &::placeholder {
+      color: #090E47;
+      opacity: 0.4;
+      font-size: large;
+      font-weight: 600;
+    }
+
+    &:focus {
+      box-shadow: 0 0 5px rgba(#f39808, 0.7);
+    }
+
+    &:disabled {
+      background-color: #e0e0e0;
+      color: #757575;
+      cursor: not-allowed;
+    }
+
+    &.selectDefault {
+      color: #090e476f;
+      font-size: large;
+    }
+  }
+
+  .inputError {
+    border: 2px solid red;
+  }
+
+  .errorMessage {
+    color: red;
+    font-size: medium;
+    font-weight: 600;
+    min-height: 0.5rem;
+    margin-top: 0.25rem;
+  }
+}

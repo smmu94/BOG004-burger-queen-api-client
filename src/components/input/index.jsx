@@ -46,6 +46,7 @@ const Input = ({
           onBlur={field.onBlur}
           disabled={disabled}
           data-testid="input"
+          accept={type === "file" ? field.accept : undefined}
         />
       )}
       <span className={styles.errorMessage}>{message || "\u00A0"}</span>
@@ -55,8 +56,7 @@ const Input = ({
 
 Input.propTypes = {
   id: PropTypes.string,
-  type: PropTypes.oneOf(["text", "number", "password", "email", "select"]), // Limitamos los tipos aceptados
-  label: PropTypes.string,
+  type: PropTypes.oneOf(["text", "number", "password", "email", "select"]),
   placeholder: PropTypes.string,
   message: PropTypes.string,
   error: PropTypes.bool,

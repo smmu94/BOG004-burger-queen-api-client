@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+.kitchen-view {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.kitchen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  background-color: #F3D3C1;
+  padding: 2rem;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 7rem);
+}
+
+.no-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Versión de tablet */
+@media (min-width: 768px){
+  .kitchen-container {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+   
+ /* Versión de escritorio */
+@media (min-width: 1024px) {
+
+}

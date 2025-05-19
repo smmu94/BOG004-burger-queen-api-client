@@ -92,4 +92,13 @@ describe("OrderSummary", () => {
     const alertMessage = screen.getByTestId("alert-error");
     expect(alertMessage).toHaveTextContent("Failed to create order");
   });
+  test("shows product message when no products are added", () => {
+    useCurrentOrderStore.mockReturnValue({
+      products: [],
+      resetProduct: jest.fn(),
+    });
+    render(<OrderSummary />);
+    const productMessage = screen.getByTestId("product-message");
+    expect(productMessage).toBeInTheDocument();
+  });
 });

@@ -6,8 +6,9 @@ import { roles, routes } from "@/utils/constants";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "reactstrap";
+import { Alert } from "react-bootstrap";
 import { formValidation, loginError, tags } from "./constants";
+import { noop } from "underscore";
 import styles from "./loginForm.module.scss";
 
 const LoginForm = () => {
@@ -103,15 +104,15 @@ const LoginForm = () => {
           />
         </div>
       </div>
-      <Button type="submit" size="large">
+      <Button type="submit" size="large" onClick={noop}>
         {tags.loginBtn}
       </Button>
       <div className={styles["alert-error"]}>
         <Alert
-          color="danger"
+          variant="danger"
           className={styles.message}
-          isOpen={!!hasError}
           data-testid="login-error-message"
+          show={!!hasError}
         >
           {hasError}
         </Alert>

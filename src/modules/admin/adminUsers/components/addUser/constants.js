@@ -68,5 +68,4 @@ export const initialUserValues = {
   email: "",
   password: "",
   role: "",
-  photo: null,
 };

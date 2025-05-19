@@ -1,21 +1,31 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Button from "@/components/button";
 import { useCurrentOrderStore } from "@/store/useCurrentOrderStore";
 import { useOrderStore } from "@/store/useOrderStore";
 import { getCurrentDate } from "@/utils/dateTime";
 import { useState } from "react";
-import { Alert } from "reactstrap";
+import { Alert } from "react-bootstrap";
 import ProductSummary from "./components/product";
 import { getTotalPrice } from "./utils";
 import styles from "./orderSummary.module.scss";
+import { noop } from "underscore";
 
 const OrderSummary = () => {
   const { products, resetProduct } = useCurrentOrderStore();
   const { createOrder, message, error } = useOrderStore();
   const [client, setClient] = useState("");
+  const [showProductMessage, setShowProductMessage] = useState(false);
+
+  useEffect(() => {
+    setShowProductMessage(!products.length);
+  }, [products.length]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(!products.length) {
+      return;
+    }
 
     const order = {
       client,
@@ -46,16 +56,21 @@ const OrderSummary = () => {
         />
       </div>
       <ProductSummary />
+      {showProductMessage && (
+        <Alert variant="warning" data-testid="product-message">
+          Please add at least one product to the order.
+        </Alert>
+      )}
       <div className={styles["final-summary"]} data-testid="final-summary">
         <div>Total: ${totalPrice}</div>
         <Alert
-          color={error ? "danger" : "success"}
-          isOpen={!!(message || error)}
+          variant={error ? "danger" : "success"}
+          show={!!(message || error)}
           data-testid={`alert-${error ? "error" : "message"}`}
         >
           {message || error}
         </Alert>
-        <Button type="submit" size="medium">
+        <Button type="submit" size="medium" onClick={noop}>
           Send
         </Button>
       </div>

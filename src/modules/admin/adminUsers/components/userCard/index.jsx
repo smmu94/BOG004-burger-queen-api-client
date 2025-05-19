@@ -8,11 +8,14 @@ import userImage from "@/assets/svg/default_user.svg";
 
 const UserCard = ({ user, handleDelete }) => {
   const { setUserToEdit } = useUsersStore();
-
+  const userData = user?.user || user;
+  const name = userData.name;
+  const email = userData.email;
+  const roles = userData.roles;
   return (
     <Card
       image={userImage}
-      info={{ name: user.name, email: user.email, role: user.role }}
+      info={{ name, email, role: roles ? Object.keys(roles)[0] : "" }}
     >
       <Button onClick={() => setUserToEdit(user)}>
         <GrEdit />

@@ -31,18 +31,18 @@ export const formValidation = {
 
 export const productFields = [
   {
-    name: "productName",
+    name: "name",
     label: "Product Name",
     rules: formValidation.name,
   },
   {
-    name: "productPrice",
+    name: "price",
     label: "Product Price",
     type: "number",
     rules: formValidation.price,
   },
   {
-    name: "imageUrl",
+    name: "image",
     label: "Image URL",
     type: "url",
     rules: formValidation.image,

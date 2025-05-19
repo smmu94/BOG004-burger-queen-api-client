@@ -3,7 +3,7 @@ import Button from "@/components/button";
 import { useOrderStore } from "@/store/useOrderStore";
 import { calculatePreparationTime } from "@/utils/dateTime";
 import { useEffect, useState } from "react";
-import { Alert } from "reactstrap";
+import { Alert } from "react-bootstrap";
 import OrderCard from "@/components/orderCard";
 
 const Order = ({ id, client, product, status, dataEntry, timeOrd }) => {
@@ -38,7 +38,7 @@ const Order = ({ id, client, product, status, dataEntry, timeOrd }) => {
       badgeText={badgeText}
     >
       {prepTimeMsg && (
-        <Alert data-testid="delivered-order" color="success">
+        <Alert data-testid="delivered-order" variant="success">
           {prepTimeMsg}
         </Alert>
       )}

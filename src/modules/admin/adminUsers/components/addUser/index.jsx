@@ -14,14 +14,17 @@ const AddUser = () => {
             name: userToEdit.name,
             email: userToEdit.email,
             password: "",
-            role: userToEdit.role,
+            role: userToEdit.roles ? Object.keys(userToEdit.roles)[0] : "",
           }
         : initialUserValues,
     [userToEdit]
   );
 
   const onSubmit = async (data) => {
-    const user = { ...data };
+    const { role, ...rest } = data;
+    const user = { ...rest, roles: {
+      [data.role]: true,
+    } };
     if (userToEdit) {
       await updateUser(userToEdit.id, user);
     } else {

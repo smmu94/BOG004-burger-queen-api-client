@@ -6,8 +6,8 @@
   background-color: white;
   border-radius: 1rem;
   height: auto;
-  width: 25rem;
-  min-width: 25rem;
+  width: 22rem;
+  min-width: 22rem;
   border: 0.5rem solid #090E47;
 }
 
@@ -35,10 +35,10 @@
   }
 }
 
-/* Versión de tablet */
-@media (min-width: 768px) {
+/* Versión de escritorio */
+@media (min-width: 1024px) {
   .create-form {
-    width: 30rem;
-    min-width: 30rem;
+    width: 25rem;
+    min-width: 25rem;
   }
 }

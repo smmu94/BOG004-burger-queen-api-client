@@ -10,7 +10,6 @@ const login = (payload) => {
 };
 
 const saveUser = (user) => {
-  
   sessionStorage.setItem("user", JSON.stringify(user));
 };
 

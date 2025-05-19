@@ -16,7 +16,10 @@ const props = {
     id: 1,
     name: "Test User",
     email: "email@example.com",
-    role: "admin",
+    roles: {
+      admin: true,
+    }
+
   },
   handleDelete: jest.fn(),
 };
@@ -33,7 +36,7 @@ describe("UserCard", () => {
     expect(screen.getByTestId("card")).toBeInTheDocument();
     expect(screen.getByText(props.user.name)).toBeInTheDocument();
     expect(screen.getByText(props.user.email)).toBeInTheDocument();
-    expect(screen.getByText(props.user.role)).toBeInTheDocument();
+    expect(screen.getByText(Object.keys(props.user.roles))).toBeInTheDocument();
   });
   test("calls setUserToEdit when edit button is clicked", () => {
     const mockSetUserToEdit = jest.fn();

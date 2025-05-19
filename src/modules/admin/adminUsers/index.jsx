@@ -41,7 +41,7 @@ const AdminUsers = () => {
         <div className={styles["users-inventory"]} data-testid="users">
           {users.map((user) => (
             <UserCard
-              key={user.id}
+              key={`${user.id}-${user.name}`}
               user={user}
               handleDelete={() => handleDelete(user)}
             />

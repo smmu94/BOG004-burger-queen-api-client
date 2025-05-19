@@ -1,7 +1,8 @@
+import React from "react";
 import CreateForm from "@/modules/admin/components/createForm";
 import { useProductStore } from "@/store/useProductStore";
 import { getCurrentDate } from "@/utils/dateTime";
-import React, { useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { initialValues as initialProductValues, productFields } from "./constants";
 
 const CreateProduct = () => {
@@ -12,9 +13,9 @@ const CreateProduct = () => {
     () =>
       productToEdit
         ? {
-            productName: productToEdit.name,
-            productPrice: productToEdit.price,
-            imageUrl: productToEdit.image,
+            name: productToEdit.name,
+            price: productToEdit.price,
+            image: productToEdit.image,
             type: productToEdit.type,
           }
         : initialProductValues,
@@ -24,7 +25,7 @@ const CreateProduct = () => {
   const onSubmit = (data) => {
     const product = {
       ...data,
-      price: parseFloat(data.productPrice),
+      price: parseFloat(data.price),
       ...(productToEdit ? {} : { dataEntry: getCurrentDate() }),
     };
 

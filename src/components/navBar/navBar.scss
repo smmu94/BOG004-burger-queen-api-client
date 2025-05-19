@@ -74,7 +74,7 @@
 @media (min-width: 768px) {
   .NavbarItems {
     height: 6rem;
-    padding: 0 2rem;
+    padding: 0 1rem;
   }
 
   .logo-navBar {
@@ -91,7 +91,7 @@
   .menu-content {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 
     & a {
       text-decoration: none;

@@ -33,11 +33,6 @@ describe("Order", () => {
   test("render default", () => {
     render(<Order {...props} />);
     expect(screen.getByTestId("order-card")).toBeInTheDocument();
-    // expect(screen.getByTestId("status")).toBeInTheDocument();
-    // expect(screen.getByTestId("status")).toHaveTextContent("delivered");
-    // expect(screen.getByTestId("order-product")).toBeInTheDocument();
-    // expect(screen.getByTestId("order-product")).toHaveTextContent(summaryProducts[0].name);
-    // expect(screen.getByTestId("order-product")).toHaveTextContent(summaryProducts[0].quantity);
     expect(
       screen.getByRole("button", {
         name: "Serve Order",

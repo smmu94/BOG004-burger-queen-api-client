@@ -1,9 +1,11 @@
+import React from "react";
 import Button from "@/components/button";
 import Input from "@/components/input";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Alert } from "reactstrap";
+import { Alert } from "react-bootstrap";
 import styles from "./createForm.module.scss";
+import { noop } from "underscore";
 
 const CreateForm = ({ fields, onSubmit, onCancel, initialValues, status, isEditing }) => {
   const {
@@ -11,7 +13,9 @@ const CreateForm = ({ fields, onSubmit, onCancel, initialValues, status, isEditi
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm({ defaultValues: initialValues });
+  } = useForm({
+    defaultValues: initialValues,
+  });
 
   useEffect(() => {
     reset(initialValues);
@@ -19,6 +23,7 @@ const CreateForm = ({ fields, onSubmit, onCancel, initialValues, status, isEditi
 
   const handleFormSubmit = (data) => {
     onSubmit(data);
+    reset(initialValues);
   };
 
   const handleFormCancel = () => {
@@ -63,7 +68,7 @@ const CreateForm = ({ fields, onSubmit, onCancel, initialValues, status, isEditi
       <div className={styles.alerts}>
         {(error || success) && (
           <Alert
-            color={status.type === "error" ? "danger" : "success"}
+            variant={status.type === "error" ? "danger" : "success"}
             data-testid={`${status.type}-message`}
           >
             {status.message}
@@ -71,9 +76,7 @@ const CreateForm = ({ fields, onSubmit, onCancel, initialValues, status, isEditi
         )}
       </div>
       <div className={`${styles.actions} ${isEditing ? styles["with-cancel"] : ""}`}>
-        <Button type="submit">
-          {isEditing ? "Update" : "Add"}
-        </Button>
+        <Button type="submit" onClick={noop}>{isEditing ? "Update" : "Add"}</Button>
         {isEditing && (
           <Button type="button" onClick={handleFormCancel}>
             Cancel

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/BOG004-burger-queen-api-client/static/css/main.7fe1fbcf.css",
+    "main.js": "/BOG004-burger-queen-api-client/static/js/main.775f3a03.js",
+    "static/js/453.f4b89bf3.chunk.js": "/BOG004-burger-queen-api-client/static/js/453.f4b89bf3.chunk.js",
+    "static/media/burger_collage.png": "/BOG004-burger-queen-api-client/static/media/burger_collage.54f42681b53ad0d84c3d.png",
+    "static/media/LogoSample4.png": "/BOG004-burger-queen-api-client/static/media/LogoSample4.291324c9e1ea19e87913.png",
+    "static/media/Logo-mobile-view.png": "/BOG004-burger-queen-api-client/static/media/Logo-mobile-view.99a2aa627f402163ff43.png",
+    "static/media/Logo-Navbar.png": "/BOG004-burger-queen-api-client/static/media/Logo-Navbar.8128a85f4c9271db6309.png",
+    "static/media/default_user.svg": "/BOG004-burger-queen-api-client/static/media/default_user.13a763dbd80d72a4f38e2b116bdfa5f8.svg",
+    "index.html": "/BOG004-burger-queen-api-client/index.html",
+    "main.7fe1fbcf.css.map": "/BOG004-burger-queen-api-client/static/css/main.7fe1fbcf.css.map",
+    "main.775f3a03.js.map": "/BOG004-burger-queen-api-client/static/js/main.775f3a03.js.map",
+    "453.f4b89bf3.chunk.js.map": "/BOG004-burger-queen-api-client/static/js/453.f4b89bf3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7fe1fbcf.css",
+    "static/js/main.775f3a03.js"
+  ]
+}

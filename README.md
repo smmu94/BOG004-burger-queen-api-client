@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+# 🍔 Burger Queen API Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Burger Queen Logo](src/assets/png/LogoSample4.png)
 
-## Available Scripts
+## 📝 Project Description
 
-In the project directory, you can run:
+**Burger Queen** is a web application designed to streamline the order-taking process in a burger restaurant. The app allows waitstaff to register customer orders, send them to the kitchen, and manage the workflow until the food is delivered. It is designed primarily for use on tablets but also works on desktops and mobile devices.
 
-### `npm start`
+## 🎯 Project Objectives
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Build a web interface using React.
+- Understand screen state and how changes reflect in the UI.
+- Implement a system that allows:
+  - Taking orders.
+  - Sending them to the kitchen.
+  - Managing the complete restaurant workflow.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 👤 User Stories
 
-### `npm test`
+- **US1: User login** – Waitstaff can log in using their credentials.
+- **US2: Take orders** – Waitstaff can register customer orders, including products, quantities, and customer names.
+- **US3: Kitchen order management** – Kitchen staff can view and manage orders in real-time.
+- **US4: Delivery of ready orders** – Waitstaff can quickly see which orders are ready to deliver.
+- **US5: User management** – Admins can manage user accounts.
+- **US6: Product management** – Admins can keep the menu up to date.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🧪 Test Users
 
-### `npm run build`
+You can use these users to test different roles in the app:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 👩‍🍳 Kitchen Staff
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Email:** `chef@foodelicious.com`  
+- **Password:** `123456`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 👨‍💼 Admin
 
-### `npm run eject`
+- **Email:** `anita.borg@systers.xyz`  
+- **Password:** `123456`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 👩‍💼 Waitstaff
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Email:** `waiter@foodelicious.com`  
+- **Password:** `123456`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🛠️ Technologies Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- React
+- CSS Modules
+- JavaScript (ES6+)
+- npm
+- Unit Testing (Jest)
+- REST API
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📸 Screenshots
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 🖥️ Desktop
 
-### Code Splitting
+**Login**  
+![Login](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597167/Captura_de_pantalla_2025-05-18_213433_ssw7he.png)  
+![Login validations](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597355/Captura_de_pantalla_2025-05-18_214131_vsa14g.png)  
+![Login In](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597451/Captura_de_pantalla_2025-05-18_214340_nzky7j.png)  
+![Login In Error Server](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597572/Captura_de_pantalla_2025-05-18_214534_wvufg1.png)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Waiter**  
+![Waiter take orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598003/Captura_de_pantalla_2025-05-18_215242_ixtk20.png)  
+![Waiter take orders tab](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597692/Captura_de_pantalla_2025-05-18_214742_ylneln.png)  
+![Waiter take orders summary](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597820/Captura_de_pantalla_2025-05-18_214952_pjerqu.png)  
+![Waiter take orders summary send](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747597911/Captura_de_pantalla_2025-05-18_215113_w0wibr.png)  
+![Waiter ready orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598079/Captura_de_pantalla_2025-05-18_215409_upcuc2.png) 
 
-### Analyzing the Bundle Size
+**Kitchen View**  
+![kitchen](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603560/Captura_de_pantalla_2025-05-18_221216_aucdgl.png)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Admin Panel (Users & Products)**  
+![users](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603568/Captura_de_pantalla_2025-05-18_222347_nyrghe.png)  
+![products](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603570/Captura_de_pantalla_2025-05-18_222430_hzfvl4.png)  
+![delete](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603571/Captura_de_pantalla_2025-05-18_222504_jzrxtd.png)  
 
-### Making a Progressive Web App
+### Tablet
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Login** 
+![Login](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598925/Captura_de_pantalla_2025-05-18_220646_yrkpt0.png)  
 
-### Advanced Configuration
+**Waiter**
+![take orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598926/Captura_de_pantalla_2025-05-18_220755_j0zcjj.png)  
+![ready orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598926/Captura_de_pantalla_2025-05-18_220812_z9nzj8.png)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Kitchen View**   
+![kitchen](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603561/Captura_de_pantalla_2025-05-18_221347_fvzbrk.png)  
 
-### Deployment
+**Admin Panel (Users & Products)**  
+![users](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603567/Captura_de_pantalla_2025-05-18_222218_leyybp.png)  
+![products](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603566/Captura_de_pantalla_2025-05-18_222138_po6pwq.png)  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Mobile
 
-### `npm run build` fails to minify
+#### Login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Login |
+|-------|
+| ![Login](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598490/Captura_de_pantalla_2025-05-18_220018_jhkd8p.png) |
+
+---
+
+#### Waiter
+
+| Take Orders | Take Orders Summary | Navbar | Ready Orders | Ready Orders Served |
+|-------------|---------------------|--------|--------------|---------------------|
+| ![take orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598495/Captura_de_pantalla_2025-05-18_215648_foby46.png) | ![take orders summary](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598488/Captura_de_pantalla_2025-05-18_215812_oyqxgj.png) | ![navbar](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598488/Captura_de_pantalla_2025-05-18_215829_ojpfbk.png) | ![ready orders](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598488/Captura_de_pantalla_2025-05-18_215901_ywj1ue.png) | ![ready orders served](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747598489/Captura_de_pantalla_2025-05-18_215933_xfetim.png) |
+
+---
+
+#### Kitchen View
+
+| Kitchen |
+|---------|
+| ![kitchen](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603562/Captura_de_pantalla_2025-05-18_221414_y0my8k.png) |
+
+---
+
+#### Admin Panel (Users & Products)
+
+| Users | Navbar |
+|-------|--------|
+| ![users](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603563/Captura_de_pantalla_2025-05-18_221650_qi63va.png) | ![navbar](https://res.cloudinary.com/dnd96wqtb/image/upload/v1747603565/Captura_de_pantalla_2025-05-18_221752_jljgav.png) |
+ 

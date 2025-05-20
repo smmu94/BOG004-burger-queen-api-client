@@ -1,2 +1,16 @@
-node_modules
-/build
+# Node modules
+node_modules/
+
+# Build directories
+/build/
+
+# Coverage reports
+coverage/
+
+# Environment variables
+.env
+.env.development
+.env.production
+
+# MacOS system files
+.DS_Store
